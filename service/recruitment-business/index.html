@@ -18,7 +18,7 @@
               'triad-lime': '#C9FF94',
               'triad-cyan': '#94FFFF',
               'triad-purple': '#C994FF',
-              'creamy-bg': '#fcfcfc',
+              'creamy-bg': '#f8f9fc',
             },
             fontFamily: {
               'outfit': ['Outfit', 'sans-serif'],
@@ -38,34 +38,35 @@
         box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
       }
       ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #fcfcfc; }
+      ::-webkit-scrollbar-track { background: #f8f9fc; }
       ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
       ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
 
-      /* Tech Grid Pattern */
+      /* Enhanced Tech Grid with subtle dots */
       .tech-grid {
         background-image: 
+          radial-gradient(rgba(201, 148, 255, 0.08) 1.5px, transparent 1.5px),
           linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-        background-size: 60px 60px;
+        background-size: 40px 40px, 80px 80px, 80px 80px;
       }
 
       /* Floating Blob Animation */
       @keyframes float-slow {
         0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        33% { transform: translate(50px, -80px) scale(1.15) rotate(120deg); }
-        66% { transform: translate(-30px, 30px) scale(0.85) rotate(240deg); }
+        33% { transform: translate(60px, -100px) scale(1.2) rotate(120deg); }
+        66% { transform: translate(-40px, 40px) scale(0.8) rotate(240deg); }
       }
       @keyframes float-reverse {
-        0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
-        33% { transform: translate(-40px, 60px) scale(0.9) rotate(-120deg); }
-        66% { transform: translate(30px, -40px) scale(1.05) rotate(-240deg); }
+        0%, 100% { transform: translate(0, 0) scale(1.15) rotate(0deg); }
+        33% { transform: translate(-50px, 80px) scale(0.85) rotate(-120deg); }
+        66% { transform: translate(40px, -50px) scale(1.1) rotate(-240deg); }
       }
       .animate-float-1 {
-        animation: float-slow 35s infinite alternate ease-in-out;
+        animation: float-slow 30s infinite alternate ease-in-out;
       }
       .animate-float-2 {
-        animation: float-reverse 40s infinite alternate ease-in-out;
+        animation: float-reverse 35s infinite alternate ease-in-out;
       }
 
       /* Glassmorphism Card */
@@ -73,8 +74,79 @@
         background: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.55);
-        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.7);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Premium Icon Container */
+      .premium-icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 10;
+        cursor: pointer;
+      }
+      .premium-icon-glow {
+        position: absolute;
+        inset: -4px;
+        border-radius: 1.35rem;
+        filter: blur(14px);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: -1;
+      }
+      .pulse-ring-outer {
+        position: absolute;
+        inset: -1px;
+        border-radius: 1.25rem;
+        border: 1px solid currentColor;
+        opacity: 0;
+        transform: scale(1);
+        pointer-events: none;
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .premium-icon-container:hover {
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
+        background: #fff;
+      }
+      .premium-icon-container:hover .premium-icon-glow {
+        opacity: 0.5;
+      }
+      .premium-icon-container:hover .pulse-ring-outer {
+        opacity: 0.6;
+        transform: scale(1.4);
+      }
+
+      /* Premium Icon Gradients */
+      .icon-gradient-red {
+        background: linear-gradient(135deg, #FF1414, #FF5E62);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-purple {
+        background: linear-gradient(135deg, #C994FF, #845EC2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-cyan {
+        background: linear-gradient(135deg, #94FFFF, #0089BA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-pink {
+        background: linear-gradient(135deg, #FF9494, #FF5E62);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       /* Parallax Adjustments */
@@ -94,9 +166,9 @@
   <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
     <!-- Super subtle background accents & parallax blobs -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
-        <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[600px] h-[600px] bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-1"></div>
-        <div id="blob-2" class="parallax-bg absolute top-1/3 -right-48 w-[600px] h-[600px] bg-triad-purple rounded-full mix-blend-multiply opacity-15 filter blur-[120px] animate-float-2"></div>
-        <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
+        <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[700px] h-[700px] bg-triad-cyan rounded-full mix-blend-multiply opacity-25 filter blur-[120px] animate-float-1"></div>
+        <div id="blob-2" class="parallax-bg absolute top-1/3 -right-48 w-[650px] h-[650px] bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-2"></div>
+        <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[800px] h-[800px] bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[150px] animate-float-1"></div>
     </div>
 
     <!-- Minimal Header -->
@@ -156,9 +228,14 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
           <!-- Strength 1 -->
-          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-500">
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-red rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div>
-              <i class="fa-solid fa-briefcase text-3xl mb-6 block text-triad-red"></i>
+              <div class="premium-icon-container mb-8 text-triad-red">
+                <div class="premium-icon-glow bg-triad-red"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-briefcase text-2xl icon-gradient-red"></i>
+              </div>
               <h3 class="text-xl font-black text-gray-900 mb-4">50,000件の求人ネットワーク</h3>
               <p class="text-gray-500 font-light leading-relaxed">
                 提携ネットワーク企業との連携により、非公開求人を含めた豊富で多様な選択肢を保有。求職者の適性に合わせて最適なポジションをご提案可能です。
@@ -168,39 +245,54 @@
           </div>
 
           <!-- Strength 2 -->
-          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-500">
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div>
-              <i class="fa-solid fa-graduation-cap text-3xl mb-6 block text-triad-red"></i>
+              <div class="premium-icon-container mb-8 text-triad-purple">
+                <div class="premium-icon-glow bg-triad-purple"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-graduation-cap text-2xl icon-gradient-purple"></i>
+              </div>
               <h3 class="text-xl font-black text-gray-900 mb-4">10年以上の実績を持つアドバイザー</h3>
               <p class="text-gray-500 font-light leading-relaxed">
                 人材業界の最前線で10年以上の転職支援を行ってきたキャリアアドバイザー（CA）が直接担当。企業の風土を把握し、ミスマッチを最小限に抑えます。
               </p>
             </div>
-            <div class="w-12 h-1 bg-triad-red mt-6"></div>
+            <div class="w-12 h-1 bg-triad-purple mt-6"></div>
           </div>
 
           <!-- Strength 3 -->
-          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-500">
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div>
-              <i class="fa-solid fa-handshake text-3xl mb-6 block text-triad-red"></i>
+              <div class="premium-icon-container mb-8 text-triad-cyan">
+                <div class="premium-icon-glow bg-triad-cyan"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-handshake text-2xl icon-gradient-cyan"></i>
+              </div>
               <h3 class="text-xl font-black text-gray-900 mb-4">最低5回の丁寧な個別面談</h3>
               <p class="text-gray-500 font-light leading-relaxed">
                 履歴書・職務経歴書の作成から面接対策、内定獲得まで、最低5回（各回1時間以上）の個別ミーティングを実施。求職者の強みを最大化させて送り出します。
               </p>
             </div>
-            <div class="w-12 h-1 bg-triad-red mt-6"></div>
+            <div class="w-12 h-1 bg-triad-cyan mt-6"></div>
           </div>
 
           <!-- Strength 4 -->
-          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-500">
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div>
-              <i class="fa-solid fa-star text-3xl mb-6 block text-triad-red"></i>
+              <div class="premium-icon-container mb-8 text-triad-pink">
+                <div class="premium-icon-glow bg-triad-pink"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-star text-2xl icon-gradient-pink"></i>
+              </div>
               <h3 class="text-xl font-black text-gray-900 mb-4">アドバイザー1人あたり月10名限定の担当制</h3>
               <p class="text-gray-500 font-light leading-relaxed">
                 CA1人が抱える担当数を制限することで、きめ細やかで手厚いフルサポートを実現。一人ひとりのキャリアに寄り添ったエスコートをお約束します。
               </p>
             </div>
-            <div class="w-12 h-1 bg-triad-red mt-6"></div>
+            <div class="w-12 h-1 bg-triad-pink mt-6"></div>
           </div>
         </div>
       </section>
