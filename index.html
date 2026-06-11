@@ -41,14 +41,127 @@
       ::-webkit-scrollbar-track { background: #fcfcfc; }
       ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
       ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
+
+      /* Tech Grid Pattern */
+      .tech-grid {
+        background-image: 
+          linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* Floating Blob Animation */
+      @keyframes float-slow {
+        0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        33% { transform: translate(50px, -80px) scale(1.15) rotate(120deg); }
+        66% { transform: translate(-30px, 30px) scale(0.85) rotate(240deg); }
+      }
+      @keyframes float-reverse {
+        0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
+        33% { transform: translate(-40px, 60px) scale(0.9) rotate(-120deg); }
+        66% { transform: translate(30px, -40px) scale(1.05) rotate(-240deg); }
+      }
+      .animate-float-1 {
+        animation: float-slow 35s infinite alternate ease-in-out;
+      }
+      .animate-float-2 {
+        animation: float-reverse 40s infinite alternate ease-in-out;
+      }
+
+      /* Glassmorphism Card */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6);
+      }
+
+      /* Premium Icon Container */
+      .premium-icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 10;
+        cursor: pointer;
+      }
+      .premium-icon-glow {
+        position: absolute;
+        inset: -4px;
+        border-radius: 1.35rem;
+        filter: blur(14px);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: -1;
+      }
+      .pulse-ring-outer {
+        position: absolute;
+        inset: -1px;
+        border-radius: 1.25rem;
+        border: 1px solid currentColor;
+        opacity: 0;
+        transform: scale(1);
+        pointer-events: none;
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .premium-icon-container:hover {
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
+        background: #fff;
+      }
+      .premium-icon-container:hover .premium-icon-glow {
+        opacity: 0.4;
+      }
+      .premium-icon-container:hover .pulse-ring-outer {
+        opacity: 0.6;
+        transform: scale(1.4);
+      }
+
+      /* Gradient Text Icons */
+      .icon-gradient-lime {
+        background: linear-gradient(135deg, #C9FF94, #00C9A7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-purple {
+        background: linear-gradient(135deg, #C994FF, #845EC2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-cyan {
+        background: linear-gradient(135deg, #94FFFF, #0089BA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Parallax Adjustments */
+      .parallax-bg {
+        will-change: transform;
+      }
+      .parallax-img-container {
+        position: relative;
+        overflow: hidden;
+      }
+      .parallax-img {
+        will-change: transform;
+        transform: scale(1.15);
+      }
     </style>
   </head>
-  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative">
-    <!-- Super subtle background accents -->
+  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
+    <!-- Super subtle background accents & parallax blobs -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
-        <div class="absolute -top-32 -left-32 w-96 h-96 bg-triad-cyan rounded-full mix-blend-multiply opacity-10 filter blur-[100px]"></div>
-        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-triad-purple rounded-full mix-blend-multiply opacity-10 filter blur-[100px]"></div>
-        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-triad-pink rounded-full mix-blend-multiply opacity-10 filter blur-[100px]"></div>
+        <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[600px] h-[600px] bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-1"></div>
+        <div id="blob-2" class="parallax-bg absolute top-1/3 -right-48 w-[600px] h-[600px] bg-triad-purple rounded-full mix-blend-multiply opacity-15 filter blur-[120px] animate-float-2"></div>
+        <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
     </div>
 
     <!-- Minimal Header -->
@@ -109,7 +222,7 @@
 
       <!-- ABOUT Section -->
       <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
-        <div class="bg-white rounded-[40px] p-12 md:p-24 elegant-shadow border border-gray-50 flex flex-col lg:flex-row gap-20 items-center">
+        <div class="glass-card rounded-[40px] p-12 md:p-24 flex flex-col lg:flex-row gap-20 items-center">
           <div class="w-full lg:w-1/2">
             <span class="text-triad-red font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Corporate Philosophy</span>
             <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1]">人生謳歌</h2>
@@ -126,8 +239,8 @@
             </a>
           </div>
           <div class="w-full lg:w-1/2 relative">
-            <div class="aspect-[4/5] rounded-[30px] overflow-hidden relative group">
-              <img src="./assets/images/about_philosophy.png" alt="Corporate minimal" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+            <div class="aspect-[4/5] parallax-img-container rounded-[30px] relative group">
+              <img src="./assets/images/about_philosophy.png" alt="Corporate minimal" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
             <!-- Accent dot -->
@@ -147,8 +260,8 @@
           
           <!-- Item 1: 人材紹介事業 -->
           <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/recruitment_service.png" alt="人材紹介事業" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/recruitment_service.png" alt="人材紹介事業" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
             </div>
             <div class="w-full lg:w-2/5">
               <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">01 / 人材紹介事業</span>
@@ -164,8 +277,8 @@
           
           <!-- Item 2: 人材ソリューション事業部 -->
           <div class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/telecom_outsourcing.png" alt="人材ソリューション事業部" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/telecom_outsourcing.png" alt="人材ソリューション事業部" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
             </div>
             <div class="w-full lg:w-2/5">
               <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">02 / 人材ソリューション事業部</span>
@@ -181,8 +294,8 @@
 
           <!-- Item 3: 法人営業事業部 -->
           <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/corporate_sales.png" alt="法人営業事業部" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/corporate_sales.png" alt="法人営業事業部" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
             </div>
             <div class="w-full lg:w-2/5">
               <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-cyan pb-2 inline-block">03 / 法人営業事業部</span>
@@ -198,8 +311,8 @@
 
           <!-- Item 4: クリエイティブ支援 -->
           <div class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/creative_overall.png" alt="クリエイティブ・動画制作" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/creative_overall.png" alt="クリエイティブ・動画制作" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
             </div>
             <div class="w-full lg:w-2/5">
               <span class="text-triad-lime font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-lime pb-2 inline-block">04 / クリエイティブ事業</span>
@@ -231,10 +344,12 @@
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
           <!-- Strength 1 -->
-          <div class="bg-white p-12 rounded-[40px] elegant-shadow group hover:-translate-y-4 transition-all duration-500 border border-gray-50 flex flex-col h-full relative overflow-hidden">
+          <div class="glass-card p-12 rounded-[40px] group hover:-translate-y-4 transition-all duration-500 flex flex-col h-full relative overflow-hidden">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-lime rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
-            <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-              <i class="fa-solid fa-bolt text-2xl text-triad-lime"></i>
+            <div class="premium-icon-container mb-8 text-triad-lime">
+              <div class="premium-icon-glow bg-triad-lime"></div>
+              <div class="pulse-ring-outer"></div>
+              <i class="fa-solid fa-bolt text-2xl icon-gradient-lime"></i>
             </div>
             <h3 class="text-2xl font-black mb-4 text-gray-900">多くのクライアント様と連携</h3>
             <p class="text-gray-500 font-light leading-relaxed flex-grow">
@@ -243,10 +358,12 @@
           </div>
 
           <!-- Strength 2 -->
-          <div class="bg-white p-12 rounded-[40px] elegant-shadow group hover:-translate-y-4 transition-all duration-500 border border-gray-50 flex flex-col h-full relative overflow-hidden mt-0 md:mt-12">
+          <div class="glass-card p-12 rounded-[40px] group hover:-translate-y-4 transition-all duration-500 flex flex-col h-full relative overflow-hidden mt-0 md:mt-12">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
-            <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-              <i class="fa-solid fa-crosshairs text-2xl text-triad-purple"></i>
+            <div class="premium-icon-container mb-8 text-triad-purple">
+              <div class="premium-icon-glow bg-triad-purple"></div>
+              <div class="pulse-ring-outer"></div>
+              <i class="fa-solid fa-crosshairs text-2xl icon-gradient-purple"></i>
             </div>
             <h3 class="text-2xl font-black mb-4 text-gray-900">従業員満足度</h3>
             <p class="text-gray-500 font-light leading-relaxed flex-grow">
@@ -255,10 +372,12 @@
           </div>
 
           <!-- Strength 3 -->
-          <div class="bg-white p-12 rounded-[40px] elegant-shadow group hover:-translate-y-4 transition-all duration-500 border border-gray-50 flex flex-col h-full relative overflow-hidden mt-0 md:mt-24">
+          <div class="glass-card p-12 rounded-[40px] group hover:-translate-y-4 transition-all duration-500 flex flex-col h-full relative overflow-hidden mt-0 md:mt-24">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
-            <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-              <i class="fa-solid fa-water text-2xl text-triad-cyan"></i>
+            <div class="premium-icon-container mb-8 text-triad-cyan">
+              <div class="premium-icon-glow bg-triad-cyan"></div>
+              <div class="pulse-ring-outer"></div>
+              <i class="fa-solid fa-water text-2xl icon-gradient-cyan"></i>
             </div>
             <h3 class="text-2xl font-black mb-4 text-gray-900">「通信から別事業へ」</h3>
             <p class="text-gray-500 font-light leading-relaxed flex-grow">
@@ -275,7 +394,7 @@
           <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">News<span class="text-triad-pink">.</span></h2>
         </div>
         
-        <div class="bg-white rounded-[40px] p-8 md:p-12 elegant-shadow border border-gray-50 max-w-4xl mx-auto">
+        <div class="glass-card rounded-[40px] p-8 md:p-12 max-w-4xl mx-auto">
           <div class="divide-y divide-gray-100">
             <!-- News Item 1 -->
             <div class="py-6 flex flex-col md:flex-row md:items-center gap-4">
@@ -331,6 +450,63 @@
 
     <!-- Scripts -->
     <script>
+      // Smooth Parallax Effect
+      const blobs = [
+        { el: document.getElementById('blob-1'), speed: 0.12 },
+        { el: document.getElementById('blob-2'), speed: -0.08 },
+        { el: document.getElementById('blob-3'), speed: 0.05 }
+      ];
+
+      const parallaxImages = document.querySelectorAll('.parallax-img');
+      const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('in-view', entry.isIntersecting);
+        });
+      }, { threshold: 0 });
+
+      parallaxImages.forEach(img => imageObserver.observe(img));
+
+      let ticking = false;
+
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+
+        // Background blobs parallax
+        blobs.forEach(blob => {
+          if (blob.el) {
+            blob.el.style.transform = `translate3d(0, ${scrolled * blob.speed}px, 0)`;
+          }
+        });
+
+        // Images parallax
+        parallaxImages.forEach(img => {
+          if (img.classList.contains('in-view')) {
+            const parent = img.parentElement;
+            const parentRect = parent.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+            
+            // Calculate relative scroll position inside viewport
+            const elementPosition = parentRect.top;
+            const scrollPercent = elementPosition / (viewHeight + parentRect.height);
+            
+            // Translate range
+            const translateVal = (scrollPercent - 0.5) * 60;
+            img.style.transform = `scale(1.15) translate3d(0, ${translateVal}px, 0)`;
+          }
+        });
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      });
+      // Initial trigger
+      updateParallax();
+
       // Subtle header border on scroll
       window.addEventListener('scroll', () => {
           const header = document.getElementById('header');

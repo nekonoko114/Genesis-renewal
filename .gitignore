@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
-
+deployment_flow.md
+system.md
+Design.md
 # Build output
 dist/
 
