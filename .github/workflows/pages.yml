@@ -41,19 +41,13 @@ jobs:
 
           mkdir -p public/main public/alt-text
 
-          tar -C variants/main \
-            --exclude=.git \
-            --exclude=.github \
-            --exclude=node_modules \
-            --exclude=dist \
-            -cf - . | tar -C public/main -xf -
+          npm --prefix variants/main ci
+          npm --prefix variants/main run build
+          cp -R variants/main/dist/. public/main/
 
-          tar -C variants/alt-text \
-            --exclude=.git \
-            --exclude=.github \
-            --exclude=node_modules \
-            --exclude=dist \
-            -cf - . | tar -C public/alt-text -xf -
+          npm --prefix variants/alt-text ci
+          npm --prefix variants/alt-text run build
+          cp -R variants/alt-text/dist/. public/alt-text/
 
           touch public/.nojekyll
           cat > public/index.html <<'HTML'
