@@ -1,14 +1,15 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>クリエイティブ・動画制作 | Genesis合同会社</title>
-    <meta name="description" content="高品質なホームページ・LP制作、画像素材販売、動画編集までトータルサポート。洗練されたクリエイティブで、企業のデジタルプレゼンスを最大限に高めます。">
+    <title>人材ソリューション | Genesis合同会社</title>
+    <meta name="description" content="Genesisは通信事業を軸に幅広いサービスを展開しております。多くのアライアンス企業様と連携し、短期・中期・長期の案件に柔軟に対応できるスタッフや環境を整えております。">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
       tailwind.config = {
         theme: {
           extend: {
@@ -27,7 +28,7 @@
         }
       }
     </script>
-    <style>
+    <style is:inline>
       .text-gradient-c {
         background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
         -webkit-background-clip: text;
@@ -41,29 +42,6 @@
       ::-webkit-scrollbar-track { background: #fcfcfc; }
       ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
       ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
-
-      /* Swiper Custom Style */
-      .swiper-button-next, .swiper-button-prev {
-        color: #111827;
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(8px);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        border: 1px solid rgba(243, 244, 246, 0.8);
-      }
-      .swiper-button-next:after, .swiper-button-prev:after {
-        font-size: 18px;
-        font-weight: bold;
-      }
-      .swiper-button-next:hover, .swiper-button-prev:hover {
-        background: rgba(255, 255, 255, 0.9);
-        transform: scale(1.05);
-      }
-      .swiper-pagination-bullet-active {
-        background: #C994FF !important;
-      }
 
       /* Enhanced Tech Grid with subtle dots */
       .tech-grid {
@@ -101,17 +79,8 @@
         box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6);
       }
 
-      /* Parallax Adjustments */
       .parallax-bg {
         will-change: transform;
-      }
-      .parallax-img-container {
-        position: relative;
-        overflow: hidden;
-      }
-      .parallax-img {
-        will-change: transform;
-        transform: scale(1.15);
       }
     </style>
   </head>
@@ -165,126 +134,52 @@
     <main class="pt-32">
       <!-- Header Area -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
-        <span class="text-triad-lime font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Creative & Video Production</span>
+        <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Sales & Operations Outsourcing</span>
         <h1 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
-          Genesisでは<br>企業のデジタルプレゼンスを最大限に引き出す
+          Genesisは通信事業を軸に、<br>幅広いサービスを展開しております。
         </h1>
         <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-          トータルソリューションを提供しています。
+          多くのアライアンス企業様と連携し、短期・中期・長期の案件に柔軟に対応できるスタッフや環境を整えております。
         </p>
       </section>
 
       <!-- Main Description -->
       <section class="max-w-5xl mx-auto px-6 lg:px-12 py-8">
         <div class="glass-card rounded-[40px] p-8 md:p-16 text-center">
-          <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">ウェブサイトの制作からローカルSEO対策まで</h2>
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">関東、関西、九州での活動をメインとしています。</h2>
           <p class="text-gray-500 font-light leading-relaxed max-w-3xl mx-auto">
-            ウェブサイトの制作からランディングページの最適化、そしてローカルSEO対策に至るまで、私たちは多岐にわたるサービスでお客様のビジネスを支援します。
+            長年にわたり連携しているアライアンス企業様とのコラボレーションにより、多くの案件を確保し、ご紹介できる準備が整っています。
           </p>
         </div>
       </section>
 
-      <!-- Services List Section (Row Alternating Layout) -->
-      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20 flex flex-col gap-24">
+      <!-- Services List Section -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-16 text-center">Service Core Areas</h2>
         
-        <!-- Service 1 -->
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center group">
-          <div class="w-full lg:w-1/2 parallax-img-container rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
-            <img src="../../assets/images/web_production.png" alt="HP制作・LP制作" class="parallax-img w-full h-full object-cover">
-          </div>
-          <div class="w-full lg:w-1/2">
-            <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-red pb-2 inline-block">01 / Web Development</span>
-            <h3 class="text-3xl font-black text-gray-900 mb-6">HP制作・LP制作</h3>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <!-- Area 1 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between">
+            <div>
+              <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">Area 01</span>
+              <h3 class="text-2xl font-black text-gray-900 mb-6">イベント設営・企画・運営</h3>
               <p class="text-gray-500 font-light leading-relaxed mb-6">
-              お客様のビジョンを具現化する高品質なウェブサイトを制作します。ユーザーエクスペリエンスとモバイルフレンドリーなデザインを重視し、SEOに最適化されたウェブサイトを提供します。ご希望に合わせた小規模、中規模のオリジナルテーマを作成も承っております。
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-20 items-center group">
-          <div class="w-full lg:w-1/2 parallax-img-container rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
-            <img src="../../assets/images/stock_photos.png" alt="画像素材販売" class="parallax-img w-full h-full object-cover">
-          </div>
-          <div class="w-full lg:w-1/2">
-            <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-purple pb-2 inline-block">02 / Stock Images</span>
-            <h3 class="text-3xl font-black text-gray-900 mb-6">画像素材販売</h3>
-              <p class="text-gray-500 font-light leading-relaxed mb-6">
-              お客様のビジョンにマッチングする画像の販売をしております。HP・LP・SNSなどで使用できる高品質の画像を提供しており、幅広く取り入れられるように今後も更新を重ねていく予定でございます。
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center group">
-          <div class="w-full lg:w-1/2 parallax-img-container rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
-            <img src="../../assets/images/video_editing.png" alt="動画編集" class="parallax-img w-full h-full object-cover">
-          </div>
-          <div class="w-full lg:w-1/2">
-            <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-cyan pb-2 inline-block">03 / Video Editing</span>
-            <h3 class="text-3xl font-black text-gray-900 mb-6">動画編集</h3>
-              <p class="text-gray-500 font-light leading-relaxed mb-6">
-              HPに埋め込む動画やYoutubeへの配信動画、SNSマーケティングに活かせる動画をご提供します。プロの技術による制作で魅力的に仕上げていきます。
-            </p>
-          </div>
-        </div>
-
-      </section>
-
-      <!-- Showcase Slider (Swiper.js) -->
-      <section class="py-20 px-6 lg:px-12 bg-white/50 border-y border-gray-100/50 backdrop-blur-sm overflow-hidden">
-        <div class="max-w-7xl mx-auto mb-16 text-center">
-          <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Visual Works</span>
-          <h2 class="text-4xl font-black text-gray-900 tracking-tight">Showcase</h2>
-        </div>
-
-        <div class="max-w-7xl mx-auto relative px-12">
-          <!-- Swiper Container -->
-          <div class="swiper creativeSwiper overflow-visible">
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-01.webp" alt="Work 01" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-02.webp" alt="Work 02" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-03.webp" alt="Work 03" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-04.webp" alt="Work 04" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-05.webp" alt="Work 05" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-06.webp" alt="Work 06" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-07.webp" alt="Work 07" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-08.webp" alt="Work 08" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-09.webp" alt="Work 09" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-010.webp" alt="Work 10" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-011.webp" alt="Work 11" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-012.webp" alt="Work 12" class="w-full h-full object-cover">
-              </div>
+                その時々に合わせたイベントの設計・計画・運営を行います。
+              </p>
             </div>
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <!-- Pagination -->
-            <div class="swiper-pagination !-bottom-8"></div>
+            <div class="w-12 h-1 bg-triad-red mt-6"></div>
+          </div>
+
+          <!-- Area 2 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between">
+            <div>
+              <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">Area 02</span>
+              <h3 class="text-2xl font-black text-gray-900 mb-6">最新のネット環境の推進</h3>
+              <p class="text-gray-500 font-light leading-relaxed mb-6">
+                携帯・通信経験者の多くが在籍しており、確かな数字にコミットできるスキルを身につけています。どこでも通用する実践的なスキルを磨いており、お客様のニーズに柔軟に対応できる体制を整えています。
+              </p>
+            </div>
+            <div class="w-12 h-1 bg-triad-purple mt-6"></div>
           </div>
         </div>
       </section>
@@ -292,13 +187,13 @@
       <!-- CTA Section -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 pb-32">
         <div class="bg-gray-900 rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
-          <div class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-triad-lime to-triad-cyan rounded-full filter blur-[100px] opacity-15 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-          <h2 class="text-3xl md:text-5xl font-black text-white mb-6 relative z-10">クリエイティブで、未来を照らす。</h2>
+          <div class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-triad-purple to-triad-cyan rounded-full filter blur-[100px] opacity-15 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-6 relative z-10">人材ソリューションについてご相談ください</h2>
           <p class="text-gray-400 font-light max-w-xl mx-auto mb-10 relative z-10 text-sm md:text-base">
-            Web制作、画像素材、動画編集など、制作のご依頼やご相談、お見積もりのご要望はお気軽にお問い合わせください。
+            短期・中期・長期の案件に柔軟に対応できるスタッフや環境について、担当者よりご案内いたします。
           </p>
           <a href="../../contact/index.html" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold px-10 py-5 rounded-full hover:scale-105 transition-all duration-300">
-            制作に関する相談をする
+            このサービスについて問い合わせる
           </a>
         </div>
       </section>
@@ -328,8 +223,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
+    <script is:inline>
       // Smooth Parallax Effect
       const blobs = [
         { el: document.getElementById('blob-1'), speed: 0.12 },
@@ -337,37 +231,14 @@
         { el: document.getElementById('blob-3'), speed: 0.05 }
       ];
 
-      const parallaxImages = document.querySelectorAll('.parallax-img');
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          entry.target.classList.toggle('in-view', entry.isIntersecting);
-        });
-      }, { threshold: 0 });
-
-      parallaxImages.forEach(img => imageObserver.observe(img));
-
       let ticking = false;
 
       function updateParallax() {
         const scrolled = window.pageYOffset;
 
-        // Background blobs
         blobs.forEach(blob => {
           if (blob.el) {
             blob.el.style.transform = `translate3d(0, ${scrolled * blob.speed}px, 0)`;
-          }
-        });
-
-        // Image parallax
-        parallaxImages.forEach(img => {
-          if (img.classList.contains('in-view')) {
-            const parent = img.parentElement;
-            const parentRect = parent.getBoundingClientRect();
-            const viewHeight = window.innerHeight;
-            const elementPosition = parentRect.top;
-            const scrollPercent = elementPosition / (viewHeight + parentRect.height);
-            const translateVal = (scrollPercent - 0.5) * 60;
-            img.style.transform = `scale(1.15) translate3d(0, ${translateVal}px, 0)`;
           }
         });
 
@@ -403,6 +274,7 @@
       const openMenu = () => {
         menu.classList.remove('hidden');
         menu.classList.add('flex');
+        // Small delay for transition
         setTimeout(() => {
           menu.classList.remove('opacity-0');
           menu.classList.add('opacity-100');
@@ -423,35 +295,6 @@
       btn.addEventListener('click', openMenu);
       closeBtn.addEventListener('click', closeMenu);
       links.forEach(link => link.addEventListener('click', closeMenu));
-
-      // Swiper Init
-      const swiper = new Swiper('.creativeSwiper', {
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 1,
-        spaceBetween: 20,
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 24,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          }
-        }
-      });
     </script>
   </body>
 </html>
