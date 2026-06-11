@@ -1,14 +1,16 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>クリエイティブ・動画制作 | Genesis合同会社</title>
-    <meta name="description" content="高品質なホームページ・LP制作、画像素材販売、動画編集までトータルサポート。洗練されたクリエイティブで、企業のデジタルプレゼンスを最大限に高めます。">
+    <title>次世代人材紹介サービス（有料職業紹介） | Genesis合同会社</title>
+    <meta name="description" content="ライブ配信を通じて培われた「圧倒的なコミュニケーション能力と共感力」を持つ若手人材に特化した紹介サービス。企業風土とシンクロする最適なマッチングを実現します。">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
       tailwind.config = {
         theme: {
           extend: {
@@ -27,7 +29,7 @@
         }
       }
     </script>
-    <style>
+    <style is:inline>
       .text-gradient-c {
         background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
         -webkit-background-clip: text;
@@ -38,32 +40,9 @@
         box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
       }
       ::-webkit-scrollbar { width: 4px; }
-      ::-webkit-scrollbar-track { background: #fcfcfc; }
+      ::-webkit-scrollbar-track { background: #f8f9fc; }
       ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
       ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
-
-      /* Swiper Custom Style */
-      .swiper-button-next, .swiper-button-prev {
-        color: #111827;
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(8px);
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        border: 1px solid rgba(243, 244, 246, 0.8);
-      }
-      .swiper-button-next:after, .swiper-button-prev:after {
-        font-size: 18px;
-        font-weight: bold;
-      }
-      .swiper-button-next:hover, .swiper-button-prev:hover {
-        background: rgba(255, 255, 255, 0.9);
-        transform: scale(1.05);
-      }
-      .swiper-pagination-bullet-active {
-        background: #C994FF !important;
-      }
 
       /* Enhanced Tech Grid with subtle dots */
       .tech-grid {
@@ -77,19 +56,19 @@
       /* Floating Blob Animation */
       @keyframes float-slow {
         0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-        33% { transform: translate(50px, -80px) scale(1.15) rotate(120deg); }
-        66% { transform: translate(-30px, 30px) scale(0.85) rotate(240deg); }
+        33% { transform: translate(60px, -100px) scale(1.2) rotate(120deg); }
+        66% { transform: translate(-40px, 40px) scale(0.8) rotate(240deg); }
       }
       @keyframes float-reverse {
-        0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
-        33% { transform: translate(-40px, 60px) scale(0.9) rotate(-120deg); }
-        66% { transform: translate(30px, -40px) scale(1.05) rotate(-240deg); }
+        0%, 100% { transform: translate(0, 0) scale(1.15) rotate(0deg); }
+        33% { transform: translate(-50px, 80px) scale(0.85) rotate(-120deg); }
+        66% { transform: translate(40px, -50px) scale(1.1) rotate(-240deg); }
       }
       .animate-float-1 {
-        animation: float-slow 35s infinite alternate ease-in-out;
+        animation: float-slow 30s infinite alternate ease-in-out;
       }
       .animate-float-2 {
-        animation: float-reverse 40s infinite alternate ease-in-out;
+        animation: float-reverse 35s infinite alternate ease-in-out;
       }
 
       /* Glassmorphism Card */
@@ -97,8 +76,79 @@
         background: rgba(255, 255, 255, 0.75);
         backdrop-filter: blur(24px);
         -webkit-backdrop-filter: blur(24px);
-        border: 1px solid rgba(255, 255, 255, 0.55);
-        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.7);
+        transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Premium Icon Container */
+      .premium-icon-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 4.5rem;
+        height: 4.5rem;
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 10;
+        cursor: pointer;
+      }
+      .premium-icon-glow {
+        position: absolute;
+        inset: -4px;
+        border-radius: 1.35rem;
+        filter: blur(14px);
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: -1;
+      }
+      .pulse-ring-outer {
+        position: absolute;
+        inset: -1px;
+        border-radius: 1.25rem;
+        border: 1px solid currentColor;
+        opacity: 0;
+        transform: scale(1);
+        pointer-events: none;
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .premium-icon-container:hover {
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 25px 50px -12px rgba(0,0,0,0.08);
+        background: #fff;
+      }
+      .premium-icon-container:hover .premium-icon-glow {
+        opacity: 0.5;
+      }
+      .premium-icon-container:hover .pulse-ring-outer {
+        opacity: 0.6;
+        transform: scale(1.4);
+      }
+
+      /* Premium Icon Gradients */
+      .icon-gradient-red {
+        background: linear-gradient(135deg, #FF1414, #FF5E62);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-purple {
+        background: linear-gradient(135deg, #C994FF, #845EC2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-cyan {
+        background: linear-gradient(135deg, #94FFFF, #0089BA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .icon-gradient-pink {
+        background: linear-gradient(135deg, #FF9494, #FF5E62);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
 
       /* Parallax Adjustments */
@@ -165,140 +215,120 @@
     <main class="pt-32">
       <!-- Header Area -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
-        <span class="text-triad-lime font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Creative & Video Production</span>
+        <span class="text-triad-red font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Next-Gen Recruitment Service</span>
         <h1 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
-          Genesisでは<br>企業のデジタルプレゼンスを最大限に引き出す
+          スペックを超えた、<br>「熱量」と「人間性」に出会う。
         </h1>
         <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-          トータルソリューションを提供しています。
+          ライブ配信で培われた「圧倒的なコミュニケーション能力と共感力」を持つ若手人材に特化し、従来の採用手法では出会えなかった優秀層をマッチングします。
         </p>
       </section>
 
-      <!-- Main Description -->
-      <section class="max-w-5xl mx-auto px-6 lg:px-12 py-8">
-        <div class="glass-card rounded-[40px] p-8 md:p-16 text-center">
-          <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">ウェブサイトの制作からローカルSEO対策まで</h2>
-          <p class="text-gray-500 font-light leading-relaxed max-w-3xl mx-auto">
-            ウェブサイトの制作からランディングページの最適化、そしてローカルSEO対策に至るまで、私たちは多岐にわたるサービスでお客様のビジネスを支援します。
-          </p>
-        </div>
-      </section>
-
-      <!-- Services List Section (Row Alternating Layout) -->
-      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20 flex flex-col gap-24">
+      <!-- Why Us Section (4 Strengths Grid) -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-16 text-center">Our Strong Points</h2>
         
-        <!-- Service 1 -->
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center group">
-          <div class="w-full lg:w-1/2 parallax-img-container rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
-            <img src="../../assets/images/web_production.png" alt="HP制作・LP制作" class="parallax-img w-full h-full object-cover">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">
+          <!-- Strength 1 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-red rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
+            <div>
+              <div class="premium-icon-container mb-8 text-triad-red">
+                <div class="premium-icon-glow bg-triad-red"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-briefcase text-2xl icon-gradient-red"></i>
+              </div>
+              <h3 class="text-xl font-black text-gray-900 mb-4">50,000件の求人ネットワーク</h3>
+              <p class="text-gray-500 font-light leading-relaxed">
+                提携ネットワーク企業との連携により、非公開求人を含めた豊富で多様な選択肢を保有。求職者の適性に合わせて最適なポジションをご提案可能です。
+              </p>
+            </div>
+            <div class="w-12 h-1 bg-triad-red mt-6"></div>
           </div>
-          <div class="w-full lg:w-1/2">
-            <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-red pb-2 inline-block">01 / Web Development</span>
-            <h3 class="text-3xl font-black text-gray-900 mb-6">HP制作・LP制作</h3>
-              <p class="text-gray-500 font-light leading-relaxed mb-6">
-              お客様のビジョンを具現化する高品質なウェブサイトを制作します。ユーザーエクスペリエンスとモバイルフレンドリーなデザインを重視し、SEOに最適化されたウェブサイトを提供します。ご希望に合わせた小規模、中規模のオリジナルテーマを作成も承っております。
-            </p>
+
+          <!-- Strength 2 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
+            <div>
+              <div class="premium-icon-container mb-8 text-triad-purple">
+                <div class="premium-icon-glow bg-triad-purple"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-graduation-cap text-2xl icon-gradient-purple"></i>
+              </div>
+              <h3 class="text-xl font-black text-gray-900 mb-4">10年以上の実績を持つアドバイザー</h3>
+              <p class="text-gray-500 font-light leading-relaxed">
+                人材業界の最前線で10年以上の転職支援を行ってきたキャリアアドバイザー（CA）が直接担当。企業の風土を把握し、ミスマッチを最小限に抑えます。
+              </p>
+            </div>
+            <div class="w-12 h-1 bg-triad-purple mt-6"></div>
+          </div>
+
+          <!-- Strength 3 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
+            <div>
+              <div class="premium-icon-container mb-8 text-triad-cyan">
+                <div class="premium-icon-glow bg-triad-cyan"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-handshake text-2xl icon-gradient-cyan"></i>
+              </div>
+              <h3 class="text-xl font-black text-gray-900 mb-4">最低5回の丁寧な個別面談</h3>
+              <p class="text-gray-500 font-light leading-relaxed">
+                履歴書・職務経歴書の作成から面接対策、内定獲得まで、最低5回（各回1時間以上）の個別ミーティングを実施。求職者の強みを最大化させて送り出します。
+              </p>
+            </div>
+            <div class="w-12 h-1 bg-triad-cyan mt-6"></div>
+          </div>
+
+          <!-- Strength 4 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between group hover:-translate-y-4 transition-all duration-500 relative overflow-hidden h-full">
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
+            <div>
+              <div class="premium-icon-container mb-8 text-triad-pink">
+                <div class="premium-icon-glow bg-triad-pink"></div>
+                <div class="pulse-ring-outer"></div>
+                <i class="fa-solid fa-star text-2xl icon-gradient-pink"></i>
+              </div>
+              <h3 class="text-xl font-black text-gray-900 mb-4">アドバイザー1人あたり月10名限定の担当制</h3>
+              <p class="text-gray-500 font-light leading-relaxed">
+                CA1人が抱える担当数を制限することで、きめ細やかで手厚いフルサポートを実現。一人ひとりのキャリアに寄り添ったエスコートをお約束します。
+              </p>
+            </div>
+            <div class="w-12 h-1 bg-triad-pink mt-6"></div>
           </div>
         </div>
-
-        <!-- Service 2 -->
-        <div class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-20 items-center group">
-          <div class="w-full lg:w-1/2 parallax-img-container rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
-            <img src="../../assets/images/stock_photos.png" alt="画像素材販売" class="parallax-img w-full h-full object-cover">
-          </div>
-          <div class="w-full lg:w-1/2">
-            <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-purple pb-2 inline-block">02 / Stock Images</span>
-            <h3 class="text-3xl font-black text-gray-900 mb-6">画像素材販売</h3>
-              <p class="text-gray-500 font-light leading-relaxed mb-6">
-              お客様のビジョンにマッチングする画像の販売をしております。HP・LP・SNSなどで使用できる高品質の画像を提供しており、幅広く取り入れられるように今後も更新を重ねていく予定でございます。
-            </p>
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center group">
-          <div class="w-full lg:w-1/2 parallax-img-container rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
-            <img src="../../assets/images/video_editing.png" alt="動画編集" class="parallax-img w-full h-full object-cover">
-          </div>
-          <div class="w-full lg:w-1/2">
-            <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-cyan pb-2 inline-block">03 / Video Editing</span>
-            <h3 class="text-3xl font-black text-gray-900 mb-6">動画編集</h3>
-              <p class="text-gray-500 font-light leading-relaxed mb-6">
-              HPに埋め込む動画やYoutubeへの配信動画、SNSマーケティングに活かせる動画をご提供します。プロの技術による制作で魅力的に仕上げていきます。
-            </p>
-          </div>
-        </div>
-
       </section>
 
-      <!-- Showcase Slider (Swiper.js) -->
-      <section class="py-20 px-6 lg:px-12 bg-white/50 border-y border-gray-100/50 backdrop-blur-sm overflow-hidden">
-        <div class="max-w-7xl mx-auto mb-16 text-center">
-          <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Visual Works</span>
-          <h2 class="text-4xl font-black text-gray-900 tracking-tight">Showcase</h2>
-        </div>
-
-        <div class="max-w-7xl mx-auto relative px-12">
-          <!-- Swiper Container -->
-          <div class="swiper creativeSwiper overflow-visible">
-            <div class="swiper-wrapper">
-              <!-- Slides -->
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-01.webp" alt="Work 01" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-02.webp" alt="Work 02" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-03.webp" alt="Work 03" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-04.webp" alt="Work 04" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-05.webp" alt="Work 05" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-06.webp" alt="Work 06" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-07.webp" alt="Work 07" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-08.webp" alt="Work 08" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-09.webp" alt="Work 09" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-010.webp" alt="Work 10" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-011.webp" alt="Work 11" class="w-full h-full object-cover">
-              </div>
-              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-012.webp" alt="Work 12" class="w-full h-full object-cover">
-              </div>
+      <!-- Synergies Concept -->
+      <section class="max-w-5xl mx-auto px-6 lg:px-12 py-20">
+        <div class="glass-card rounded-[40px] p-10 md:p-16 flex flex-col lg:flex-row gap-12 items-center">
+          <div class="lg:w-1/2">
+            <h2 class="text-3xl font-black text-gray-900 mb-6">ライブ配信で磨かれる「伝える技術」</h2>
+            <p class="text-gray-500 font-light leading-relaxed mb-6">
+              数千人のリスナーとリアルタイムに対話し、瞬時にニーズを捉えて信頼を獲得する――ライブ配信でトップ層に上るライバーたちが持つ「自己プロデュース力」と「共感構築力」は、現代のビジネスシーン（営業・インサイドセールス・カスタマーサクセス・広報）において非常に強力な武器になります。
+            </p>
+            <p class="text-gray-500 font-light leading-relaxed">
+              従来の履歴書のスペック（学歴や職歴）だけでは見落とされがちな「本質的なコミュ力」と「主体性」を持つ次代のキープレイヤーを、貴社へご紹介します。
+            </p>
+          </div>
+          <div class="lg:w-1/2 relative">
+            <div class="aspect-video parallax-img-container rounded-3xl shadow-md">
+              <img src="../../assets/images/recruitment_service.png" alt="Recruitment synergy" class="parallax-img w-full h-full object-cover">
             </div>
-            <!-- Navigation Buttons -->
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
-            <!-- Pagination -->
-            <div class="swiper-pagination !-bottom-8"></div>
           </div>
         </div>
       </section>
 
       <!-- CTA Section -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 pb-32">
-        <div class="bg-gray-900 rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
-          <div class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-triad-lime to-triad-cyan rounded-full filter blur-[100px] opacity-15 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-          <h2 class="text-3xl md:text-5xl font-black text-white mb-6 relative z-10">クリエイティブで、未来を照らす。</h2>
+        <div class="bg-gray-900 rounded-[40px] py-12 px-6 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
+          <div class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-triad-red to-triad-pink rounded-full filter blur-[100px] opacity-15 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+          <h2 class="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-6 relative z-10 leading-snug">優秀な若手人材の採用をお考えですか？</h2>
           <p class="text-gray-400 font-light max-w-xl mx-auto mb-10 relative z-10 text-sm md:text-base">
-            Web制作、画像素材、動画編集など、制作のご依頼やご相談、お見積もりのご要望はお気軽にお問い合わせください。
+            貴社の採用要件や社風をヒアリングし、最もマッチする候補者層や当社の紹介戦略をご案内いたします。
           </p>
           <a href="../../contact/index.html" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold px-10 py-5 rounded-full hover:scale-105 transition-all duration-300">
-            制作に関する相談をする
+            採用に関する相談をする
           </a>
         </div>
       </section>
@@ -328,8 +358,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
+    <script is:inline>
       // Smooth Parallax Effect
       const blobs = [
         { el: document.getElementById('blob-1'), speed: 0.12 },
@@ -403,6 +432,7 @@
       const openMenu = () => {
         menu.classList.remove('hidden');
         menu.classList.add('flex');
+        // Small delay for transition
         setTimeout(() => {
           menu.classList.remove('opacity-0');
           menu.classList.add('opacity-100');
@@ -423,35 +453,6 @@
       btn.addEventListener('click', openMenu);
       closeBtn.addEventListener('click', closeMenu);
       links.forEach(link => link.addEventListener('click', closeMenu));
-
-      // Swiper Init
-      const swiper = new Swiper('.creativeSwiper', {
-        loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
-        },
-        slidesPerView: 1,
-        spaceBetween: 20,
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 24,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          }
-        }
-      });
     </script>
   </body>
 </html>

@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
@@ -6,8 +8,8 @@
     <title>事業紹介・サービス一覧 | Genesis合同会社</title>
     <meta name="description" content="Genesis合同会社のサービス一覧。人材ソリューション、クリエイティブ事業、人材紹介事業、法人営業事業部など、通信事業を軸に幅広いサービスを展開しております。">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
       tailwind.config = {
         theme: {
           extend: {
@@ -26,7 +28,7 @@
         }
       }
     </script>
-    <style>
+    <style is:inline>
       .text-gradient-c {
         background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
         -webkit-background-clip: text;
@@ -251,7 +253,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
+    <script is:inline>
       // Smooth Parallax Effect
       const blobs = [
         { el: document.getElementById('blob-1'), speed: 0.12 },

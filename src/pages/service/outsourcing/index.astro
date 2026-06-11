@@ -1,13 +1,15 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>お問い合わせ | Genesis合同会社</title>
-    <meta name="description" content="Genesis合同会社へのお問い合わせページです。Web制作、人材紹介、業務委託、ライバー応募、協業提案など、各種ご相談やご質問、お見積もりのご依頼はこちらからお気軽にお寄せください。">
+    <title>人材ソリューション | Genesis合同会社</title>
+    <meta name="description" content="Genesisは通信事業を軸に幅広いサービスを展開しております。多くのアライアンス企業様と連携し、短期・中期・長期の案件に柔軟に対応できるスタッフや環境を整えております。">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
+    <script is:inline>
       tailwind.config = {
         theme: {
           extend: {
@@ -17,7 +19,7 @@
               'triad-lime': '#C9FF94',
               'triad-cyan': '#94FFFF',
               'triad-purple': '#C994FF',
-              'creamy-bg': '#fcfcfc',
+              'creamy-bg': '#f8f9fc',
             },
             fontFamily: {
               'outfit': ['Outfit', 'sans-serif'],
@@ -26,7 +28,7 @@
         }
       }
     </script>
-    <style>
+    <style is:inline>
       .text-gradient-c {
         background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
         -webkit-background-clip: text;
@@ -41,12 +43,13 @@
       ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
       ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
 
-      /* Tech Grid Pattern */
+      /* Enhanced Tech Grid with subtle dots */
       .tech-grid {
         background-image: 
+          radial-gradient(rgba(201, 148, 255, 0.08) 1.5px, transparent 1.5px),
           linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
-        background-size: 60px 60px;
+        background-size: 40px 40px, 80px 80px, 80px 80px;
       }
 
       /* Floating Blob Animation */
@@ -84,28 +87,28 @@
   <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
     <!-- Super subtle background accents & parallax blobs -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
-        <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[600px] h-[600px] bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-1"></div>
-        <div id="blob-2" class="parallax-bg absolute top-1/3 -right-48 w-[600px] h-[600px] bg-triad-purple rounded-full mix-blend-multiply opacity-15 filter blur-[120px] animate-float-2"></div>
-        <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
+        <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[700px] h-[700px] bg-triad-cyan rounded-full mix-blend-multiply opacity-25 filter blur-[120px] animate-float-1"></div>
+        <div id="blob-2" class="parallax-bg absolute top-1/3 -right-48 w-[650px] h-[650px] bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-2"></div>
+        <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[800px] h-[800px] bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[150px] animate-float-1"></div>
     </div>
 
     <!-- Minimal Header -->
     <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
       <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         <div class="text-xl font-black tracking-tight text-gray-900">
-          <a href="../index.html">Genesis<span class="text-triad-red">.</span></a>
+          <a href="../../index.html">Genesis<span class="text-triad-red">.</span></a>
         </div>
         
         <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
-          <a href="../index.html#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
-          <a href="../index.html#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
-          <a href="../index.html#strengths" class="hover:text-triad-cyan transition-all hover:-translate-y-0.5 transform inline-block">Strengths</a>
-          <a href="../index.html#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
-          <a href="../index.html#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
+          <a href="../../index.html#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
+          <a href="../../index.html#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
+          <a href="../../index.html#strengths" class="hover:text-triad-cyan transition-all hover:-translate-y-0.5 transform inline-block">Strengths</a>
+          <a href="../../index.html#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
+          <a href="../../index.html#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
         </nav>
         
         <!-- Desktop Contact Button -->
-        <a href="./index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+        <a href="../../contact/index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
           Contact Us
         </a>
 
@@ -119,93 +122,79 @@
     <!-- Mobile Nav Menu -->
     <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
         <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <a href="../index.html#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
-        <a href="../index.html#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
-        <a href="../index.html#strengths" class="hover:text-triad-cyan mobile-link transition-colors duration-300">Strengths</a>
-        <a href="../index.html#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
-        <a href="../index.html#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
-        <a href="./index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
+        <a href="../../index.html#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
+        <a href="../../index.html#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
+        <a href="../../index.html#strengths" class="hover:text-triad-cyan mobile-link transition-colors duration-300">Strengths</a>
+        <a href="../../index.html#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
+        <a href="../../index.html#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
+        <a href="../../contact/index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
     </div>
 
     <!-- MAIN CONTENT -->
     <main class="pt-32">
       <!-- Header Area -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
-        <span class="text-triad-pink font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Get in touch</span>
+        <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Sales & Operations Outsourcing</span>
         <h1 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
-          未来の対話を、ここから。
+          Genesisは通信事業を軸に、<br>幅広いサービスを展開しております。
         </h1>
         <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-          弊社ホームページをご覧いただき、誠にありがとうございます。お問い合わせ・ご相談は下記のフォームよりお気軽にお寄せください。3営業日以内に担当者よりご連絡させていただきます。
+          多くのアライアンス企業様と連携し、短期・中期・長期の案件に柔軟に対応できるスタッフや環境を整えております。
         </p>
       </section>
 
-      <!-- Form Section -->
-      <section class="max-w-3xl mx-auto px-6 pb-32">
-        <div class="glass-card rounded-[40px] p-8 md:p-16 relative overflow-hidden">
-          
-          <!-- Decorative ambient background for the card -->
-          <div class="absolute -top-24 -right-24 w-48 h-48 bg-triad-purple/10 rounded-full filter blur-3xl pointer-events-none"></div>
-          <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-triad-cyan/10 rounded-full filter blur-3xl pointer-events-none"></div>
+      <!-- Main Description -->
+      <section class="max-w-5xl mx-auto px-6 lg:px-12 py-8">
+        <div class="glass-card rounded-[40px] p-8 md:p-16 text-center">
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">関東、関西、九州での活動をメインとしています。</h2>
+          <p class="text-gray-500 font-light leading-relaxed max-w-3xl mx-auto">
+            長年にわたり連携しているアライアンス企業様とのコラボレーションにより、多くの案件を確保し、ご紹介できる準備が整っています。
+          </p>
+        </div>
+      </section>
 
-          <form action="#" method="POST" class="space-y-10 relative z-10">
-            <!-- 題名 (Select) -->
-            <div class="flex flex-col">
-              <label for="subject" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">題名 <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
-              <div class="relative">
-                <select id="subject" name="subject" required class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium appearance-none cursor-pointer">
-                  <option value="" disabled selected>以下から選択してください</option>
-                  <option value="相談">相談</option>
-                  <option value="見積もり">見積もり</option>
-                  <option value="お仕事をお探しの方">お仕事をお探しの方</option>
-                  <option value="ライバー応募">ライバー応募</option>
-                  <option value="協業提案">協業提案</option>
-                  <option value="その他">その他</option>
-                </select>
-                <!-- Custom Arrow -->
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-400">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                </div>
-              </div>
+      <!-- Services List Section -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+        <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-16 text-center">Service Core Areas</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <!-- Area 1 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between">
+            <div>
+              <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">Area 01</span>
+              <h3 class="text-2xl font-black text-gray-900 mb-6">イベント設営・企画・運営</h3>
+              <p class="text-gray-500 font-light leading-relaxed mb-6">
+                その時々に合わせたイベントの設計・計画・運営を行います。
+              </p>
             </div>
+            <div class="w-12 h-1 bg-triad-red mt-6"></div>
+          </div>
 
-            <!-- 氏名 (Input) -->
-            <div class="flex flex-col">
-              <label for="name" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">氏名 <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
-              <input id="name" name="name" type="text" required placeholder="おなまえ" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300" />
+          <!-- Area 2 -->
+          <div class="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between">
+            <div>
+              <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">Area 02</span>
+              <h3 class="text-2xl font-black text-gray-900 mb-6">最新のネット環境の推進</h3>
+              <p class="text-gray-500 font-light leading-relaxed mb-6">
+                携帯・通信経験者の多くが在籍しており、確かな数字にコミットできるスキルを身につけています。どこでも通用する実践的なスキルを磨いており、お客様のニーズに柔軟に対応できる体制を整えています。
+              </p>
             </div>
+            <div class="w-12 h-1 bg-triad-purple mt-6"></div>
+          </div>
+        </div>
+      </section>
 
-            <!-- 電話番号 (Input) -->
-            <div class="flex flex-col">
-              <label for="tel" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">電話番号 <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
-              <input id="tel" name="tel" type="tel" required placeholder="090-0000-0000" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300" />
-            </div>
-
-            <!-- メールアドレス (Input) -->
-            <div class="flex flex-col">
-              <label for="email" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">メールアドレス <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
-              <input id="email" name="email" type="email" required placeholder="example@example.com" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300" />
-            </div>
-
-            <!-- お問合せ内容 (Textarea) -->
-            <div class="flex flex-col">
-              <label for="message" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">お問合せ内容</label>
-              <textarea id="message" name="message" rows="6" placeholder="お問合せ内容をご記入ください" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300 resize-y"></textarea>
-            </div>
-
-            <!-- Privacy Policy Notice -->
-            <p class="text-xs text-gray-400 leading-relaxed font-light">
-              お客様の個人情報は、お問い合わせに対するご返信および対応のみに利用し、適切なセキュリティのもとで厳重に管理いたします。
-            </p>
-
-            <!-- Submit Button -->
-            <div class="pt-4">
-              <button type="submit" class="w-full py-5 rounded-full bg-gray-900 text-white font-bold tracking-widest uppercase shadow-lg hover:bg-gray-800 transition-all hover:scale-[1.02] active:scale-95 duration-300 flex items-center justify-center gap-2">
-                送信する
-              </button>
-            </div>
-
-          </form>
+      <!-- CTA Section -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 pb-32">
+        <div class="bg-gray-900 rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
+          <div class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-triad-purple to-triad-cyan rounded-full filter blur-[100px] opacity-15 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-6 relative z-10">人材ソリューションについてご相談ください</h2>
+          <p class="text-gray-400 font-light max-w-xl mx-auto mb-10 relative z-10 text-sm md:text-base">
+            短期・中期・長期の案件に柔軟に対応できるスタッフや環境について、担当者よりご案内いたします。
+          </p>
+          <a href="../../contact/index.html" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold px-10 py-5 rounded-full hover:scale-105 transition-all duration-300">
+            このサービスについて問い合わせる
+          </a>
         </div>
       </section>
     </main>
@@ -214,16 +203,16 @@
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
         <!-- Logo & Copyright -->
         <div class="flex flex-col gap-2">
-          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="../index.html">Genesis<span class="text-triad-red">.</span></a></div>
+          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="../../index.html">Genesis<span class="text-triad-red">.</span></a></div>
           <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
         </div>
         <!-- Nav links -->
         <nav class="flex flex-wrap gap-x-8 gap-y-2 uppercase tracking-widest text-xs font-bold text-gray-400">
-          <a href="../index.html#about" class="hover:text-gray-900 transition-colors">About</a>
-          <a href="../index.html#service" class="hover:text-gray-900 transition-colors">Service</a>
-          <a href="../index.html#strengths" class="hover:text-gray-900 transition-colors">Strengths</a>
-          <a href="../index.html#news" class="hover:text-gray-900 transition-colors">News</a>
-          <a href="../index.html#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+          <a href="../../index.html#about" class="hover:text-gray-900 transition-colors">About</a>
+          <a href="../../index.html#service" class="hover:text-gray-900 transition-colors">Service</a>
+          <a href="../../index.html#strengths" class="hover:text-gray-900 transition-colors">Strengths</a>
+          <a href="../../index.html#news" class="hover:text-gray-900 transition-colors">News</a>
+          <a href="../../index.html#contact" class="hover:text-gray-900 transition-colors">Contact</a>
         </nav>
         <!-- SNS Icons -->
         <div class="flex gap-4 text-gray-400">
@@ -234,7 +223,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script>
+    <script is:inline>
       // Smooth Parallax Effect
       const blobs = [
         { el: document.getElementById('blob-1'), speed: 0.12 },
@@ -285,6 +274,7 @@
       const openMenu = () => {
         menu.classList.remove('hidden');
         menu.classList.add('flex');
+        // Small delay for transition
         setTimeout(() => {
           menu.classList.remove('opacity-0');
           menu.classList.add('opacity-100');
