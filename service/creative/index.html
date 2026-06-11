@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>クリエイティブ・動画制作 | Genesis合同会社</title>
+    <meta name="description" content="高品質なホームページ・LP制作、画像素材販売、動画編集までトータルサポート。洗練されたクリエイティブで、企業のデジタルプレゼンスを最大限に高めます。">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'triad-red': '#FF1414',
+              'triad-pink': '#FF9494',
+              'triad-lime': '#C9FF94',
+              'triad-cyan': '#94FFFF',
+              'triad-purple': '#C994FF',
+              'creamy-bg': '#fcfcfc',
+            },
+            fontFamily: {
+              'outfit': ['Outfit', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+    <style>
+      .text-gradient-c {
+        background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .elegant-shadow {
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #fcfcfc; }
+      ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+      ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
+
+      /* Swiper Custom Style */
+      .swiper-button-next, .swiper-button-prev {
+        color: #111827;
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        border: 1px solid rgba(243, 244, 246, 0.8);
+      }
+      .swiper-button-next:after, .swiper-button-prev:after {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .swiper-button-next:hover, .swiper-button-prev:hover {
+        background: rgba(255, 255, 255, 0.9);
+        transform: scale(1.05);
+      }
+      .swiper-pagination-bullet-active {
+        background: #C994FF !important;
+      }
+    </style>
+  </head>
+  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative">
+    <!-- Super subtle background accents -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+        <div class="absolute -top-32 -left-32 w-96 h-96 bg-triad-cyan rounded-full mix-blend-multiply opacity-10 filter blur-[100px]"></div>
+        <div class="absolute top-1/2 -right-32 w-96 h-96 bg-triad-purple rounded-full mix-blend-multiply opacity-10 filter blur-[100px]"></div>
+        <div class="absolute -bottom-32 left-1/3 w-96 h-96 bg-triad-pink rounded-full mix-blend-multiply opacity-10 filter blur-[100px]"></div>
+    </div>
+
+    <!-- Minimal Header -->
+    <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <div class="text-xl font-black tracking-tight text-gray-900">
+          <a href="../../index.html">Genesis<span class="text-triad-red">.</span></a>
+        </div>
+        
+        <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
+          <a href="../../index.html#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
+          <a href="../../index.html#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
+          <a href="../../index.html#strengths" class="hover:text-triad-cyan transition-all hover:-translate-y-0.5 transform inline-block">Strengths</a>
+          <a href="../../index.html#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
+          <a href="../../index.html#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
+        </nav>
+        
+        <!-- Desktop Contact Button -->
+        <a href="../../contact/index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+          Contact Us
+        </a>
+
+        <!-- Mobile Hamburger Btn -->
+        <button id="menu-btn" class="md:hidden text-gray-900 p-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Nav Menu -->
+    <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
+        <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        <a href="../../index.html#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
+        <a href="../../index.html#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
+        <a href="../../index.html#strengths" class="hover:text-triad-cyan mobile-link transition-colors duration-300">Strengths</a>
+        <a href="../../index.html#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
+        <a href="../../index.html#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
+        <a href="../../contact/index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-32">
+      <!-- Header Area -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
+        <span class="text-triad-lime font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Creative & Video Production</span>
+        <h1 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
+          感性を呼び覚まし、<br>ブランドの物語を描き出す。
+        </h1>
+        <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+          企業のデジタルプレゼンスを最大限に引き出すトータルソリューション。洗練されたビジュアルでお客様のビジネスを支援します。
+        </p>
+      </section>
+
+      <!-- Main Description -->
+      <section class="max-w-5xl mx-auto px-6 lg:px-12 py-8">
+        <div class="bg-white rounded-[40px] p-8 md:p-16 elegant-shadow border border-gray-50 text-center">
+          <h2 class="text-2xl md:text-3xl font-black text-gray-900 mb-6">デジタルプレゼンスのトータルデザイン</h2>
+          <p class="text-gray-500 font-light leading-relaxed max-w-3xl mx-auto">
+            ウェブサイトの新規制作からランディングページの最適化、高品質なビジュアル素材の提供、そしてSNSやマーケティングに活用できる動画編集にいたるまで、多岐にわたるクリエイティブでお客様のビジネス価値を高めます。
+          </p>
+        </div>
+      </section>
+
+      <!-- Services List Section (Row Alternating Layout) -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20 flex flex-col gap-24">
+        
+        <!-- Service 1 -->
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center group">
+          <div class="w-full lg:w-1/2 overflow-hidden rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
+            <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="HP制作・LP制作" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+          </div>
+          <div class="w-full lg:w-1/2">
+            <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-red pb-2 inline-block">01 / Web Development</span>
+            <h3 class="text-3xl font-black text-gray-900 mb-6">HP制作・LP制作</h3>
+            <p class="text-gray-500 font-light leading-relaxed mb-6">
+              お客様のビジョンを具現化する高品質なウェブサイトを制作します。ユーザーエクスペリエンス（UX）とモバイルフレンドリーなレスポンシブデザインを重視し、SEOに最適化されたウェブサイトを提供します。ご希望に合わせた小規模、中規模のオリジナルテーマ作成も承っております。
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="flex flex-col lg:flex-row-reverse gap-12 lg:gap-20 items-center group">
+          <div class="w-full lg:w-1/2 overflow-hidden rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=800" alt="画像素材販売" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+          </div>
+          <div class="w-full lg:w-1/2">
+            <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-purple pb-2 inline-block">02 / Stock Images</span>
+            <h3 class="text-3xl font-black text-gray-900 mb-6">画像素材販売</h3>
+            <p class="text-gray-500 font-light leading-relaxed mb-6">
+              お客様のビジョンにマッチするオリジナル画像の販売を行っております。HP、LP、SNSなどで幅広く使える高品質の画像を提供しており、トーン＆マナーに統一感を持たせた発信をサポート。今後もトレンドに合わせ更新を重ねていく予定です。
+            </p>
+          </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center group">
+          <div class="w-full lg:w-1/2 overflow-hidden rounded-[40px] relative h-[300px] md:h-[400px] elegant-shadow">
+            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&q=80&w=800" alt="動画編集" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+          </div>
+          <div class="w-full lg:w-1/2">
+            <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-4 block border-b-2 border-triad-cyan pb-2 inline-block">03 / Video Editing</span>
+            <h3 class="text-3xl font-black text-gray-900 mb-6">動画編集</h3>
+            <p class="text-gray-500 font-light leading-relaxed mb-6">
+              ウェブサイトに埋め込むブランド動画、YouTubeなどの配信動画、SNSマーケティングに特化した縦型ショート動画などをプロデュース。視聴者を3秒で引き込む高度な編集技術で、魅力的に仕上げます。
+            </p>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Showcase Slider (Swiper.js) -->
+      <section class="py-20 px-6 lg:px-12 bg-white/50 border-y border-gray-100/50 backdrop-blur-sm overflow-hidden">
+        <div class="max-w-7xl mx-auto mb-16 text-center">
+          <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Visual Works</span>
+          <h2 class="text-4xl font-black text-gray-900 tracking-tight">Showcase</h2>
+        </div>
+
+        <div class="max-w-7xl mx-auto relative px-12">
+          <!-- Swiper Container -->
+          <div class="swiper creativeSwiper overflow-visible">
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-01.webp" alt="Work 01" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-02.webp" alt="Work 02" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-03.webp" alt="Work 03" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-04.webp" alt="Work 04" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-05.webp" alt="Work 05" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-06.webp" alt="Work 06" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-07.webp" alt="Work 07" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-08.webp" alt="Work 08" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-09.webp" alt="Work 09" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-010.webp" alt="Work 10" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-011.webp" alt="Work 11" class="w-full h-full object-cover">
+              </div>
+              <div class="swiper-slide h-[280px] rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <img src="https://genesis-llc.co.jp/wp-content/themes/genesis/assets/images/creative/genesis-creative-slider-012.webp" alt="Work 12" class="w-full h-full object-cover">
+              </div>
+            </div>
+            <!-- Navigation Buttons -->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <!-- Pagination -->
+            <div class="swiper-pagination !-bottom-8"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 pb-32">
+        <div class="bg-gray-900 rounded-[40px] p-12 md:p-20 text-center relative overflow-hidden flex flex-col items-center">
+          <div class="absolute w-[500px] h-[500px] bg-gradient-to-tr from-triad-lime to-triad-cyan rounded-full filter blur-[100px] opacity-15 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-6 relative z-10">クリエイティブで、未来を照らす。</h2>
+          <p class="text-gray-400 font-light max-w-xl mx-auto mb-10 relative z-10 text-sm md:text-base">
+            Web制作、画像素材、動画編集など、制作のご依頼やご相談、お見積もりのご要望はお気軽にお問い合わせください。
+          </p>
+          <a href="../../contact/index.html" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold px-10 py-5 rounded-full hover:scale-105 transition-all duration-300">
+            制作に関する相談をする
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-12 px-6 lg:px-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-medium text-gray-400 max-w-7xl mx-auto">
+      <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="../../index.html">Genesis<span class="text-triad-red">.</span></a></div>
+      <div class="flex gap-8 uppercase tracking-widest text-xs font-bold">
+         <a href="../../index.html#about" class="hover:text-gray-900 transition-colors">About</a>
+         <a href="../../index.html#service" class="hover:text-gray-900 transition-colors">Service</a>
+         <a href="../../index.html#strengths" class="hover:text-gray-900 transition-colors">Strengths</a>
+         <a href="../../index.html#news" class="hover:text-gray-900 transition-colors">News</a>
+         <a href="../../index.html#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+      </div>
+      <div class="flex gap-4">
+        <a href="https://x.com/genesis_sns?s=21&t=AH_LBc3ctTNIjEuSUVRRSA" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://www.instagram.com/genesis_llc_?igsh=YW9mcXJld3ZrOW90&utm_source=qr" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      </div>
+      <div>&copy; 2026 Genesis合同会社.</div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      // Subtle header border on scroll
+      window.addEventListener('scroll', () => {
+          const header = document.getElementById('header');
+          if (window.scrollY > 20) {
+              header.classList.add('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
+              header.classList.remove('border-transparent', 'bg-creamy-bg/80');
+          } else {
+              header.classList.remove('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
+              header.classList.add('border-transparent', 'bg-creamy-bg/80');
+          }
+      });
+
+      // Mobile Menu Toggle
+      const btn = document.getElementById('menu-btn');
+      const closeBtn = document.getElementById('close-btn');
+      const menu = document.getElementById('mobile-menu');
+      const links = document.querySelectorAll('.mobile-link');
+      
+      const openMenu = () => {
+        menu.classList.remove('hidden');
+        menu.classList.add('flex');
+        setTimeout(() => {
+          menu.classList.remove('opacity-0');
+          menu.classList.add('opacity-100');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+      };
+      
+      const closeMenu = () => {
+        menu.classList.remove('opacity-100');
+        menu.classList.add('opacity-0');
+        setTimeout(() => {
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          document.body.style.overflow = '';
+        }, 300);
+      };
+      
+      btn.addEventListener('click', openMenu);
+      closeBtn.addEventListener('click', closeMenu);
+      links.forEach(link => link.addEventListener('click', closeMenu));
+
+      // Swiper Init
+      const swiper = new Swiper('.creativeSwiper', {
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+        slidesPerView: 1,
+        spaceBetween: 20,
+        breakpoints: {
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 24,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 30,
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

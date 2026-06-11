@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Genesis-NewDesign | Pattern C (Clean & Elegant)</title>
-    <meta name="description" content="人材紹介事業とTikTok Live配信事業の融合。クリーンで洗練されたエレガントデザイン。">
+    <title>Genesis合同会社 | 人材紹介とTikTok Liveプロデュースの融合</title>
+    <meta name="description" content="Genesis合同会社は、確かなデータと洗練されたクリエイティブで、次世代の人材紹介事業とTikTok Live配信事業をグローバルに展開。企業のビジネス成長と個人のキャリア構築を支援します。">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -26,17 +27,15 @@
         }
       }
     </script>
-    <style type="text/tailwindcss">
-      @layer utilities {
-        .text-gradient-c {
-          background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-        .elegant-shadow {
-          box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
-        }
+    <style>
+      .text-gradient-c {
+        background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .elegant-shadow {
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
       }
       ::-webkit-scrollbar { width: 4px; }
       ::-webkit-scrollbar-track { background: #fcfcfc; }
@@ -56,19 +55,20 @@
     <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
       <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         <div class="text-xl font-black tracking-tight text-gray-900">
-          Genesis<span class="text-triad-red">.</span>NewDesign
+          Genesis<span class="text-triad-red">.</span>
         </div>
         
         <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
           <a href="#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
           <a href="#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
           <a href="#strengths" class="hover:text-triad-cyan transition-all hover:-translate-y-0.5 transform inline-block">Strengths</a>
+          <a href="#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
           <a href="#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
         </nav>
         
-        <!-- Desktop Index Button -->
-        <a href="./index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
-          Dashboard
+        <!-- Desktop Contact Button -->
+        <a href="./contact/index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+          Contact Us
         </a>
 
         <!-- Mobile Hamburger Btn -->
@@ -84,8 +84,9 @@
         <a href="#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
         <a href="#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
         <a href="#strengths" class="hover:text-triad-cyan mobile-link transition-colors duration-300">Strengths</a>
+        <a href="#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
         <a href="#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
-        <a href="./index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Back to Dashboard</a>
+        <a href="./contact/index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
     </div>
 
     <!-- MAIN CONTENT -->
@@ -93,13 +94,13 @@
       
       <!-- Premium HERO Section -->
       <section id="hero" class="relative w-full min-h-[90vh] flex flex-col items-center justify-center text-center px-6">
-        <span class="px-5 py-2 rounded-full bg-white border border-gray-100 text-xs font-bold tracking-widest text-triad-red mb-10 shadow-sm">INNOVATIVE MATCHING</span>
+        <span class="px-5 py-2 rounded-full bg-white border border-gray-100 text-xs font-bold tracking-widest text-triad-red mb-10 shadow-sm">HUMAN RESOURCE × SOCIAL MEDIA</span>
         <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tighter text-gray-900 leading-[0.9] max-w-6xl">
           世界の<br class="md:hidden">可能性を<br>
           <span class="text-gradient-c italic pr-4">デザインする</span>
         </h1>
         <p class="text-xl md:text-2xl text-gray-500 font-light max-w-2xl leading-relaxed mt-6">
-          美しいクリエイティブと確かなデータで、<br>人材と企業の最も洗練された出会いを。
+          「人材」と「ソーシャルメディア」のシナジーで、<br>個の可能性を解き放ち、新しい未来の架け橋となります。
         </p>
         <div class="mt-16 animate-bounce">
           <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
@@ -110,14 +111,19 @@
       <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
         <div class="bg-white rounded-[40px] p-12 md:p-24 elegant-shadow border border-gray-50 flex flex-col lg:flex-row gap-20 items-center">
           <div class="w-full lg:w-1/2">
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1]">確かな直感と<br>洗練の融合。</h2>
+            <span class="text-triad-red font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Corporate Philosophy</span>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1]">人生謳歌</h2>
+            <p class="text-triad-pink font-bold text-lg mb-8 italic">sing of joys of the life</p>
             <div class="w-16 h-1 bg-gradient-to-r from-triad-red to-triad-pink mb-10"></div>
-            <p class="text-gray-500 leading-relaxed text-xl mb-8 font-light">
-              「人材紹介」の持つ堅牢な信頼性と、「TikTok Live」が持つ圧倒的な表現力。私たちは対極にある二つの要素を、極めてシンプルに再構築しました。
+            <p class="text-gray-900 leading-relaxed text-xl mb-8 font-medium">
+              「関わるすべての人々が、『生まれてきてよかった』と心から実感できるようなプラットフォームを創造する」
             </p>
-            <p class="text-gray-500 leading-relaxed text-xl font-light">
-              不要なノイズを取り除き、一人ひとりの本質的な価値だけを最も美しい形で企業へ届けます。これはデータドリブンな新たなリクルーティングの形です。
+            <p class="text-gray-500 leading-relaxed text-lg mb-12 font-light">
+              Genesisは、通信事業のアウトソーシングからスタートし、社員や関わる人々の想いを大切にしながら、人材紹介やWEBクリエイティブ事業など、多岐にわたる事業を展開しています。対極にある信頼性と表現力を融合し、新しい未来をデザインします。
             </p>
+            <a href="./outline/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
+              会社概要・企業理念を見る
+            </a>
           </div>
           <div class="w-full lg:w-1/2 relative">
             <div class="aspect-[4/5] rounded-[30px] overflow-hidden relative group">
@@ -134,81 +140,85 @@
       <section id="service" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
         <div class="text-center mb-28">
           <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Our Specialties</span>
-          <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">Services.</h2>
+          <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">Services<span class="text-triad-red">.</span></h2>
         </div>
         
         <div class="flex flex-col gap-32 md:gap-40">
           
-          <!-- Item 1 -->
+          <!-- Item 1: 人材紹介 -->
           <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
             <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
               <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80&w=1200" alt="次世代人材紹介" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
             </div>
             <div class="w-full lg:w-2/5">
-              <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">01 / Next-Gen Matching</span>
+              <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">01 / Next-Gen Recruitment</span>
               <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">次世代人材紹介</h3>
-              <p class="text-gray-500 text-lg md:text-xl leading-relaxed font-light mb-10">
-                ライブ配信から得た膨大な行動リズムやコミュニケーション能力を数値化し、企業風土と完璧にシンクロする人材を提案します。直感とデータの高次元な統合。
+              <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
+                ライブ配信などで培われた「圧倒的なコミュニケーション能力と共感力」を持つ若手人材に特化。企業風土とシンクロする最適なマッチングを実現します。
               </p>
+              <a href="./service/recruitment-business/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-red hover:border-triad-red hover:text-white hover:scale-105 transition-all duration-300">
+                View Details →
+              </a>
             </div>
           </div>
           
-          <!-- Item 2 -->
+          <!-- Item 2: 業務委託 -->
           <div class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group">
             <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1200" alt="TikTok Live プロデュース" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200" alt="営業・事務アウトソーシング" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
             </div>
             <div class="w-full lg:w-2/5">
-              <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">02 / Live Management</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">TikTok Live<br>プロデュース</h3>
-              <p class="text-gray-500 text-lg md:text-xl leading-relaxed font-light mb-10">
-                徹底したブランディングでクリエイターの魅力を研ぎ澄まし、トップダウンで価値を引き上げます。デジタルの波を捉える、確かな戦略と洗練されたマネジメント。
+              <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">02 / Sales Outsourcing</span>
+              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">営業・事務<br>アウトソーシング</h3>
+              <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
+                即戦力の営業・通信販売のエキスパートが揃うアライアンス体制。貴社の営業力不足を解消し、成約と成果にコミットした強力な実行部隊を提供します。
               </p>
+              <a href="./service/outsourcing/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-purple hover:border-triad-purple hover:text-white hover:scale-105 transition-all duration-300">
+                View Details →
+              </a>
             </div>
           </div>
 
-          <!-- Item 3 -->
+          <!-- Item 3: TikTok運用代行 -->
           <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
             <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&q=80&w=1200" alt="インフルエンサーマーケティング" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&q=80&w=1200" alt="企業向けTikTok運用代行" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
             </div>
             <div class="w-full lg:w-2/5">
-              <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-cyan pb-2 inline-block">03 / Promotion</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">インフルエンサー<br>マーケティング</h3>
-              <p class="text-gray-500 text-lg md:text-xl leading-relaxed font-light mb-10">
-                選び抜かれた感性を持つライバーたちによる、ノイズのない純度の高いプロモーション。生活者の日常へ自然に溶け込む共感ドリブンなアプローチ。
+              <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-cyan pb-2 inline-block">03 / TikTok Marketing</span>
+              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">企業向けTikTok<br>運用代行</h3>
+              <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
+                アルゴリズムを熟知したプロデュースチームが、企業の「らしさ」を縦型動画で魅力的に発信。認知向上からファン獲得、採用ブランディングまで一貫支援します。
               </p>
+              <a href="./service/corporate/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-cyan hover:border-triad-cyan hover:text-gray-900 hover:scale-105 transition-all duration-300">
+                View Details →
+              </a>
             </div>
           </div>
 
-          <!-- Item 4 -->
+          <!-- Item 4: クリエイティブ支援 -->
           <div class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group">
             <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200" alt="キャリアコンサルティング" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
+              <img src="https://images.unsplash.com/photo-1557838923-2985c318be48?auto=format&fit=crop&q=80&w=1200" alt="クリエイティブ・動画制作" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
             </div>
             <div class="w-full lg:w-2/5">
-              <span class="text-triad-lime font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-lime pb-2 inline-block">04 / Career Consulting</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">キャリア<br>コンサルティング</h3>
-              <p class="text-gray-500 text-lg md:text-xl leading-relaxed font-light mb-10">
-                配信の世界から実稼働のビジネスの世界へ。これまでに得たコミュニケーション能力と共感力を武器に、不可逆で洗練されたキャリアチェンジをエスコート。
+              <span class="text-triad-lime font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-lime pb-2 inline-block">04 / Creative Support</span>
+              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">クリエイティブ・<br>動画制作</h3>
+              <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
+                高品質なウェブサイト（HP/LP）制作、動画編集、画像素材販売までトータルサポート。洗練されたビジュアルで、ターゲットの心を3秒で掴みます。
               </p>
+              <a href="./service/creative/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-lime hover:border-triad-lime hover:text-gray-900 hover:scale-105 transition-all duration-300">
+                View Details →
+              </a>
             </div>
           </div>
 
-          <!-- Item 5 -->
-          <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 overflow-hidden rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1200" alt="イベント企画・運営" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-in-out">
-            </div>
-            <div class="w-full lg:w-2/5">
-              <span class="text-triad-pink font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-pink pb-2 inline-block">05 / Event Planning</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">イベント企画・運営</h3>
-              <p class="text-gray-500 text-lg md:text-xl leading-relaxed font-light mb-10">
-                デジタル上の繋がりをリアルな体験へと昇華する。極限まで研ぎ澄まされた空間デザインで、記憶に残りブランドへの愛着を深める圧倒的なイベントスペースを実現します。
-              </p>
-            </div>
-          </div>
+        </div>
 
+        <div class="text-center mt-24">
+          <a href="./service/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-8 py-4 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+            すべてのサービスを見る
+          </a>
         </div>
       </section>
 
@@ -224,7 +234,7 @@
           <div class="bg-white p-12 rounded-[40px] elegant-shadow group hover:-translate-y-4 transition-all duration-500 border border-gray-50 flex flex-col h-full relative overflow-hidden">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-lime rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-              <span class="text-2xl">⚡️</span>
+              <i class="fa-solid fa-bolt text-2xl text-triad-lime"></i>
             </div>
             <h3 class="text-2xl font-black mb-4 text-gray-900">圧倒的な発信力</h3>
             <p class="text-gray-500 font-light leading-relaxed flex-grow">
@@ -236,7 +246,7 @@
           <div class="bg-white p-12 rounded-[40px] elegant-shadow group hover:-translate-y-4 transition-all duration-500 border border-gray-50 flex flex-col h-full relative overflow-hidden mt-0 md:mt-12">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-              <span class="text-2xl">🎯</span>
+              <i class="fa-solid fa-crosshairs text-2xl text-triad-purple"></i>
             </div>
             <h3 class="text-2xl font-black mb-4 text-gray-900">高度なマッチング</h3>
             <p class="text-gray-500 font-light leading-relaxed flex-grow">
@@ -248,7 +258,7 @@
           <div class="bg-white p-12 rounded-[40px] elegant-shadow group hover:-translate-y-4 transition-all duration-500 border border-gray-50 flex flex-col h-full relative overflow-hidden mt-0 md:mt-24">
             <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
             <div class="w-16 h-16 bg-gray-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm">
-              <span class="text-2xl">🌊</span>
+              <i class="fa-solid fa-water text-2xl text-triad-cyan"></i>
             </div>
             <h3 class="text-2xl font-black mb-4 text-gray-900">驚異の適応力</h3>
             <p class="text-gray-500 font-light leading-relaxed flex-grow">
@@ -258,34 +268,65 @@
         </div>
       </section>
 
+      <!-- NEWS Section -->
+      <section id="news" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
+        <div class="text-center mb-24">
+          <span class="text-triad-pink font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Latest Updates</span>
+          <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">News<span class="text-triad-pink">.</span></h2>
+        </div>
+        
+        <div class="bg-white rounded-[40px] p-8 md:p-12 elegant-shadow border border-gray-50 max-w-4xl mx-auto">
+          <div class="divide-y divide-gray-100">
+            <!-- News Item 1 -->
+            <div class="py-6 flex flex-col md:flex-row md:items-center gap-4">
+              <span class="text-sm font-bold text-gray-400">2025-02-04</span>
+              <span class="px-3 py-1 rounded-full bg-triad-red/10 text-triad-red text-xs font-bold inline-block self-start">お知らせ</span>
+              <p class="text-gray-800 font-medium text-lg flex-grow">有料職業紹介事業許可証を交付いただきました</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- CONTACT Section -->
       <section id="contact" class="pb-32 px-6 lg:px-12 max-w-7xl mx-auto mt-20 scroll-mt-24">
-        <div class="bg-gray-900 rounded-[40px] p-16 md:p-28 text-center relative overflow-hidden flex flex-col items-center shadow-2xl">
+        <div class="bg-gray-900 rounded-[40px] py-16 px-6 md:p-24 lg:p-28 text-center relative overflow-hidden flex flex-col items-center shadow-2xl">
           <div class="absolute w-[600px] h-[600px] bg-gradient-to-tr from-triad-red via-triad-purple to-triad-cyan rounded-full filter blur-[100px] opacity-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
           
           <span class="text-gray-400 font-bold tracking-[0.3em] text-xs uppercase mb-6 block border border-gray-700 rounded-full px-6 py-2 relative z-10">Contact Us</span>
-          <h2 class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white relative z-10 leading-[1.1] tracking-tighter">
-            新たなステージの<br>扉を開く。
+          <h2 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white relative z-10 leading-[1.1] tracking-tighter">
+            新たなステージの<br class="hidden sm:inline">扉を開く。
           </h2>
-          <p class="text-gray-400 text-lg md:text-xl font-light mb-16 max-w-2xl relative z-10">
+          <p class="text-gray-400 text-base md:text-xl font-light mb-16 max-w-2xl relative z-10">
             洗練されたデザインとデータドリブンなマッチングで、あなたのビジネスやキャリアの未来を形にします。まずはお気軽にご相談ください。
           </p>
-          <a href="mailto:info@genesis-newdesign.com" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold text-lg px-12 py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]">
+          <a href="mailto:info@genesis-newdesign.com" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold text-sm md:text-lg px-8 py-4 md:px-12 md:py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]">
             お問い合わせはこちら
           </a>
         </div>
       </section>
     </main>
 
-    <footer class="py-12 px-6 lg:px-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-6 text-sm font-medium text-gray-400 max-w-7xl mx-auto">
-      <div class="text-gray-900 font-black text-2xl tracking-tight">Genesis<span class="text-triad-red">.</span>NewDesign</div>
-      <div class="flex gap-8 uppercase tracking-widest text-xs font-bold">
-         <a href="#about" class="hover:text-gray-900 transition-colors">About</a>
-         <a href="#service" class="hover:text-gray-900 transition-colors">Service</a>
-         <a href="#strengths" class="hover:text-gray-900 transition-colors">Strengths</a>
-         <a href="#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+    <footer class="border-t border-gray-100 py-10 px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <!-- Logo & Copyright -->
+        <div class="flex flex-col gap-2">
+          <div class="text-gray-900 font-black text-2xl tracking-tight">Genesis<span class="text-triad-red">.</span></div>
+          <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
+        </div>
+        <!-- Nav links -->
+        <nav class="flex flex-wrap gap-x-8 gap-y-2 uppercase tracking-widest text-xs font-bold text-gray-400">
+          <a href="#about" class="hover:text-gray-900 transition-colors">About</a>
+          <a href="#service" class="hover:text-gray-900 transition-colors">Service</a>
+          <a href="#strengths" class="hover:text-gray-900 transition-colors">Strengths</a>
+          <a href="#news" class="hover:text-gray-900 transition-colors">News</a>
+          <a href="#contact" class="hover:text-gray-900 transition-colors">Contact</a>
+        </nav>
+        <!-- SNS Icons -->
+        <div class="flex gap-4 text-gray-400">
+          <a href="https://x.com/genesis_sns?s=21&t=AH_LBc3ctTNIjEuSUVRRSA" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="X (Twitter)"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://www.instagram.com/genesis_llc_?igsh=YW9mcXJld3ZrOW90&utm_source=qr" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="Instagram"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+        </div>
       </div>
-      <div>&copy; 2026 Genesis-NewDesign.</div>
     </footer>
 
     <!-- Scripts -->
