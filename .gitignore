@@ -5,6 +5,7 @@ system.md
 Design.md
 # Build output
 dist/
+.astro/
 
 # System files
 .DS_Store
