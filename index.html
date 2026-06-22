@@ -28,6 +28,9 @@
       }
     </script>
     <style>
+      h1, h2, h3, h4, h5, h6 {
+        font-style: italic;
+      }
       .text-gradient-c {
         background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
         -webkit-background-clip: text;
@@ -154,6 +157,42 @@
         will-change: transform;
         transform: scale(1.15);
       }
+
+      /* Scroll Reveal Text (Wipe effect) */
+      .reveal-text {
+        --progress: 100%; /* Progressive enhancement: 100% by default */
+        display: inline;
+        background-repeat: no-repeat;
+        transition: -webkit-mask-image 0.1s linear, mask-image 0.1s linear;
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) var(--progress), rgba(0,0,0,0.15) var(--progress));
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) var(--progress), rgba(0,0,0,0.15) var(--progress));
+      }
+
+      /* Floating SVGs & Animations */
+      @keyframes float-gentle {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(5deg); }
+      }
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.2; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.1); }
+      }
+      .animate-float-gentle {
+        animation: float-gentle 8s infinite ease-in-out;
+      }
+      .animate-spin-slow {
+        animation: spin-slow 25s infinite linear;
+      }
+      .animate-spin-reverse {
+        animation: spin-slow 30s infinite linear reverse;
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 4s infinite ease-in-out;
+      }
     </style>
   </head>
   <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
@@ -204,39 +243,90 @@
     <main class="pt-20">
       
       <!-- Premium HERO Section -->
-      <section id="hero" class="relative w-full min-h-[90vh] flex flex-col items-center justify-center text-center px-6">
-        <span class="px-5 py-2 rounded-full bg-white border border-gray-100 text-xs font-bold tracking-widest text-triad-red mb-10 shadow-sm">SING OF JOYS OF THE LIFE</span>
-        <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-8 tracking-tighter text-gray-900 leading-[1.05] max-w-6xl">
+      <section id="hero" class="relative w-full min-h-[90vh] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <!-- Floating SVGs for Hero -->
+        <div class="absolute top-20 left-10 w-12 h-12 text-triad-cyan/30 animate-spin-slow hidden md:block">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" class="w-full h-full">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-20 right-10 w-20 h-20 text-triad-purple/20 animate-float-gentle hidden md:block">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-full h-full">
+            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="absolute top-1/3 right-1/4 w-8 h-8 text-triad-pink/40 animate-pulse-slow">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-full h-full">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4Z"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-1/3 left-1/4 w-6 h-6 text-triad-lime/40 animate-spin-reverse">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-full h-full">
+            <polygon points="12,2 22,22 2,22" />
+          </svg>
+        </div>
+
+        <span class="px-5 py-2 rounded-full bg-white border border-gray-100 text-xs font-bold tracking-widest text-triad-red mb-10 shadow-sm relative z-10">SING OF JOYS OF THE LIFE</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-8 tracking-tighter text-gray-900 leading-[1.05] max-w-6xl italic relative z-10">
           人生を<br class="md:hidden">謳歌する<br>
           <span class="text-gradient-c italic pr-4">プラットフォームへ</span>
         </h1>
-        <p class="text-xl md:text-2xl text-gray-500 font-light max-w-2xl leading-relaxed mt-6">
+        <p class="text-xl md:text-2xl text-gray-500 font-light max-w-2xl leading-relaxed mt-6 relative z-10">
           ライフスタイルを加速・変化させる
         </p>
-        <div class="mt-16 animate-bounce">
+        <div class="mt-16 animate-bounce relative z-10">
           <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
       </section>
 
       <!-- ABOUT Section -->
-      <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
-        <div class="glass-card rounded-[40px] p-12 md:p-24 flex flex-col lg:flex-row gap-20 items-center">
-          <div class="w-full lg:w-1/2">
+      <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24 relative">
+        <!-- Background Decorative SVGs -->
+        <div class="absolute top-12 left-4 w-24 h-24 text-gray-200 pointer-events-none opacity-40 z-0 animate-float-gentle hidden md:block">
+          <svg fill="currentColor" viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="10" cy="10" r="2.5"/><circle cx="30" cy="10" r="2.5"/><circle cx="50" cy="10" r="2.5"/><circle cx="70" cy="10" r="2.5"/>
+            <circle cx="10" cy="30" r="2.5"/><circle cx="30" cy="30" r="2.5"/><circle cx="50" cy="30" r="2.5"/><circle cx="70" cy="30" r="2.5"/>
+            <circle cx="10" cy="50" r="2.5"/><circle cx="30" cy="50" r="2.5"/><circle cx="50" cy="50" r="2.5"/><circle cx="70" cy="50" r="2.5"/>
+            <circle cx="10" cy="70" r="2.5"/><circle cx="30" cy="70" r="2.5"/><circle cx="50" cy="70" r="2.5"/><circle cx="70" cy="70" r="2.5"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-12 right-4 w-32 h-32 text-gray-200 pointer-events-none opacity-30 z-0 animate-spin-slow hidden md:block">
+          <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="40" stroke-dasharray="6 6"/>
+            <circle cx="50" cy="50" r="25"/>
+          </svg>
+        </div>
+
+        <div class="glass-card rounded-[40px] p-12 md:p-24 flex flex-col lg:flex-row gap-20 items-center relative z-10 overflow-hidden">
+          <!-- Sparkles & Dots inside card -->
+          <div class="absolute top-8 right-8 text-triad-pink/20 animate-spin-slow pointer-events-none">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4Z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-8 left-8 text-triad-cyan/20 animate-float-gentle pointer-events-none">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4Z"/>
+            </svg>
+          </div>
+
+          <div class="w-full lg:w-1/2 relative z-10">
             <span class="text-triad-red font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Corporate Philosophy</span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1]">人生謳歌</h2>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1] italic reveal-text">人生謳歌</h2>
             <p class="text-triad-pink font-bold text-lg mb-8 italic">sing of joys of the life</p>
             <div class="w-16 h-1 bg-gradient-to-r from-triad-red to-triad-pink mb-10"></div>
             <p class="text-gray-900 leading-relaxed text-xl mb-8 font-medium">
-              「関わるすべての人々が、『生まれてきてよかった』と心から実感できるようなプラットフォームを創造する」
+              <span class="reveal-text">「関わるすべての人々が、『生まれてきてよかった』と心から実感できるようなプラットフォームを創造する」</span>
             </p>
             <p class="text-gray-500 leading-relaxed text-lg mb-12 font-light">
-              人材アウトソーシングからスタートし、社員の想いを大切にしながら、多岐にわたる事業を展開しています。
+              <span class="reveal-text">人材アウトソーシングからスタートし、社員の想いを大切にしながら、多岐にわたる事業を展開しています。</span>
             </p>
             <a href="./outline/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
               会社概要・企業理念を見る
             </a>
           </div>
-          <div class="w-full lg:w-1/2 relative">
+          <div class="w-full lg:w-1/2 relative z-10">
             <div class="aspect-[4/5] parallax-img-container rounded-[30px] relative group">
               <img src="./assets/images/about_philosophy.png" alt="Corporate minimal" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -442,7 +532,40 @@
 
       parallaxImages.forEach(img => imageObserver.observe(img));
 
+      // Scroll Reveal Text elements setup
+      const revealElements = document.querySelectorAll('.reveal-text, .reveal-text-gradient');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('reveal-in-view', entry.isIntersecting);
+        });
+      }, { threshold: [0, 0.01, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0] });
+
+      revealElements.forEach(el => {
+        el.style.setProperty('--progress', '0%'); // Initial reset for JS-enabled page
+        revealObserver.observe(el);
+      });
+
       let ticking = false;
+
+      function updateScrollReveal() {
+        revealElements.forEach(el => {
+          if (el.classList.contains('reveal-in-view')) {
+            const rect = el.getBoundingClientRect();
+            const viewHeight = window.innerHeight;
+            
+            // Starts revealing when top of element is at 90% of screen height
+            // Fully reveals when top of element is at 45% of screen height
+            const startPos = viewHeight * 0.9;
+            const endPos = viewHeight * 0.45;
+            
+            const total = startPos - endPos;
+            const current = startPos - rect.top;
+            
+            let progress = Math.min(Math.max(current / total, 0), 1);
+            el.style.setProperty('--progress', `${progress * 100}%`);
+          }
+        });
+      }
 
       function updateParallax() {
         const scrolled = window.pageYOffset;
@@ -470,6 +593,8 @@
             img.style.transform = `scale(1.15) translate3d(0, ${translateVal}px, 0)`;
           }
         });
+
+        updateScrollReveal();
 
         ticking = false;
       }
