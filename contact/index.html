@@ -130,18 +130,18 @@
       <!-- Header Area -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
         <span class="text-triad-pink font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Get in touch</span>
-        <h1 class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
-          お問い合わせはこちら
+        <h1 id="contact-title" class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
+          お問い合わせ
         </h1>
-        <p class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-          弊社ホームページをご覧いただき、誠にありがとうございます。貴社のビジネスを加速させるWEBサイトをご提案します。豊富な実績と確かな技術で、お客様の課題を解決します。WEBサイト制作、WEBマーケティング、システム開発など、お気軽にご相談ください。
+        <p id="contact-desc" class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+          弊社ホームページをご覧いただき、誠にありがとうございます。人材ソリューション、トータルソリューション（法人営業）、およびライバーマネジメント事業に関するお問い合わせやご相談を承っております。お気軽にご相談ください。
         </p>
       </section>
 
       <section class="max-w-3xl mx-auto px-6 pb-8">
         <div class="bg-white rounded-[32px] p-8 md:p-10 elegant-shadow border border-gray-50 text-gray-500 font-light leading-relaxed space-y-4">
           <p>下記フォームに必要事項をご記入の上、送信してください。</p>
-          <p>3営業日以内に担当者よりご連絡させていただきます。お急ぎの場合は、お電話にてお問い合わせください。</p>
+          <p id="contact-notice">3営業日以内に担当者よりご連絡させていただきます。</p>
           <p>お客様の個人情報は、お問い合わせ対応のみに利用し、適切に管理いたします。</p>
         </div>
       </section>
@@ -161,10 +161,16 @@
               <div class="relative">
                 <select id="subject" name="subject" required class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium appearance-none cursor-pointer">
                   <option value="" disabled selected>以下から選択してください</option>
-                  <option value="相談">相談</option>
-                  <option value="見積もり">見積もり</option>
-                  <option value="お仕事をお探しの方">お仕事をお探しの方</option>
-                  <option value="その他">その他</option>
+                  <optgroup label="人材・トータルソリューション事業部">
+                    <option value="corporate_service">サービス導入・協業に関するご相談</option>
+                    <option value="corporate_recruit">人材採用・パートナーシップのご相談</option>
+                    <option value="corporate_other">その他（コーポレート関連）</option>
+                  </optgroup>
+                  <optgroup label="ライバーマネジメント事業部">
+                    <option value="liver_audition">ライバー所属・オーディション応募</option>
+                    <option value="liver_business">企業案件・コラボレーションのご相談</option>
+                    <option value="liver_other">その他（ライバーマネジメント関連）</option>
+                  </optgroup>
                 </select>
                 <!-- Custom Arrow -->
                 <div class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none text-gray-400">
@@ -308,6 +314,25 @@
       btn.addEventListener('click', openMenu);
       closeBtn.addEventListener('click', closeMenu);
       links.forEach(link => link.addEventListener('click', closeMenu));
+
+      // URL Parameter Check & Form Control
+      window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type');
+        const subjectSelect = document.getElementById('subject');
+        const contactTitle = document.getElementById('contact-title');
+        const contactDesc = document.getElementById('contact-desc');
+
+        if (type === 'corporate') {
+          subjectSelect.value = 'corporate_service';
+          if (contactTitle) contactTitle.textContent = '人材・トータルソリューション お問い合わせ';
+          if (contactDesc) contactDesc.innerHTML = '人材ソリューション、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
+        } else if (type === 'liver') {
+          subjectSelect.value = 'liver_audition';
+          if (contactTitle) contactTitle.textContent = 'ライバーマネジメント お問い合わせ';
+          if (contactDesc) contactDesc.innerHTML = 'ライバーマネジメント事業（J.O.L）に関するお問い合わせ・所属応募窓口です。必要事項をご記入の上、送信してください。';
+        }
+      });
     </script>
   </body>
 </html>
