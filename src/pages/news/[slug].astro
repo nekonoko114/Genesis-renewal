@@ -1,0 +1,88 @@
+---
+
+import { formatPostDate, getFeaturedImage, getPosts, plainText, type WordPressPost } from '../../lib/wordpress';
+import '../../styles/tailwind.css';
+
+export async function getStaticPaths() {
+  const posts = await getPosts({ perPage: 100 });
+
+  return posts.map((post) => ({
+    params: { slug: decodeURIComponent(post.slug) },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props as { post: WordPressPost };
+const image = getFeaturedImage(post);
+const title = plainText(post.title.rendered);
+const description = plainText(post.excerpt.rendered);
+const basePath = import.meta.env.BASE_URL;
+const homeHref = basePath;
+const aboutHref = basePath + '#about';
+const serviceHref = basePath + '#service';
+const newsHref = basePath + 'news/';
+const contactSectionHref = basePath + '#contact';
+const contactPageHref = basePath + 'contact/';
+---
+
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Genesis合同会社</title>
+    <meta name="description" content={description}>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+      .wp-content h2, .wp-content h3, .wp-content h4 { font-weight: 900; font-style: italic; color: #111827; line-height: 1.25; margin: 2rem 0 1rem; }
+      .wp-content h2 { font-size: clamp(2rem, 4vw, 3rem); }
+      .wp-content h3 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+      .wp-content p, .wp-content ul, .wp-content ol, .wp-content figure { margin: 1.25rem 0; }
+      .wp-content a { color: #C994FF; text-decoration: underline; text-underline-offset: 0.25em; }
+      .wp-content img { max-width: 100%; height: auto; border-radius: 24px; }
+      .wp-content ul { list-style: disc; padding-left: 1.5rem; }
+      .wp-content ol { list-style: decimal; padding-left: 1.5rem; }
+    </style>
+  </head>
+  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white">
+    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <div class="text-xl font-black tracking-tight text-gray-900">
+          <a href={homeHref}>Genesis<span class="text-triad-red">.</span></a>
+        </div>
+        <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
+          <a href={aboutHref} class="hover:text-triad-red transition-all">About</a>
+          <a href={serviceHref} class="hover:text-triad-purple transition-all">Service</a>
+          <a href={newsHref} class="text-triad-pink transition-all">News</a>
+          <a href={contactSectionHref} class="hover:text-triad-lime transition-all">Contact</a>
+        </nav>
+        <a href={contactPageHref} class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+          Contact Us
+        </a>
+      </div>
+    </header>
+
+    <main class="pt-32">
+      <article class="max-w-4xl mx-auto px-6 lg:px-12 py-16">
+        <a href={newsHref} class="inline-flex items-center gap-2 text-sm font-bold text-gray-400 hover:text-triad-pink transition-colors mb-10">
+          <span>&larr;</span>
+          News一覧へ戻る
+        </a>
+
+        <header class="mb-12">
+          <time class="text-xs font-bold tracking-[0.2em] text-gray-400" datetime={post.date}>{formatPostDate(post.date)}</time>
+          <h1 class="mt-5 text-4xl md:text-6xl font-black italic text-gray-900 leading-tight" set:html={post.title.rendered} />
+        </header>
+
+        {image.src && (
+          <figure class="rounded-[32px] overflow-hidden border border-gray-100 bg-white mb-12">
+            <img src={image.src} alt={image.alt} class="w-full h-auto" />
+          </figure>
+        )}
+
+        <div class="wp-content bg-white/80 backdrop-blur-xl border border-gray-100 rounded-[32px] p-8 md:p-12 text-gray-600 font-light leading-loose" set:html={post.content.rendered} />
+      </article>
+    </main>
+  </body>
+</html>
