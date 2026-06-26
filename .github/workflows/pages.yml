@@ -1,10 +1,9 @@
-name: Publish site variants
+name: Deploy Astro to GitHub Pages
 
 on:
   push:
     branches:
       - main
-      - alt-text
   workflow_dispatch:
 
 permissions:
@@ -17,113 +16,38 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout main variant
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          ref: main
-          path: variants/main
+          node-version: 26
+          cache: npm
 
-      - name: Checkout alt-text variant
-        uses: actions/checkout@v4
-        with:
-          ref: alt-text
-          path: variants/alt-text
+      - name: Install dependencies
+        run: npm ci
 
-      - name: Build Pages artifact
-        run: |
-          set -euo pipefail
-
-          mkdir -p public/main public/alt-text
-
-          npm --prefix variants/main ci
-          npm --prefix variants/main run build
-          cp -R variants/main/dist/. public/main/
-
-          npm --prefix variants/alt-text ci
-          npm --prefix variants/alt-text run build
-          cp -R variants/alt-text/dist/. public/alt-text/
-
-          touch public/.nojekyll
-          cat > public/index.html <<'HTML'
-          <!doctype html>
-          <html lang="ja">
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1">
-              <title>Genesis site variants</title>
-              <style>
-                body {
-                  margin: 0;
-                  min-height: 100vh;
-                  display: grid;
-                  place-items: center;
-                  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-                  color: #111827;
-                  background: #fcfcfc;
-                }
-                main {
-                  width: min(560px, calc(100% - 48px));
-                }
-                h1 {
-                  margin: 0 0 12px;
-                  font-size: clamp(32px, 8vw, 56px);
-                  line-height: 1;
-                }
-                p {
-                  margin: 0 0 28px;
-                  color: #6b7280;
-                  line-height: 1.7;
-                }
-                .links {
-                  display: grid;
-                  gap: 12px;
-                }
-                a {
-                  display: flex;
-                  justify-content: space-between;
-                  align-items: center;
-                  padding: 18px 20px;
-                  border: 1px solid #e5e7eb;
-                  border-radius: 14px;
-                  color: inherit;
-                  text-decoration: none;
-                  background: #fff;
-                  box-shadow: 0 18px 40px -24px rgba(0, 0, 0, 0.35);
-                }
-                span {
-                  color: #9ca3af;
-                }
-              </style>
-            </head>
-            <body>
-              <main>
-                <h1>Genesis</h1>
-                <p>公開するテキスト違いのバージョンを選択してください。</p>
-                <div class="links">
-                  <a href="./main/">main <span>標準テキスト</span></a>
-                  <a href="./alt-text/">alt-text <span>差し替えテキスト</span></a>
-                </div>
-              </main>
-            </body>
-          </html>
-          HTML
-
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-        with:
-          enablement: true
+      - name: Build
+        run: npm run build
+        env:
+          GITHUB_PAGES: 'true'
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: dist
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

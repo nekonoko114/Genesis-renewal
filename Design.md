@@ -6,7 +6,7 @@
 
 ## 1. ビジュアルコンセプト
 * **デザインテーマ**: Clean & Elegant (クリーン＆エレガント)
-* **コア体験**: 人材紹介事業（堅牢な信頼性）と TikTok Live 配信事業（圧倒的な表現力・動的トレンド）の融合。
+* **コア体験**: ライブ配信事業（圧倒的な表現力・動的トレンド）と総合人材ソリューションのシナジー。
 * **基本アプローチ**: 不要なノイズ（枠線、原色、過度な装飾）を極限まで取り除き、広い余白（マージン）と滑らかなグラデーション、美しい影で高級感（プレミアム感）を演出する。
 
 ---
@@ -27,11 +27,11 @@
 ### アクセント＆ブランドカラー
 | カラー名 | カラーコード | Tailwind クラス名 | ニュアンス・用途 |
 | :--- | :--- | :--- | :--- |
-| **Triad Red** | `#FF1414` | `text-triad-red` / `bg-triad-red` | 主要なシンボル（ロゴのピリオドなど）、バッジ、第1サービス |
-| **Triad Pink** | `#FF9494` | `text-triad-pink` / `bg-triad-pink` | 柔らかいアクセント、第5サービス、グラデーションの始点 |
-| **Triad Purple** | `#C994FF` | `text-triad-purple` / `bg-triad-purple` | トレンド感の演出、スクロールバーホバー、第2サービス |
-| **Triad Cyan** | `#94FFFF` | `text-triad-cyan` / `bg-triad-cyan` | クールなアクセント、第3サービス |
-| **Triad Lime** | `#C9FF94` | `text-triad-lime` / `bg-triad-lime` | 新鮮さ・活性のアクセント、第4サービス |
+| **Triad Red** | `#FF1414` | `text-triad-red` / `bg-triad-red` | 主要なシンボル（ロゴのピリオドなど）、バッジ、各種サービス |
+| **Triad Pink** | `#FF9494` | `text-triad-pink` / `bg-triad-pink` | 柔らかいアクセント、各種サービス、グラデーションの始点 |
+| **Triad Purple** | `#C994FF` | `text-triad-purple` / `bg-triad-purple` | トレンド感の演出、スクロールバーホバー、各種サービス |
+| **Triad Cyan** | `#94FFFF` | `text-triad-cyan` / `bg-triad-cyan` | クールなアクセント、各種サービス |
+| **Triad Lime** | `#C9FF94` | `text-triad-lime` / `bg-triad-lime` | 新鮮さ・活性のアクセント、各種サービス |
 
 ---
 
@@ -108,13 +108,6 @@ selection:bg-triad-purple selection:text-white
 * 左右交互のレイアウト (`lg:flex-row` / `lg:flex-row-reverse`)。
 * 各サービスのカテゴリ名には、サービス特有のアクセントカラーを割り当て、下線ボーダーを引く（例: `border-b-2 border-triad-red pb-2`）。
 
-### ④ 強みカード・グリッド (Strengths Grid)
-* 3カラム構成。
-* **段差レイアウト (Offset)**: グリッドに動きを出すため、各カラムのトップマージンに差をつける。
-  * 1枚目: 追加マージンなし
-  * 2枚目: `md:mt-12`
-  * 3枚目: `md:mt-24`
-* 各カードの右上に、ホバーすると拡大する薄いぼかしグラデーション円を絶対配置 (`absolute -top-12 -right-12 group-hover:scale-150 transition-transform duration-700`)。
 
 ### ⑤ コンタクトエリア (Contact Banner)
 * 他のセクションと対比させるため、ダーク背景（`bg-gray-900`）を採用。

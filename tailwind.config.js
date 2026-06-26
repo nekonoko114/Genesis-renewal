@@ -4,6 +4,9 @@ export default {
     "./index.html",
     "./main.js",
     "./**/*.html",
+    "./assets/js/**/*.js",
+    "./public/assets/js/**/*.js",
+    "./src/**/*.{astro,html,js,ts}",
   ],
   theme: {
     extend: {
@@ -13,6 +16,7 @@ export default {
         'triad-lime': '#C9FF94',
         'triad-cyan': '#94FFFF',
         'triad-purple': '#C994FF',
+        'creamy-bg': '#fcfcfc',
       },
       fontFamily: {
         'outfit': ['Outfit', 'sans-serif'],

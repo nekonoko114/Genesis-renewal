@@ -1,35 +1,24 @@
 ---
+import '../styles/tailwind.css';
+import { formatPostDate, getPosts } from '../lib/wordpress';
+
+const posts = await getPosts({ perPage: 3 });
+const basePath = import.meta.env.BASE_URL;
 ---
+
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Genesis合同会社 | 人材紹介とTikTok Liveプロデュースの融合</title>
-    <meta name="description" content="Genesis合同会社は、確かなデータと洗練されたクリエイティブで、次世代の人材紹介事業とTikTok Live配信事業をグローバルに展開。企業のビジネス成長と個人のキャリア構築を支援します。">
+    <title>Genesis - sing of joys of the life</title>
+    <meta name="description" content="Genesis合同会社では大阪を中心に東北、九州でイベント事業、通信販売事業などを行っております。多くのパートナー様に恵まれいいスタートを発信できました。">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script is:inline src="https://cdn.tailwindcss.com"></script>
-    <script is:inline>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              'triad-red': '#FF1414',
-              'triad-pink': '#FF9494',
-              'triad-lime': '#C9FF94',
-              'triad-cyan': '#94FFFF',
-              'triad-purple': '#C994FF',
-              'creamy-bg': '#fcfcfc',
-            },
-            fontFamily: {
-              'outfit': ['Outfit', 'sans-serif'],
-            },
-          }
-        }
-      }
-    </script>
     <style is:inline>
+      h1, h2, h3, h4, h5, h6 {
+        font-style: italic;
+      }
       .text-gradient-c {
         background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
         -webkit-background-clip: text;
@@ -46,7 +35,7 @@
 
       /* Tech Grid Pattern */
       .tech-grid {
-        background-image: 
+        background-image:
           linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
           linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
         background-size: 60px 60px;
@@ -156,9 +145,359 @@
         will-change: transform;
         transform: scale(1.15);
       }
+
+      /* Scroll Reveal Text (Wipe effect) */
+      .reveal-text {
+        --progress: 100%; /* Progressive enhancement: 100% by default */
+        display: inline;
+        background-repeat: no-repeat;
+        transition: -webkit-mask-image 0.1s linear, mask-image 0.1s linear;
+        -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,1) var(--progress), rgba(0,0,0,0.15) var(--progress));
+        mask-image: linear-gradient(to right, rgba(0,0,0,1) var(--progress), rgba(0,0,0,0.15) var(--progress));
+      }
+
+      /* Floating SVGs & Animations */
+      @keyframes float-gentle {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-15px) rotate(5deg); }
+      }
+      @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      @keyframes pulse-slow {
+        0%, 100% { opacity: 0.2; transform: scale(1); }
+        50% { opacity: 0.5; transform: scale(1.1); }
+      }
+      .animate-float-gentle {
+        animation: float-gentle 8s infinite ease-in-out;
+      }
+      .animate-spin-slow {
+        animation: spin-slow 25s infinite linear;
+      }
+      .animate-spin-reverse {
+        animation: spin-slow 30s infinite linear reverse;
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 4s infinite ease-in-out;
+      }
+
+      @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      @keyframes image-drift {
+        0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--tilt, 0deg)); }
+        50% { transform: translate3d(0, -18px, 0) rotate(calc(var(--tilt, 0deg) * -1)); }
+      }
+      @keyframes line-scan {
+        0% { transform: translateY(-100%); opacity: 0; }
+        20%, 80% { opacity: 0.55; }
+        100% { transform: translateY(100%); opacity: 0; }
+      }
+      .hero-collage {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        overflow: hidden;
+      }
+      .hero-collage::before {
+        content: "";
+        position: absolute;
+        inset: 9rem 2rem 4rem;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        border-radius: 999px;
+        background:
+          radial-gradient(circle at 20% 30%, rgba(148, 255, 255, 0.35), transparent 26%),
+          radial-gradient(circle at 80% 30%, rgba(201, 148, 255, 0.26), transparent 24%),
+          radial-gradient(circle at 55% 82%, rgba(255, 148, 148, 0.24), transparent 28%);
+        filter: blur(0.2px);
+      }
+      .hero-collage::after {
+        content: "";
+        position: absolute;
+        top: 12%;
+        bottom: 8%;
+        left: 50%;
+        width: 1px;
+        background: linear-gradient(to bottom, transparent, rgba(255, 20, 20, 0.32), transparent);
+        animation: line-scan 6s infinite ease-in-out;
+      }
+      .collage-card {
+        position: absolute;
+        overflow: hidden;
+        border-radius: 2rem;
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.75);
+        box-shadow: 0 30px 80px -28px rgba(15, 23, 42, 0.32);
+        animation: image-drift 9s infinite ease-in-out;
+      }
+      .collage-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .collage-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(255,255,255,0.14), transparent 42%, rgba(15,23,42,0.18));
+      }
+      .collage-card-1 {
+        --tilt: -7deg;
+        width: min(26vw, 360px);
+        height: min(30vw, 430px);
+        left: 3vw;
+        top: 18vh;
+      }
+      .collage-card-2 {
+        --tilt: 8deg;
+        width: min(23vw, 320px);
+        height: min(27vw, 380px);
+        right: 4vw;
+        top: 16vh;
+        animation-delay: -2s;
+      }
+      .collage-card-3 {
+        --tilt: 5deg;
+        width: min(20vw, 280px);
+        height: min(15vw, 210px);
+        left: 14vw;
+        bottom: 9vh;
+        animation-delay: -4s;
+      }
+      .collage-card-4 {
+        --tilt: -5deg;
+        width: min(18vw, 250px);
+        height: min(14vw, 190px);
+        right: 14vw;
+        bottom: 11vh;
+        animation-delay: -6s;
+      }
+      .hero-video-wrap {
+        position: absolute;
+        inset: 0;
+        overflow: hidden;
+        background: #080a10;
+      }
+      .hero-video {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transform: none;
+        background: #080a10;
+      }
+      .hero-video-overlay {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 18% 18%, rgba(148,255,255,0.08), transparent 30%),
+          radial-gradient(circle at 82% 16%, rgba(201,148,255,0.08), transparent 30%),
+          linear-gradient(180deg, rgba(8,10,16,0.08), transparent 50%, rgba(252,252,252,0.48));
+      }
+      .hero-video-grain {
+        position: absolute;
+        inset: 0;
+        opacity: 0.06;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent 85%);
+      }
+      .hero-copy-panel {
+        border: 1px solid rgba(255,255,255,0.18);
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 40px 90px -45px rgba(0,0,0,0.7);
+      }
+      .hero-vertical-copy {
+        position: relative;
+        z-index: 10;
+        display: block;
+        width: auto;
+        min-height: auto;
+        margin-top: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+      }
+      .hero-vertical-line {
+        display: block;
+        writing-mode: horizontal-tb;
+        letter-spacing: 0;
+        line-height: 0.95;
+        filter: drop-shadow(0 12px 30px rgba(255,255,255,0.86));
+      }
+      .hero-vertical-line:nth-child(1) {
+        transform: none;
+      }
+      .hero-vertical-line:nth-child(2) {
+        transform: none;
+      }
+      .hero-vertical-line:nth-child(3) {
+        transform: none;
+      }
+      .site-header {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+      .site-header.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .signal-pill {
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        border-radius: 999px;
+        border: 1px solid rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.82);
+        box-shadow: 0 22px 50px -28px rgba(15,23,42,0.35);
+        padding: 0.7rem 1rem;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #111827;
+        backdrop-filter: blur(18px);
+      }
+      #movie-first-view .signal-pill {
+        background: rgba(255,255,255,0.62);
+        opacity: 0.72;
+      }
+      #movie-first-view .startup-marquee {
+        opacity: 0.78;
+      }
+      .signal-pill span {
+        width: 0.55rem;
+        height: 0.55rem;
+        border-radius: 999px;
+        background: #FF1414;
+        box-shadow: 0 0 24px rgba(255,20,20,0.6);
+      }
+      .startup-marquee {
+        width: min(100%, 1120px);
+        overflow: hidden;
+        border-radius: 999px;
+        border: 1px solid rgba(17, 24, 39, 0.08);
+        background: rgba(255, 255, 255, 0.66);
+        backdrop-filter: blur(16px);
+        box-shadow: 0 18px 50px -32px rgba(15,23,42,0.4);
+      }
+      .startup-marquee-track {
+        display: flex;
+        width: max-content;
+        animation: marquee 28s linear infinite;
+      }
+      .startup-marquee-track span {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.85rem 1.35rem;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.24em;
+        text-transform: uppercase;
+        color: #111827;
+        white-space: nowrap;
+      }
+      .startup-marquee-track span::before {
+        content: "";
+        width: 0.45rem;
+        height: 0.45rem;
+        margin-right: 1rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #FF9494, #C994FF, #94FFFF);
+      }
+      .impact-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 2rem;
+        background: rgba(255,255,255,0.76);
+        border: 1px solid rgba(255,255,255,0.7);
+        box-shadow: 0 24px 70px -38px rgba(15,23,42,0.45);
+      }
+      .impact-card::after {
+        content: "";
+        position: absolute;
+        inset: auto -20% -55% -20%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(201,148,255,0.3), transparent 64%);
+      }
+      .service-item {
+        position: relative;
+        z-index: 0;
+      }
+      .service-item::before {
+        content: attr(data-index);
+        position: absolute;
+        top: -3rem;
+        left: -0.25rem;
+        z-index: 0;
+        font-size: clamp(4.5rem, 12vw, 10rem);
+        line-height: 1;
+        font-weight: 900;
+        font-style: italic;
+        letter-spacing: -0.08em;
+        color: rgba(17,24,39,0.055);
+        pointer-events: none;
+      }
+      .service-item > * {
+        position: relative;
+        z-index: 1;
+      }
+      .service-image-shell {
+        isolation: isolate;
+        box-shadow:
+          24px 24px 0 -8px rgba(201,148,255,0.18),
+          -18px -18px 0 -8px rgba(148,255,255,0.2),
+          0 34px 80px -42px rgba(15,23,42,0.44);
+      }
+      .service-image-shell::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        border-radius: 3rem;
+        background: linear-gradient(135deg, rgba(255,148,148,0.34), rgba(201,148,255,0.18), rgba(148,255,255,0.26));
+        transform: rotate(-3deg) scale(1.04);
+      }
+      @media (max-width: 900px) {
+        .hero-video-overlay {
+          background:
+            radial-gradient(circle at 50% 18%, rgba(201,148,255,0.08), transparent 34%),
+            linear-gradient(180deg, rgba(8,10,16,0.06), transparent 52%, rgba(252,252,252,0.5));
+        }
+        .collage-card {
+          opacity: 0.45;
+          filter: saturate(0.9);
+        }
+        .collage-card-1 {
+          width: 42vw;
+          height: 50vw;
+          left: -15vw;
+          top: 19vh;
+        }
+        .collage-card-2 {
+          width: 38vw;
+          height: 47vw;
+          right: -13vw;
+          top: 18vh;
+        }
+        .collage-card-3,
+        .collage-card-4 {
+          display: none;
+        }
+        .hero-collage::before {
+          inset: 8rem 0.75rem 4rem;
+        }
+      }
     </style>
   </head>
-  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
+  <body data-header-mode="cinematic" class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
     <!-- Super subtle background accents & parallax blobs -->
     <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
         <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[600px] h-[600px] bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-1"></div>
@@ -166,81 +505,148 @@
         <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
     </div>
 
-    <!-- Minimal Header -->
-    <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-        <div class="text-xl font-black tracking-tight text-gray-900">
-          Genesis<span class="text-triad-red">.</span>
-        </div>
-        
-        <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
-          <a href="#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
-          <a href="#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
-          <a href="#strengths" class="hover:text-triad-cyan transition-all hover:-translate-y-0.5 transform inline-block">Strengths</a>
-          <a href="#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
-          <a href="#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
-        </nav>
-        
-        <!-- Desktop Contact Button -->
-        <a href="./contact/index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
-          Contact Us
-        </a>
-
-        <!-- Mobile Hamburger Btn -->
-        <button id="menu-btn" class="md:hidden text-gray-900 p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
-      </div>
-    </header>
-
-    <!-- Mobile Nav Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
-        <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <a href="#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
-        <a href="#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
-        <a href="#strengths" class="hover:text-triad-cyan mobile-link transition-colors duration-300">Strengths</a>
-        <a href="#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
-        <a href="#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
-        <a href="./contact/index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
-    </div>
+    <div data-site-header></div>
 
     <!-- MAIN CONTENT -->
-    <main class="pt-20">
-      
+    <main>
+
+      <!-- First View Movie Section -->
+      <section id="movie-first-view" class="relative w-full min-h-screen flex items-end justify-center px-6 pb-8 md:pb-10 overflow-hidden bg-black">
+        <div class="hero-video-wrap">
+          <video id="first-view-video" class="hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Genesisのファーストビュー動画">
+            <source src="./assets/video/GenesisFVVertical.mp4" type="video/mp4" media="(max-width: 767px)">
+            <source src="./assets/video/GenesisFV04.mp4" type="video/mp4" media="(min-width: 768px)">
+          </video>
+          <!--  -->
+        </div>
+      </section>
+
       <!-- Premium HERO Section -->
-      <section id="hero" class="relative w-full min-h-[90vh] flex flex-col items-center justify-center text-center px-6">
-        <span class="px-5 py-2 rounded-full bg-white border border-gray-100 text-xs font-bold tracking-widest text-triad-red mb-10 shadow-sm">HUMAN RESOURCE × SOCIAL MEDIA</span>
-        <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-8 tracking-tighter text-gray-900 leading-[0.9] max-w-6xl">
-          世界の<br class="md:hidden">可能性を<br>
-          <span class="text-gradient-c italic pr-4">デザインする</span>
+      <section id="hero" class="relative w-full min-h-screen flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+        <div class="hero-collage">
+          <div class="collage-card collage-card-1">
+            <img src="./assets/images/jol_streamer_showcase.png" alt="ライブ配信とクリエイターのビジュアル">
+          </div>
+          <div class="collage-card collage-card-2">
+            <img src="./assets/images/telecom_outsourcing.png" alt="人材ソリューションのビジュアル">
+          </div>
+          <div class="collage-card collage-card-3">
+            <img src="./assets/images/corporate_sales.png" alt="法人向けソリューションのビジュアル">
+          </div>
+          <div class="collage-card collage-card-4">
+            <img src="./assets/images/about_philosophy.png" alt="Genesisの企業理念を表すビジュアル">
+          </div>
+          <div class="signal-pill left-[8vw] top-[13vh] hidden lg:inline-flex"><span></span>Business × Culture</div>
+          <div class="signal-pill right-[9vw] bottom-[18vh] hidden lg:inline-flex"><span></span>New Lifestyle Platform</div>
+        </div>
+
+        <!-- Floating SVGs for Hero -->
+        <div class="absolute top-20 left-10 w-12 h-12 text-triad-cyan/30 animate-spin-slow hidden md:block">
+          <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" class="w-full h-full">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m9-9H3"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-20 right-10 w-20 h-20 text-triad-purple/20 animate-float-gentle hidden md:block">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-full h-full">
+            <circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="4 4"/>
+            <circle cx="12" cy="12" r="3" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="absolute top-1/3 right-1/4 w-8 h-8 text-triad-pink/40 animate-pulse-slow">
+          <svg fill="currentColor" viewBox="0 0 24 24" class="w-full h-full">
+            <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4Z"/>
+          </svg>
+        </div>
+
+        <div class="absolute bottom-1/3 left-1/4 w-6 h-6 text-triad-lime/40 animate-spin-reverse">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="w-full h-full">
+            <polygon points="12,2 22,22 2,22" />
+          </svg>
+        </div>
+
+        <span class="px-5 py-2 rounded-full bg-white border border-gray-100 text-xs font-bold tracking-widest text-triad-red mb-10 shadow-sm relative z-10">SING OF JOYS OF THE LIFE</span>
+        <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black mb-8 md:mb-8 lg:mb-12 tracking-tighter text-gray-900 leading-[1.05] max-w-6xl italic relative z-10 drop-shadow-[0_14px_44px_rgba(255,255,255,0.9)]">
+          人生を<br class="md:hidden">謳歌する<br>
+          <!-- <span class="text-gradient-c italic pr-4">プラットフォームへ</span> -->
         </h1>
-        <p class="text-xl md:text-2xl text-gray-500 font-light max-w-2xl leading-relaxed mt-6">
-          「人材」と「ソーシャルメディア」のシナジーで、<br>個の可能性を解き放ち、新しい未来の架け橋となります。
-        </p>
-        <div class="mt-16 animate-bounce">
+        <div class="hero-vertical-copy">
+          <span class="hero-vertical-line text-gradient-c text-xl md:text-4xl lg:text-5xl xl:text-6xl italic font-black">ライフスタイルを</span>
+          <span class="hero-vertical-line text-gradient-c text-xl md:text-5xl lg:text-6xl xl:text-7xl italic font-black">加速・変化させる</span>
+          <span class="hero-vertical-line text-gradient-c text-2xl md:text-5xl lg:text-6xl xl:text-7xl italic font-black">プラットフォームへ</span>
+        </div>
+        <div class="mt-12 animate-bounce relative z-10">
           <svg class="w-6 h-6 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
         </div>
       </section>
 
+      <!-- IMPACT Section -->
+      <section class="px-6 lg:px-12 max-w-7xl mx-auto -mt-8 md:-mt-16 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="impact-card p-8">
+            <span class="text-triad-red font-black tracking-[0.22em] text-[11px] uppercase block mb-8">01 / Origin</span>
+            <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">現場から<br>事業をつくる</p>
+            <p class="text-gray-500 text-sm leading-relaxed mt-6">通信・人材領域で培った実行力を、次の成長領域へ展開。</p>
+          </div>
+          <div class="impact-card p-8">
+            <span class="text-triad-purple font-black tracking-[0.22em] text-[11px] uppercase block mb-8">02 / Culture</span>
+            <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">人の熱量を<br>ブランドにする</p>
+            <p class="text-gray-500 text-sm leading-relaxed mt-6">ライバーと企業、個人の可能性を横断して価値に変える。</p>
+          </div>
+          <div class="impact-card p-8">
+            <span class="text-triad-cyan font-black tracking-[0.22em] text-[11px] uppercase block mb-8">03 / Scale</span>
+            <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">軽やかに<br>領域を越える</p>
+            <p class="text-gray-500 text-sm leading-relaxed mt-6">シンプルに動き、早く試し、関わる人の選択肢を増やす。</p>
+          </div>
+        </div>
+      </section>
+
       <!-- ABOUT Section -->
-      <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
-        <div class="glass-card rounded-[40px] p-12 md:p-24 flex flex-col lg:flex-row gap-20 items-center">
-          <div class="w-full lg:w-1/2">
+      <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24 relative">
+        <!-- Background Decorative SVGs -->
+        <div class="absolute top-12 left-4 w-24 h-24 text-gray-200 pointer-events-none opacity-40 z-0 animate-float-gentle hidden md:block">
+          <svg fill="currentColor" viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="10" cy="10" r="2.5"/><circle cx="30" cy="10" r="2.5"/><circle cx="50" cy="10" r="2.5"/><circle cx="70" cy="10" r="2.5"/>
+            <circle cx="10" cy="30" r="2.5"/><circle cx="30" cy="30" r="2.5"/><circle cx="50" cy="30" r="2.5"/><circle cx="70" cy="30" r="2.5"/>
+            <circle cx="10" cy="50" r="2.5"/><circle cx="30" cy="50" r="2.5"/><circle cx="50" cy="50" r="2.5"/><circle cx="70" cy="50" r="2.5"/>
+            <circle cx="10" cy="70" r="2.5"/><circle cx="30" cy="70" r="2.5"/><circle cx="50" cy="70" r="2.5"/><circle cx="70" cy="70" r="2.5"/>
+          </svg>
+        </div>
+        <div class="absolute bottom-12 right-4 w-32 h-32 text-gray-200 pointer-events-none opacity-30 z-0 animate-spin-slow hidden md:block">
+          <svg fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 100 100" class="w-full h-full">
+            <circle cx="50" cy="50" r="40" stroke-dasharray="6 6"/>
+            <circle cx="50" cy="50" r="25"/>
+          </svg>
+        </div>
+
+        <div class="glass-card rounded-[40px] p-12 md:p-24 flex flex-col lg:flex-row gap-20 items-center relative z-10 overflow-hidden">
+          <!-- Sparkles & Dots inside card -->
+          <div class="absolute top-8 right-8 text-triad-pink/20 animate-spin-slow pointer-events-none">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4Z"/>
+            </svg>
+          </div>
+          <div class="absolute bottom-8 left-8 text-triad-cyan/20 animate-float-gentle pointer-events-none">
+            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4Z"/>
+            </svg>
+          </div>
+
+          <div class="w-full lg:w-1/2 relative z-10">
             <span class="text-triad-red font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Corporate Philosophy</span>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1]">人生謳歌</h2>
+            <h2 class="text-4xl md:text-5xl lg:text-6xl font-black mb-8 text-gray-900 leading-[1.1] italic reveal-text">人生謳歌</h2>
             <p class="text-triad-pink font-bold text-lg mb-8 italic">sing of joys of the life</p>
             <div class="w-16 h-1 bg-gradient-to-r from-triad-red to-triad-pink mb-10"></div>
             <p class="text-gray-900 leading-relaxed text-xl mb-8 font-medium">
-              「関わるすべての人々が、『生まれてきてよかった』と心から実感できるようなプラットフォームを創造する」
+              <span class="reveal-text">「関わるすべての人々が、『生まれてきてよかった』と心から実感できるようなプラットフォームを創造する」</span>
             </p>
             <p class="text-gray-500 leading-relaxed text-lg mb-12 font-light">
-              Genesisは、通信事業のアウトソーシングからスタートし、社員や関わる人々の想いを大切にしながら、人材紹介やWEBクリエイティブ事業など、多岐にわたる事業を展開しています。対極にある信頼性と表現力を融合し、新しい未来をデザインします。
+              <span class="reveal-text">人材アウトソーシングからスタートし、社員の想いを大切にしながら、多岐にわたる事業を展開しています。</span>
             </p>
             <a href="./outline/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
               会社概要・企業理念を見る
             </a>
           </div>
-          <div class="w-full lg:w-1/2 relative">
+          <div class="w-full lg:w-1/2 relative z-10">
             <div class="aspect-[4/5] parallax-img-container rounded-[30px] relative group">
               <img src="./assets/images/about_philosophy.png" alt="Corporate minimal" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -251,93 +657,103 @@
         </div>
       </section>
 
+      <!-- CONCEPT VIDEO Section -->
+      <section id="concept-movie" class="py-16 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
+        <div class="glass-card rounded-[40px] p-8 md:p-16 elegant-shadow relative overflow-hidden">
+          <!-- Background accent blobs inside card -->
+          <div class="absolute -top-12 -right-12 w-48 h-48 bg-triad-purple rounded-full mix-blend-multiply opacity-10 filter blur-[40px]"></div>
+<div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-black">
+            <iframe
+              src="https://www.youtube.com/embed/-awShrePdN4?autoplay=1&mute=1&controls=0&loop=1&playlist=-awShrePdN4&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3"
+              title="Genesis合同会社 コンセプトムービー"
+              class="absolute w-[112%] h-[112%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen>
+            </iframe>
+          </div>
+
+          <div class="text-center mt-10 relative z-10">
+            <a href="https://clients.itszai.jp/4d5463314e6a593d/job/6825?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnpXUdcolWHp0CrulinVRa5fHyQvJJg3tb2Sco7W95WKPLRSu9eXD6x-ccvoE_aem_J4xGf2_YeRkA6EMX-2OU5A&utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
+              採用情報を見る
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <!-- SERVICE Section -->
       <section id="service" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
         <div class="text-center mb-28">
           <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Our Specialties</span>
-          <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">Services<span class="text-triad-red">.</span></h2>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight">Services<span class="text-triad-red">.</span></h2>
         </div>
-        
+
         <div class="flex flex-col gap-32 md:gap-40">
-          
-          <!-- Item 1: 人材紹介 -->
-          <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/recruitment_service.png" alt="次世代人材紹介" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+
+          <!-- Item 1: 人材ソリューション事業部 -->
+          <div class="service-item flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group" data-index="01">
+            <div class="service-image-shell w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/telecom_outsourcing.png" alt="人材アウトソーシング" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+              <div class="absolute left-6 bottom-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/70 px-5 py-4 shadow-lg">
+                <p class="text-[10px] font-black tracking-[0.24em] text-triad-purple uppercase">Field Driven</p>
+                <p class="text-sm font-bold text-gray-900 mt-1">通信現場から成長を支える</p>
+              </div>
             </div>
             <div class="w-full lg:w-2/5">
-              <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">01 / Next-Gen Recruitment</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">次世代人材紹介</h3>
+              <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">01 / 人材ソリューション事業部</span>
+              <h3 class="text-right text-xl md:text-3xl lg:text-4xl font-black mb-8 text-gray-900 leading-[1.2]">
+                <span class="inline-block">人材アウトソーシング</span><span class="inline-block">事業部</span>
+              </h3>
               <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
-                ライブ配信などで培われた「圧倒的なコミュニケーション能力と共感力」を持つ若手人材に特化。企業風土とシンクロする最適なマッチングを実現します。
-              </p>
-              <a href="./service/recruitment-business/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-red hover:border-triad-red hover:text-white hover:scale-105 transition-all duration-300">
-                View Details →
-              </a>
-            </div>
-          </div>
-          
-          <!-- Item 2: 業務委託 -->
-          <div class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/telecom_outsourcing.png" alt="営業・事務アウトソーシング" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
-            </div>
-            <div class="w-full lg:w-2/5">
-              <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">02 / Sales Outsourcing</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">営業・事務<br>アウトソーシング</h3>
-              <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
-                即戦力の営業・通信販売のエキスパートが揃うアライアンス体制。貴社の営業力不足を解消し、成約と成果にコミットした強力な実行部隊を提供します。
+                携帯電話販売やインターネット販売を中心に、通信業界に特化したアウトソーシングのエキスパートとして、クライアント企業との強固な関係を築いています。関西メインで多くのスタッフを抱える規模を誇ります。
               </p>
               <a href="./service/outsourcing/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-purple hover:border-triad-purple hover:text-white hover:scale-105 transition-all duration-300">
-                View Details →
+                詳しく見る →
               </a>
             </div>
           </div>
 
-          <!-- Item 3: TikTok運用代行 -->
-          <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/corporate_sales.png" alt="企業向けTikTok運用代行" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+          <!-- Item 2: トータルソリューション事業部 -->
+          <div class="service-item flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group" data-index="02">
+            <div class="service-image-shell w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/corporate_sales.png" alt="トータルソリューション事業部" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+              <div class="absolute right-6 bottom-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/70 px-5 py-4 shadow-lg text-right">
+                <p class="text-[10px] font-black tracking-[0.24em] text-triad-cyan uppercase">Business Scale</p>
+                <p class="text-sm font-bold text-gray-900 mt-1">企業の課題に並走する</p>
+              </div>
             </div>
-            <div class="w-full lg:w-2/5">
-              <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-cyan pb-2 inline-block">03 / TikTok Marketing</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">企業向けTikTok<br>運用代行</h3>
+            <div class="w-full lg:w-2/5 lg:text-right">
+              <span class="text-triad-cyan font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-cyan pb-2 inline-block">02 / トータルソリューション事業部</span>
+              <h3 class="text-right lg:text-right text-xl md:text-3xl lg:text-4xl font-black mb-8 text-gray-900 leading-[1.2]">
+                <span class="inline-block">トータルソリューション</span><span class="inline-block">事業部</span>
+              </h3>
               <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
-                アルゴリズムを熟知したプロデュースチームが、企業の「らしさ」を縦型動画で魅力的に発信。認知向上からファン獲得、採用ブランディングまで一貫支援します。
+                法人のお客様向けに通信サービスの提案・営業を行う専門部隊。企業様のニーズに合ったソリューションを丁寧にご提案し、長期的なパートナーシップを構築します。
               </p>
-              <a href="./service/corporate/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-cyan hover:border-triad-cyan hover:text-gray-900 hover:scale-105 transition-all duration-300">
-                View Details →
-              </a>
+              <div class="flex lg:justify-end">
+                <a href="./service/corporate/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-cyan hover:border-triad-cyan hover:text-gray-900 hover:scale-105 transition-all duration-300">
+                  詳しく見る →
+                </a>
+              </div>
             </div>
           </div>
 
-          <!-- Item 4: クリエイティブ支援 -->
-          <div class="flex flex-col lg:flex-row-reverse gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/creative_overall.png" alt="クリエイティブ・動画制作" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+          <!-- Item 3: ライバーマネジメント事業部 -->
+          <div class="service-item flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group" data-index="03">
+            <div class="service-image-shell w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
+              <img src="./assets/images/jol_streamer_showcase.png" alt="ライバーマネジメント事業部" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+              <div class="absolute left-6 bottom-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-white/70 px-5 py-4 shadow-lg">
+                <p class="text-[10px] font-black tracking-[0.24em] text-triad-pink uppercase">Live Culture</p>
+                <p class="text-sm font-bold text-gray-900 mt-1">個人の魅力を熱狂へ</p>
+              </div>
             </div>
             <div class="w-full lg:w-2/5">
-              <span class="text-triad-lime font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-lime pb-2 inline-block">04 / Creative Support</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">クリエイティブ・<br>動画制作</h3>
+              <span class="text-triad-pink font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-pink pb-2 inline-block">03 / LIVER MANAGEMENT</span>
+              <h3 class="text-right text-xl md:text-3xl lg:text-4xl font-black mb-8 text-gray-900 leading-[1.2]">
+                <span class="inline-block">ライバーマネジメント</span><span class="inline-block">事業部</span>
+              </h3>
               <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
-                高品質なウェブサイト（HP/LP）制作、動画編集、画像素材販売までトータルサポート。洗練されたビジュアルで、ターゲットの心を3秒で掴みます。
-              </p>
-              <a href="./service/creative/index.html" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-lime hover:border-triad-lime hover:text-gray-900 hover:scale-105 transition-all duration-300">
-                View Details →
-              </a>
-            </div>
-          </div>
-
-          <!-- Item 5: ライバー事業 J.O.L -->
-          <div class="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center group">
-            <div class="w-full lg:w-3/5 parallax-img-container rounded-[40px] relative h-[450px] md:h-[550px] elegant-shadow">
-              <img src="./assets/images/jol_agency_banner.png" alt="ライバー事業 J.O.L" class="parallax-img w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
-            </div>
-            <div class="w-full lg:w-2/5">
-              <span class="text-triad-pink font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-pink pb-2 inline-block">05 / LIVER AGENCY</span>
-              <h3 class="text-4xl md:text-5xl font-black mb-8 text-gray-900 leading-[1.2]">ライバー事業 J.O.L<br>(main)</h3>
-              <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
-                J.O.Lはありのままでありながら楽しく過ごせる人性謳歌を掲げて活動をしています。ライバーとリスナーを繋ぐエンタメで世界を楽しく盛り上げます！ (main)
+                J.O.Lはありのままでありながら楽しく過ごせる人性謳歌を掲げて活動をしています。ライバーとリスナーを繋ぐエンタメで世界を楽しく盛り上げます！
               </p>
               <a href="https://jol.genesis-llc.co.jp/" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-pink hover:border-triad-pink hover:text-white hover:scale-105 transition-all duration-300">
                 公式サイトを見る →
@@ -354,57 +770,7 @@
         </div>
       </section>
 
-      <!-- STRENGTHS Section -->
-      <section id="strengths" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
-        <div class="text-center mb-24">
-          <span class="text-triad-cyan font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Core Values</span>
-          <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">Strengths.</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <!-- Strength 1 -->
-          <div class="glass-card p-12 rounded-[40px] group hover:-translate-y-4 transition-all duration-500 flex flex-col h-full relative overflow-hidden">
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-lime rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
-            <div class="premium-icon-container mb-8 text-triad-lime">
-              <div class="premium-icon-glow bg-triad-lime"></div>
-              <div class="pulse-ring-outer"></div>
-              <i class="fa-solid fa-bolt text-2xl icon-gradient-lime"></i>
-            </div>
-            <h3 class="text-2xl font-black mb-4 text-gray-900">圧倒的な発信力</h3>
-            <p class="text-gray-500 font-light leading-relaxed flex-grow">
-              ノイズを極限まで排除したクリエイティブと、アルゴリズムを自在に操る技術で、最短距離でターゲットへ届く波及力を実現します。
-            </p>
-          </div>
 
-          <!-- Strength 2 -->
-          <div class="glass-card p-12 rounded-[40px] group hover:-translate-y-4 transition-all duration-500 flex flex-col h-full relative overflow-hidden mt-0 md:mt-12">
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-purple rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
-            <div class="premium-icon-container mb-8 text-triad-purple">
-              <div class="premium-icon-glow bg-triad-purple"></div>
-              <div class="pulse-ring-outer"></div>
-              <i class="fa-solid fa-crosshairs text-2xl icon-gradient-purple"></i>
-            </div>
-            <h3 class="text-2xl font-black mb-4 text-gray-900">高度なマッチング</h3>
-            <p class="text-gray-500 font-light leading-relaxed flex-grow">
-              表面的な条件ではなく、対話から抽出した深層の「熱量」と「人間性」をもとに、企業風土との究極の一致を導き出します。
-            </p>
-          </div>
-
-          <!-- Strength 3 -->
-          <div class="glass-card p-12 rounded-[40px] group hover:-translate-y-4 transition-all duration-500 flex flex-col h-full relative overflow-hidden mt-0 md:mt-24">
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-triad-pink rounded-full mix-blend-multiply opacity-20 filter blur-[30px] group-hover:scale-150 transition-transform duration-700"></div>
-            <div class="premium-icon-container mb-8 text-triad-cyan">
-              <div class="premium-icon-glow bg-triad-cyan"></div>
-              <div class="pulse-ring-outer"></div>
-              <i class="fa-solid fa-water text-2xl icon-gradient-cyan"></i>
-            </div>
-            <h3 class="text-2xl font-black mb-4 text-gray-900">驚異の適応力</h3>
-            <p class="text-gray-500 font-light leading-relaxed flex-grow">
-              移り変わりの激しい現代のデジタルトレンド。常に最新の潮流を捉え、どのような環境変化に対しても美しく最適解を導きます。
-            </p>
-          </div>
-        </div>
-      </section>
 
       <!-- NEWS Section -->
       <section id="news" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
@@ -412,15 +778,19 @@
           <span class="text-triad-pink font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Latest Updates</span>
           <h2 class="text-6xl md:text-7xl font-black text-gray-900 tracking-tight">News<span class="text-triad-pink">.</span></h2>
         </div>
-        
         <div class="glass-card rounded-[40px] p-8 md:p-12 max-w-4xl mx-auto">
           <div class="divide-y divide-gray-100">
-            <!-- News Item 1 -->
-            <div class="py-6 flex flex-col md:flex-row md:items-center gap-4">
-              <span class="text-sm font-bold text-gray-400">2025-02-04</span>
-              <span class="px-3 py-1 rounded-full bg-triad-red/10 text-triad-red text-xs font-bold inline-block self-start">お知らせ</span>
-              <p class="text-gray-800 font-medium text-lg flex-grow">有料職業紹介事業許可証を交付いただきました</p>
-            </div>
+            {posts.length > 0 ? (
+              posts.map((post) => (
+                <a href={basePath + "news/" + post.slug + "/"} class="py-6 flex flex-col md:flex-row md:items-center gap-4 hover:bg-white/50 transition-colors rounded-2xl px-4 -mx-4">
+                  <span class="text-sm font-bold text-gray-400">{formatPostDate(post.date)}</span>
+                  <span class="px-3 py-1 rounded-full bg-triad-red/10 text-triad-red text-xs font-bold inline-block self-start">お知らせ</span>
+                  <p class="text-gray-800 font-medium text-lg flex-grow" set:html={post.title.rendered} />
+                </a>
+              ))
+            ) : (
+              <div class="py-6 text-gray-500 font-medium">現在表示できるお知らせはありません。</div>
+            )}
           </div>
         </div>
       </section>
@@ -429,145 +799,89 @@
       <section id="contact" class="pb-32 px-6 lg:px-12 max-w-7xl mx-auto mt-20 scroll-mt-24">
         <div class="bg-gray-900 rounded-[40px] py-16 px-6 md:p-24 lg:p-28 text-center relative overflow-hidden flex flex-col items-center shadow-2xl">
           <div class="absolute w-[600px] h-[600px] bg-gradient-to-tr from-triad-red via-triad-purple to-triad-cyan rounded-full filter blur-[100px] opacity-20 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
-          
+
           <span class="text-gray-400 font-bold tracking-[0.3em] text-xs uppercase mb-6 block border border-gray-700 rounded-full px-6 py-2 relative z-10">Contact Us</span>
-          <h2 class="text-3xl sm:text-5xl md:text-7xl lg:text-8xl font-black mb-8 text-white relative z-10 leading-[1.1] tracking-tighter">
-            新たなステージの<br class="hidden sm:inline">扉を開く。
+          <h2 class="text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-8 text-white relative z-10 leading-[1.1] tracking-tighter">
+            新たなステージの扉を開く。
           </h2>
-          <p class="text-gray-400 text-base md:text-xl font-light mb-16 max-w-2xl relative z-10">
-            洗練されたデザインとデータドリブンなマッチングで、あなたのビジネスやキャリアの未来を形にします。まずはお気軽にご相談ください。
+          <p class="text-gray-400 text-base md:text-lg font-light mb-16 max-w-2xl relative z-10">
+            人材ソリューションからライバーマネジメントまで、あなたの挑戦を幅広くサポートします。ビジネスに関するご相談や所属に関するお問い合わせなど、まずはお気軽にご連絡ください。
           </p>
-          <a href="mailto:info@genesis-newdesign.com" class="relative z-10 inline-flex items-center justify-center bg-white text-gray-900 font-bold text-sm md:text-lg px-8 py-4 md:px-12 md:py-6 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.2)] hover:shadow-[0_0_60px_rgba(255,255,255,0.4)]">
-            お問い合わせはこちら
-          </a>
+          <div class="flex flex-col sm:flex-row gap-6 justify-center relative z-10 w-full max-w-3xl">
+            <a href="./contact/index.html?type=corporate" class="flex-1 inline-flex items-center justify-center bg-white text-gray-900 font-bold text-sm md:text-base px-8 py-5 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] text-center">
+              人材・トータルソリューションの<br>お問い合わせ
+            </a>
+            <a href="./contact/index.html?type=liver" class="flex-1 inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-bold text-sm md:text-base px-8 py-5 rounded-full hover:scale-105 hover:bg-white hover:text-gray-900 transition-all duration-300 text-center">
+              ライバーマネジメントの<br>お問い合わせ
+            </a>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer class="border-t border-gray-100 py-10 px-6 lg:px-12">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-        <!-- Logo & Copyright -->
-        <div class="flex flex-col gap-2">
-          <div class="text-gray-900 font-black text-2xl tracking-tight">Genesis<span class="text-triad-red">.</span></div>
-          <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
-        </div>
-        <!-- Nav links -->
-        <nav class="flex flex-wrap gap-x-8 gap-y-2 uppercase tracking-widest text-xs font-bold text-gray-400">
-          <a href="#about" class="hover:text-gray-900 transition-colors">About</a>
-          <a href="#service" class="hover:text-gray-900 transition-colors">Service</a>
-          <a href="#strengths" class="hover:text-gray-900 transition-colors">Strengths</a>
-          <a href="#news" class="hover:text-gray-900 transition-colors">News</a>
-          <a href="#contact" class="hover:text-gray-900 transition-colors">Contact</a>
-        </nav>
-        <!-- SNS Icons -->
-        <div class="flex gap-4 text-gray-400">
-          <a href="https://x.com/genesis_sns?s=21&t=AH_LBc3ctTNIjEuSUVRRSA" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="X (Twitter)"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="https://www.instagram.com/genesis_llc_?igsh=YW9mcXJld3ZrOW90&utm_source=qr" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="Instagram"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-        </div>
-      </div>
-    </footer>
+    <div data-site-footer></div>
+
+    <script src="./assets/js/site-shell.js" data-site-root="./"></script>
+    <script>
+      import '../scripts/scroll-animations';
+    </script>
 
     <!-- Scripts -->
     <script is:inline>
-      // Smooth Parallax Effect
-      const blobs = [
-        { el: document.getElementById('blob-1'), speed: 0.12 },
-        { el: document.getElementById('blob-2'), speed: -0.08 },
-        { el: document.getElementById('blob-3'), speed: 0.05 }
-      ];
+      // Cinematic first-view header reveal
+      const header = document.getElementById('header');
+      const firstViewVideo = document.getElementById('first-view-video');
+      const headerRevealOffset = 800;
+      let introVideoCompleted = false;
+      let hasLeftMovieTop = false;
 
-      const parallaxImages = document.querySelectorAll('.parallax-img');
-      const imageObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          entry.target.classList.toggle('in-view', entry.isIntersecting);
+      const revealHeader = () => {
+        header.classList.add('is-visible');
+      };
+
+      const hideHeader = () => {
+        header.classList.remove('is-visible');
+      };
+
+      const updateHeaderState = () => {
+        const isAtMovieTop = window.scrollY <= headerRevealOffset;
+        if (!isAtMovieTop) {
+          hasLeftMovieTop = true;
+        }
+
+        if (isAtMovieTop && (!introVideoCompleted || hasLeftMovieTop)) {
+          hideHeader();
+        } else if (isAtMovieTop && introVideoCompleted) {
+          revealHeader();
+        } else {
+          revealHeader();
+        }
+
+        if (window.scrollY > headerRevealOffset) {
+          header.classList.add('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
+          header.classList.remove('border-transparent', 'bg-creamy-bg/80');
+        } else {
+          header.classList.remove('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
+          header.classList.add('border-transparent', 'bg-creamy-bg/80');
+        }
+      };
+
+      if (firstViewVideo) {
+        firstViewVideo.addEventListener('ended', () => {
+          introVideoCompleted = true;
+          updateHeaderState();
         });
-      }, { threshold: 0 });
-
-      parallaxImages.forEach(img => imageObserver.observe(img));
-
-      let ticking = false;
-
-      function updateParallax() {
-        const scrolled = window.pageYOffset;
-
-        // Background blobs parallax
-        blobs.forEach(blob => {
-          if (blob.el) {
-            blob.el.style.transform = `translate3d(0, ${scrolled * blob.speed}px, 0)`;
+        firstViewVideo.addEventListener('loadedmetadata', () => {
+          if (Number.isFinite(firstViewVideo.duration) && firstViewVideo.duration > 0) {
+            window.setTimeout(() => {
+              introVideoCompleted = true;
+              updateHeaderState();
+            }, Math.max((firstViewVideo.duration - 0.8) * 1000, 1800));
           }
-        });
-
-        // Images parallax
-        parallaxImages.forEach(img => {
-          if (img.classList.contains('in-view')) {
-            const parent = img.parentElement;
-            const parentRect = parent.getBoundingClientRect();
-            const viewHeight = window.innerHeight;
-            
-            // Calculate relative scroll position inside viewport
-            const elementPosition = parentRect.top;
-            const scrollPercent = elementPosition / (viewHeight + parentRect.height);
-            
-            // Translate range
-            const translateVal = (scrollPercent - 0.5) * 60;
-            img.style.transform = `scale(1.15) translate3d(0, ${translateVal}px, 0)`;
-          }
-        });
-
-        ticking = false;
+        }, { once: true });
       }
 
-      window.addEventListener('scroll', () => {
-        if (!ticking) {
-          window.requestAnimationFrame(updateParallax);
-          ticking = true;
-        }
-      });
-      // Initial trigger
-      updateParallax();
-
-      // Subtle header border on scroll
-      window.addEventListener('scroll', () => {
-          const header = document.getElementById('header');
-          if (window.scrollY > 20) {
-              header.classList.add('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
-              header.classList.remove('border-transparent', 'bg-creamy-bg/80');
-          } else {
-              header.classList.remove('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
-              header.classList.add('border-transparent', 'bg-creamy-bg/80');
-          }
-      });
-
-      // Mobile Menu Toggle
-      const btn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('close-btn');
-      const menu = document.getElementById('mobile-menu');
-      const links = document.querySelectorAll('.mobile-link');
-      
-      const openMenu = () => {
-        menu.classList.remove('hidden');
-        menu.classList.add('flex');
-        // Small delay for transition
-        setTimeout(() => {
-          menu.classList.remove('opacity-0');
-          menu.classList.add('opacity-100');
-        }, 10);
-        document.body.style.overflow = 'hidden';
-      };
-      
-      const closeMenu = () => {
-        menu.classList.remove('opacity-100');
-        menu.classList.add('opacity-0');
-        setTimeout(() => {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
-          document.body.style.overflow = '';
-        }, 300);
-      };
-      
-      btn.addEventListener('click', openMenu);
-      closeBtn.addEventListener('click', closeMenu);
-      links.forEach(link => link.addEventListener('click', closeMenu));
-    </script>
-  </body>
+      window.addEventListener('scroll', updateHeaderState);
+      updateHeaderState();
+    </script></body>
 </html>

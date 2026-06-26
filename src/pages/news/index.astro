@@ -1,0 +1,101 @@
+---
+
+import { formatPostDate, getFeaturedImage, getPosts, plainText } from '../../lib/wordpress';
+import '../../styles/tailwind.css';
+
+const posts = await getPosts({ perPage: 12 });
+const basePath = import.meta.env.BASE_URL;
+const homeHref = basePath;
+const aboutHref = basePath + '#about';
+const serviceHref = basePath + '#service';
+const newsHref = basePath + 'news/';
+const contactSectionHref = basePath + '#contact';
+const contactPageHref = basePath + 'contact/';
+---
+
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News | Genesis合同会社</title>
+    <meta name="description" content="Genesis合同会社からのお知らせ一覧です。">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  </head>
+  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white">
+    <header class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
+        <div class="text-xl font-black tracking-tight text-gray-900">
+          <a href={homeHref}>Genesis<span class="text-triad-red">.</span></a>
+        </div>
+        <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
+          <a href={aboutHref} class="hover:text-triad-red transition-all">About</a>
+          <a href={serviceHref} class="hover:text-triad-purple transition-all">Service</a>
+          <a href={newsHref} class="text-triad-pink transition-all">News</a>
+          <a href={contactSectionHref} class="hover:text-triad-lime transition-all">Contact</a>
+        </nav>
+        <a href={contactPageHref} class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+          Contact Us
+        </a>
+      </div>
+    </header>
+
+    <main class="pt-32">
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
+        <span class="text-triad-pink font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Latest Updates</span>
+        <h1 class="text-5xl md:text-7xl font-black italic text-gray-900 tracking-tight leading-none mb-6">News</h1>
+        <p class="text-lg text-gray-500 font-light max-w-xl mx-auto leading-relaxed">
+          Genesis合同会社からのお知らせ、更新情報、各事業に関するトピックを掲載しています。
+        </p>
+      </section>
+
+      <section class="max-w-7xl mx-auto px-6 lg:px-12 pb-24">
+        {posts.length > 0 ? (
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {posts.map((post) => {
+              const image = getFeaturedImage(post);
+              return (
+                <article class="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-[32px] overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-500">
+                  {image.src && (
+                    <a href={newsHref + post.slug + '/'} class="block aspect-[16/10] overflow-hidden bg-gray-100">
+                      <img src={image.src} alt={image.alt} class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
+                    </a>
+                  )}
+                  <div class="p-8">
+                    <time class="text-xs font-bold tracking-[0.2em] text-gray-400" datetime={post.date}>{formatPostDate(post.date)}</time>
+                    <h2 class="mt-4 text-2xl font-black italic text-gray-900 leading-tight">
+                      <a href={newsHref + post.slug + '/'} class="hover:text-triad-pink transition-colors" set:html={post.title.rendered} />
+                    </h2>
+                    <p class="mt-5 text-gray-500 font-light leading-relaxed">
+                      {plainText(post.excerpt.rendered)}
+                    </p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+        ) : (
+          <div class="bg-white/80 backdrop-blur-xl border border-gray-100 rounded-[32px] p-12 text-center text-gray-500">
+            現在、お知らせはありません。
+          </div>
+        )}
+      </section>
+    </main>
+
+    <footer class="border-t border-gray-100 py-10 px-6 lg:px-12">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <div class="flex flex-col gap-2">
+          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href={homeHref}>Genesis<span class="text-triad-red">.</span></a></div>
+          <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
+        </div>
+        <nav class="flex flex-wrap gap-x-8 gap-y-2 uppercase tracking-widest text-xs font-bold text-gray-400">
+          <a href={aboutHref} class="hover:text-gray-900 transition-colors">About</a>
+          <a href={serviceHref} class="hover:text-gray-900 transition-colors">Service</a>
+          <a href={newsHref} class="hover:text-gray-900 transition-colors">News</a>
+          <a href={contactSectionHref} class="hover:text-gray-900 transition-colors">Contact</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
