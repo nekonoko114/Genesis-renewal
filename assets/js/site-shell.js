@@ -140,7 +140,7 @@
             </a>
           </li>
           <li>
-            <a href="https://jol-live.com/" target="_blank" rel="noopener" class="hover:text-triad-pink transition-colors flex items-center gap-2 group">
+            <a href="https://jol.genesis-llc.co.jp/" target="_blank" rel="noopener" class="hover:text-triad-pink transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-triad-pink rounded-full transition-colors"></span>
               ライバー事業部 J.O.L
             </a>
