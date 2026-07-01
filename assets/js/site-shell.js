@@ -6,10 +6,10 @@
   const href = (path) => `${root}${path}`;
 
   const navItems = [
-    { label: 'About', href: href('index.html#about'), color: 'triad-red' },
-    { label: 'Service', href: href('index.html#service'), color: 'triad-purple' },
-    { label: 'News', href: href('index.html#news'), color: 'triad-pink' },
-    { label: 'Contact', href: href('index.html#contact'), color: 'triad-lime' },
+    { label: 'About', href: href('#about'), color: 'triad-red' },
+    { label: 'Service', href: href('#service'), color: 'triad-purple' },
+    { label: 'News', href: href('#news'), color: 'triad-pink' },
+    { label: 'Contact', href: href('#contact'), color: 'triad-lime' },
   ];
 
   const headerClass = [
@@ -38,14 +38,14 @@
     <header id="header" class="${headerClass}">
       <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
         <div class="text-xl font-black tracking-tight text-gray-900">
-          <a href="${href('index.html')}">Genesis<span class="text-triad-red">.</span></a>
+          <a href="${href('')}">Genesis<span class="text-triad-red">.</span></a>
         </div>
 
         <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
           ${navLinks}
         </nav>
 
-        <a href="${href('contact/index.html')}" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+        <a href="${href('contact/')}" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
           Contact Us
         </a>
 
@@ -61,7 +61,7 @@
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
       ${mobileLinks}
-      <a href="${href('contact/index.html')}" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
+      <a href="${href('contact/')}" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
     </div>`;
   }
 
@@ -71,7 +71,7 @@
     <footer class="border-t border-gray-100 py-10 px-6 lg:px-12">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
         <div class="flex flex-col gap-2">
-          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="${href('index.html')}">Genesis<span class="text-triad-red">.</span></a></div>
+          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="${href('')}">Genesis<span class="text-triad-red">.</span></a></div>
           <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
         </div>
 

@@ -1,6 +1,8 @@
 ---
 import '../styles/tailwind.css';
 import { formatPostDate, getPosts } from '../lib/wordpress';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
 const posts = await getPosts({ perPage: 3 });
 const basePath = import.meta.env.BASE_URL;
@@ -505,7 +507,7 @@ const basePath = import.meta.env.BASE_URL;
         <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
     </div>
 
-    <div data-site-header></div>
+    <Header />
 
     <!-- MAIN CONTENT -->
     <main>
@@ -819,9 +821,8 @@ const basePath = import.meta.env.BASE_URL;
       </section>
     </main>
 
-    <div data-site-footer></div>
+    <Footer />
 
-    <script src="./assets/js/site-shell.js" data-site-root="./"></script>
     <script>
       import '../scripts/scroll-animations';
     </script>

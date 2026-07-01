@@ -1,5 +1,7 @@
 ---
 import '../styles/tailwind.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!DOCTYPE html>
@@ -74,46 +76,12 @@ import '../styles/tailwind.css';
         <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
     </div>
 
-    <!-- Minimal Header -->
-    <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-        <div class="text-xl font-black tracking-tight text-gray-900">
-          <a href="../index.html">Genesis<span class="text-triad-red">.</span></a>
-        </div>
-
-        <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
-          <a href="../index.html#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
-          <a href="../index.html#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
-          <a href="../index.html#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
-          <a href="../index.html#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
-        </nav>
-
-        <!-- Desktop Contact Button -->
-        <a href="../contact/index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
-          Contact Us
-        </a>
-
-        <!-- Mobile Hamburger Btn -->
-        <button id="menu-btn" class="md:hidden text-gray-900 p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
-      </div>
-    </header>
-
-    <!-- Mobile Nav Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
-        <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <a href="../index.html#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
-        <a href="../index.html#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
-        <a href="../index.html#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
-        <a href="../index.html#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
-        <a href="../contact/index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
-    </div>
+    <Header />
 
     <!-- MAIN CONTENT -->
     <main class="pt-32">
       <!-- Title Section -->
-      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
+      <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 py-8 sm:py-16 text-center">
         <span class="text-triad-red font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Who We Are</span>
         <h1 class="text-5xl md:text-7xl font-black text-gray-900 tracking-tight leading-none mb-6">Company Outline</h1>
         <p class="text-lg text-gray-500 font-light max-w-xl mx-auto leading-relaxed">
@@ -122,10 +90,10 @@ import '../styles/tailwind.css';
       </section>
 
       <!-- Mission & Message Section -->
-      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 py-4 sm:py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-12">
           <!-- Philosophy Card -->
-          <div class="glass-card rounded-[40px] p-10 md:p-16 flex flex-col justify-between">
+          <div class="glass-card rounded-[20px] sm:rounded-[40px] p-4 sm:p-10 md:p-16 flex flex-col justify-between">
             <div>
               <span class="text-triad-red font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-red pb-2 inline-block">Philosophy</span>
               <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-8 leading-tight">人生謳歌</h2>
@@ -140,7 +108,7 @@ import '../styles/tailwind.css';
           </div>
 
           <!-- Representative Message -->
-          <div class="glass-card rounded-[40px] p-10 md:p-16 flex flex-col justify-between">
+          <div class="glass-card rounded-[20px] sm:rounded-[40px] p-4 sm:p-10 md:p-16 flex flex-col justify-between">
             <div>
               <span class="text-triad-purple font-bold tracking-[0.2em] text-xs uppercase mb-6 block border-b-2 border-triad-purple pb-2 inline-block">Message</span>
               <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-8 leading-tight">代表メッセージ</h2>
@@ -162,63 +130,71 @@ import '../styles/tailwind.css';
       </section>
 
       <!-- MVV Section -->
-      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-24">
-        <div class="relative overflow-hidden border-y border-gray-200 py-14 md:py-20">
+      <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 py-8 sm:py-24">
+        <div class="relative overflow-hidden border-y border-gray-200 py-6 sm:py-14 md:py-20">
           <div class="absolute top-0 left-0 w-28 h-px bg-triad-red"></div>
           <div class="absolute bottom-0 right-0 w-28 h-px bg-triad-cyan"></div>
 
           <div class="grid grid-cols-1 lg:grid-cols-[0.9fr_1.4fr] gap-16 lg:gap-24">
             <div class="relative">
               <p class="text-[10px] md:text-xs font-bold uppercase tracking-[0.45em] text-gray-400 mb-8">Mission / Vision / Value</p>
-              <h2 class="text-[82px] sm:text-[120px] md:text-[156px] lg:text-[180px] font-black tracking-tight leading-[0.78] text-gray-900">
-                M<br>V<br>V
+              
+              <!-- Giant Backdrop Outline Text for Design Impact -->
+              <div class="absolute -top-8 -left-3 sm:-left-6 select-none pointer-events-none text-[64px] sm:text-[100px] md:text-[130px] lg:text-[150px] font-black uppercase tracking-widest font-outfit z-0" style="-webkit-text-stroke: 1.5px rgba(0, 0, 0, 0.06); color: transparent;">
+                Philosophy
+              </div>
+
+              <h2 class="relative z-10 flex flex-row lg:flex-col text-[56px] sm:text-[90px] md:text-[120px] lg:text-[160px] font-black tracking-tight leading-none lg:leading-[0.78] text-gray-900">
+                <span>M</span>
+                <span>V</span>
+                <span>V</span>
               </h2>
-              <p class="mt-10 max-w-xs text-sm md:text-base text-gray-500 font-light leading-loose">
+              <p class="mt-8 max-w-xs text-base md:text-lg text-gray-600 font-normal leading-relaxed relative z-10">
                 Genesisが大切にしている、関わる人たちへの約束と、これから目指す姿。
               </p>
             </div>
 
             <div class="border-t border-gray-900">
-              <article class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-6 md:gap-12 border-b border-gray-200 py-10 md:py-12">
+              <article class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-3 md:gap-12 border-b border-gray-200 py-4 sm:py-10 md:py-12 group">
                 <div>
-                  <p class="text-6xl md:text-7xl font-black text-gray-900 leading-none">01</p>
-                  <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.35em] text-triad-red">Mission</p>
+                  <p class="text-5xl md:text-7xl font-black text-gray-900 leading-none">01</p>
+                  <p class="mt-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-900 relative pb-2 inline-block after:absolute after:bottom-0 after:left-0 after:w-6 group-hover:after:w-16 after:h-[3px] after:bg-gradient-to-r after:from-triad-red after:to-triad-pink after:transition-all after:duration-500 after:ease-out">Mission</p>
                 </div>
                 <div>
                   <h3 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.15] tracking-tight">
                     関わる一人ひとりが、<br>人生を謳歌できる<br class="hidden md:block">プラットフォームを目指す。
                   </h3>
-                  <p class="mt-8 text-gray-500 font-light leading-loose max-w-2xl">
+                  <p class="mt-8 text-base md:text-lg text-gray-600 font-normal leading-relaxed max-w-2xl">
                     Genesis合同会社は、スタッフやパートナー、クライアントなど、関わる全ての人が「生まれてよかった」と心から実感できるような場を提供し続けます。
                   </p>
                 </div>
               </article>
 
-              <article class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-6 md:gap-12 border-b border-gray-200 py-10 md:py-12">
+              <article class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-3 md:gap-12 border-b border-gray-200 py-4 sm:py-10 md:py-12 group">
                 <div>
                   <p class="text-6xl md:text-7xl font-black text-gray-900 leading-none">02</p>
-                  <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.35em] text-triad-purple">Vision</p>
+                  <p class="mt-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-900 relative pb-2 inline-block after:absolute after:bottom-0 after:left-0 after:w-6 group-hover:after:w-16 after:h-[3px] after:bg-gradient-to-r after:from-triad-purple after:to-triad-cyan after:transition-all after:duration-500 after:ease-out">Vision</p>
                 </div>
                 <div>
                   <h3 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.15] tracking-tight">
                     やりたい・叶えたいを形にし、<br>多様な働き方と自己実現を支援する。
                   </h3>
-                  <p class="mt-8 text-gray-500 font-light leading-loose max-w-2xl">
+                  <p class="mt-8 text-base md:text-lg text-gray-600 font-normal leading-relaxed max-w-2xl">
                     通信分野にとどまらず、多様な事業領域において、「スタッフの声」や「アイデア」を尊重し、個々のライフスタイルやキャリアの希望に応じて新たな価値を創出し続ける組織を目指します。
                   </p>
                 </div>
               </article>
 
-              <article class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-6 md:gap-12 py-10 md:py-12">
+              <article class="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-3 md:gap-12 py-4 sm:py-10 md:py-12 group">
                 <div>
                   <p class="text-6xl md:text-7xl font-black text-gray-900 leading-none">03</p>
-                  <p class="mt-3 text-[10px] font-bold uppercase tracking-[0.35em] text-triad-lime">Value</p>
+                  <p class="mt-3 text-[10px] font-black uppercase tracking-[0.3em] text-gray-900 relative pb-2 inline-block after:absolute after:bottom-0 after:left-0 after:w-6 group-hover:after:w-16 after:h-[3px] after:bg-gradient-to-r after:from-triad-lime after:to-triad-cyan after:transition-all after:duration-500 after:ease-out">Value</p>
                 </div>
                 <div>
                   <h3 class="text-3xl md:text-5xl font-black text-gray-900 leading-[1.15] tracking-tight">
                     人の想いを尊重し、<br>挑戦を支え、共に成長する。
                   </h3>
-                  <p class="mt-8 text-gray-500 font-light leading-loose max-w-2xl">
+                  <p class="mt-8 text-base md:text-lg text-gray-600 font-normal leading-relaxed max-w-2xl">
                     一人ひとりの働き方やアイデアを大切にし、挑戦が生まれる環境を整えます。スタッフ、パートナー、クライアントと誠実に向き合い、持続的な成長を実現します。
                   </p>
                 </div>
@@ -229,41 +205,50 @@ import '../styles/tailwind.css';
       </section>
 
       <!-- Profile Table Section -->
-      <section class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
-        <div class="glass-card rounded-[40px] p-10 md:p-16 max-w-5xl mx-auto">
+      <section class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-12 py-6 sm:py-20">
+        <div class="glass-card rounded-[20px] sm:rounded-[40px] p-4 sm:p-10 md:p-16 max-w-5xl mx-auto">
           <h2 class="text-3xl md:text-4xl font-black text-gray-900 mb-12 text-center">Corporate Profile</h2>
 
           <div class="divide-y divide-gray-100">
             <!-- Row 1 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Company Name</span>
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Company Name</span>
               <div class="md:col-span-3">
-                <p class="text-lg font-bold text-gray-900">Genesis合同会社</p>
+                <p class="text-xl font-bold text-gray-900">Genesis合同会社</p>
               </div>
             </div>
 
             <!-- Row 2 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Location</span>
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Location</span>
               <div class="md:col-span-3">
-                <p class="text-lg text-gray-900 font-medium">〒550-0002 大阪府大阪市西区江戸堀1-19-10 三共肥後橋ビル2F</p>
+                <p class="text-xl text-gray-900 font-medium leading-relaxed">〒550-0002 大阪府大阪市西区江戸堀1-19-10 三共肥後橋ビル2F</p>
               </div>
             </div>
 
             <!-- Row 3 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Business Areas</span>
-              <div class="md:col-span-3 text-gray-600 font-light space-y-2">
-                <p>・人材ソリューション事業部</p>
-                <p>・トータルソリューション事業部</p>
-                <p>・ライバーマネジメント事業部</p>
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Business Areas</span>
+              <div class="md:col-span-3 text-lg text-gray-800 font-normal space-y-3">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>人材アウトソーシング事業部</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>トータルソリューション事業部</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>ライバーマネジメント事業部</span>
+                </div>
               </div>
             </div>
 
             <!-- Row 4 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Contact</span>
-              <div class="md:col-span-3 text-gray-600 font-light space-y-2">
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Contact</span>
+              <div class="md:col-span-3 text-lg text-gray-800 font-normal space-y-2">
                 <p>電話番号 : <a href="tel:06-6147-3440" class="hover:text-triad-purple transition-all font-medium">06-6147-3440</a></p>
                 <p>FAX番号 : 06-6147-8960</p>
                 <p>メール : <a href="mailto:info@genesis-llc.co.jp" class="hover:text-triad-purple transition-all font-medium">info@genesis-llc.co.jp</a></p>
@@ -271,51 +256,78 @@ import '../styles/tailwind.css';
             </div>
 
             <!-- Row 5 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Directors</span>
-              <div class="md:col-span-3 text-gray-900 font-medium">
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Directors</span>
+              <div class="md:col-span-3 text-lg md:text-xl text-gray-900 font-medium space-y-1">
                 <p>代表社員：片桐 慶之</p>
-                <p class="mt-2">取締役：前原 京典</p>
+                <p>取締役：前原 京典</p>
               </div>
             </div>
 
             <!-- Row 6 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Established</span>
-              <div class="md:col-span-3 text-gray-900 font-medium">
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Established</span>
+              <div class="md:col-span-3 text-lg md:text-xl text-gray-900 font-medium">
                 <p>2023年7月27日</p>
               </div>
             </div>
 
             <!-- Row 7 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Capital</span>
-              <div class="md:col-span-3 text-gray-900 font-medium">
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Capital</span>
+              <div class="md:col-span-3 text-lg md:text-xl text-gray-900 font-medium">
                 <p>501万円</p>
               </div>
             </div>
 
             <!-- Row 8 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Employees</span>
-              <div class="md:col-span-3 text-gray-900 font-medium">
-                <p>152名 <span class="text-xs text-gray-400 font-normal">（社員・個人事業主・アルバイト含む ※2026年4月時点）</span></p>
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Employees</span>
+              <div class="md:col-span-3 text-lg md:text-xl text-gray-900 font-medium">
+                <p>152名 <span class="text-sm text-gray-400 font-normal">（社員・個人事業主・アルバイト含む ※2026年4月時点）</span></p>
               </div>
             </div>
 
             <!-- Row 9 -->
-            <div class="py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8">
-              <span class="text-xs font-bold uppercase tracking-widest text-triad-purple md:pt-1">Partners</span>
-              <div class="md:col-span-3 text-gray-600 font-light grid grid-cols-1 md:grid-cols-2 gap-2">
-                <p>・株式会社First Project</p>
-                <p>・株式会社TDモバイル</p>
-                <p>・株式会社Nex-T</p>
-                <p>・株式会社クレイス</p>
-                <p>・株式会社新通エスピー</p>
-                <p>・株式会社TIR</p>
-                <p>・株式会社ファントゥ</p>
-                <p>・株式会社サンダータービュランス</p>
-                <p>・株式会社SUXPERIA</p>
+            <div class="py-3.5 sm:py-6 md:py-8 grid grid-cols-1 md:grid-cols-4 gap-1.5 md:gap-8">
+              <span class="text-sm md:text-base font-bold uppercase tracking-wider text-triad-purple md:pt-1">Partners</span>
+              <div class="md:col-span-3 text-lg text-gray-800 font-normal grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社First Project</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社TDモバイル</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社Nex-T</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社クレイス</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社新通エスピー</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社TIR</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社ファントゥ</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社サンダータービュランス</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 bg-triad-purple flex-shrink-0 rotate-45"></span>
+                  <span>株式会社SUXPERIA</span>
+                </div>
               </div>
             </div>
 
@@ -324,27 +336,7 @@ import '../styles/tailwind.css';
       </section>
     </main>
 
-    <footer class="border-t border-gray-100 py-10 px-6 lg:px-12">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-        <!-- Logo & Copyright -->
-        <div class="flex flex-col gap-2">
-          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="../index.html">Genesis<span class="text-triad-red">.</span></a></div>
-          <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
-        </div>
-        <!-- Nav links -->
-        <nav class="flex flex-wrap gap-x-8 gap-y-2 uppercase tracking-widest text-xs font-bold text-gray-400">
-          <a href="../index.html#about" class="hover:text-gray-900 transition-colors">About</a>
-          <a href="../index.html#service" class="hover:text-gray-900 transition-colors">Service</a>
-          <a href="../index.html#news" class="hover:text-gray-900 transition-colors">News</a>
-          <a href="../index.html#contact" class="hover:text-gray-900 transition-colors">Contact</a>
-        </nav>
-        <!-- SNS Icons -->
-        <div class="flex gap-4 text-gray-400">
-          <a href="https://x.com/genesis_sns?s=21&t=AH_LBc3ctTNIjEuSUVRRSA" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="X (Twitter)"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="https://www.instagram.com/genesis_llc_?igsh=YW9mcXJld3ZrOW90&utm_source=qr" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="Instagram"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-        </div>
-      </div>
-    </footer>
+    <Footer />
 
     <!-- Scripts -->
     <script is:inline>
@@ -376,49 +368,6 @@ import '../styles/tailwind.css';
         }
       });
       updateParallax();
-
-      // Subtle header border on scroll
-      window.addEventListener('scroll', () => {
-          const header = document.getElementById('header');
-          if (window.scrollY > 20) {
-              header.classList.add('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
-              header.classList.remove('border-transparent', 'bg-creamy-bg/80');
-          } else {
-              header.classList.remove('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
-              header.classList.add('border-transparent', 'bg-creamy-bg/80');
-          }
-      });
-
-      // Mobile Menu Toggle
-      const btn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('close-btn');
-      const menu = document.getElementById('mobile-menu');
-      const links = document.querySelectorAll('.mobile-link');
-
-      const openMenu = () => {
-        menu.classList.remove('hidden');
-        menu.classList.add('flex');
-        // Small delay for transition
-        setTimeout(() => {
-          menu.classList.remove('opacity-0');
-          menu.classList.add('opacity-100');
-        }, 10);
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closeMenu = () => {
-        menu.classList.remove('opacity-100');
-        menu.classList.add('opacity-0');
-        setTimeout(() => {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
-          document.body.style.overflow = '';
-        }, 300);
-      };
-
-      btn.addEventListener('click', openMenu);
-      closeBtn.addEventListener('click', closeMenu);
-      links.forEach(link => link.addEventListener('click', closeMenu));
     </script>
   </body>
 </html>

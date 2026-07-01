@@ -1,5 +1,7 @@
 ---
 import '../styles/tailwind.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <!DOCTYPE html>
@@ -74,41 +76,7 @@ import '../styles/tailwind.css';
         <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
     </div>
 
-    <!-- Minimal Header -->
-    <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
-      <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
-        <div class="text-xl font-black tracking-tight text-gray-900">
-          <a href="../index.html">Genesis<span class="text-triad-red">.</span></a>
-        </div>
-
-        <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
-          <a href="../index.html#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
-          <a href="../index.html#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
-          <a href="../index.html#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
-          <a href="../index.html#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
-        </nav>
-
-        <!-- Desktop Contact Button -->
-        <a href="./index.html" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
-          Contact Us
-        </a>
-
-        <!-- Mobile Hamburger Btn -->
-        <button id="menu-btn" class="md:hidden text-gray-900 p-2">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-        </button>
-      </div>
-    </header>
-
-    <!-- Mobile Nav Menu -->
-    <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
-        <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-        <a href="../index.html#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
-        <a href="../index.html#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
-        <a href="../index.html#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
-        <a href="../index.html#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
-        <a href="./index.html" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
-    </div>
+    <Header />
 
     <!-- MAIN CONTENT -->
     <main class="pt-32">
@@ -119,7 +87,7 @@ import '../styles/tailwind.css';
           お問い合わせ
         </h1>
         <p id="contact-desc" class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-          弊社ホームページをご覧いただき、誠にありがとうございます。人材ソリューション、トータルソリューション（法人営業）、およびライバーマネジメント事業に関するお問い合わせやご相談を承っております。お気軽にご相談ください。
+          弊社ホームページをご覧いただき、誠にありがとうございます。人材アウトソーシング事業部、トータルソリューション（法人営業）、およびライバーマネジメント事業に関するお問い合わせやご相談を承っております。お気軽にご相談ください。
         </p>
       </section>
 
@@ -205,27 +173,7 @@ import '../styles/tailwind.css';
       </section>
     </main>
 
-    <footer class="border-t border-gray-100 py-10 px-6 lg:px-12">
-      <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-        <!-- Logo & Copyright -->
-        <div class="flex flex-col gap-2">
-          <div class="text-gray-900 font-black text-2xl tracking-tight"><a href="../index.html">Genesis<span class="text-triad-red">.</span></a></div>
-          <p class="text-xs text-gray-400 font-medium">&copy; 2026 Genesis合同会社.</p>
-        </div>
-        <!-- Nav links -->
-        <nav class="flex flex-wrap gap-x-8 gap-y-2 uppercase tracking-widest text-xs font-bold text-gray-400">
-          <a href="../index.html#about" class="hover:text-gray-900 transition-colors">About</a>
-          <a href="../index.html#service" class="hover:text-gray-900 transition-colors">Service</a>
-          <a href="../index.html#news" class="hover:text-gray-900 transition-colors">News</a>
-          <a href="../index.html#contact" class="hover:text-gray-900 transition-colors">Contact</a>
-        </nav>
-        <!-- SNS Icons -->
-        <div class="flex gap-4 text-gray-400">
-          <a href="https://x.com/genesis_sns?s=21&t=AH_LBc3ctTNIjEuSUVRRSA" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="X (Twitter)"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
-          <a href="https://www.instagram.com/genesis_llc_?igsh=YW9mcXJld3ZrOW90&utm_source=qr" target="_blank" rel="noopener" class="hover:text-gray-900 transition-colors" aria-label="Instagram"><svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-        </div>
-      </div>
-    </footer>
+    <Footer />
 
     <!-- Scripts -->
     <script is:inline>
@@ -258,48 +206,6 @@ import '../styles/tailwind.css';
       });
       updateParallax();
 
-      // Subtle header border on scroll
-      window.addEventListener('scroll', () => {
-          const header = document.getElementById('header');
-          if (window.scrollY > 20) {
-              header.classList.add('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
-              header.classList.remove('border-transparent', 'bg-creamy-bg/80');
-          } else {
-              header.classList.remove('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
-              header.classList.add('border-transparent', 'bg-creamy-bg/80');
-          }
-      });
-
-      // Mobile Menu Toggle
-      const btn = document.getElementById('menu-btn');
-      const closeBtn = document.getElementById('close-btn');
-      const menu = document.getElementById('mobile-menu');
-      const links = document.querySelectorAll('.mobile-link');
-
-      const openMenu = () => {
-        menu.classList.remove('hidden');
-        menu.classList.add('flex');
-        setTimeout(() => {
-          menu.classList.remove('opacity-0');
-          menu.classList.add('opacity-100');
-        }, 10);
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closeMenu = () => {
-        menu.classList.remove('opacity-100');
-        menu.classList.add('opacity-0');
-        setTimeout(() => {
-          menu.classList.add('hidden');
-          menu.classList.remove('flex');
-          document.body.style.overflow = '';
-        }, 300);
-      };
-
-      btn.addEventListener('click', openMenu);
-      closeBtn.addEventListener('click', closeMenu);
-      links.forEach(link => link.addEventListener('click', closeMenu));
-
       // URL Parameter Check & Form Control
       window.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -310,8 +216,8 @@ import '../styles/tailwind.css';
 
         if (type === 'corporate') {
           subjectSelect.value = 'corporate_service';
-          if (contactTitle) contactTitle.textContent = '人材・トータルソリューション お問い合わせ';
-          if (contactDesc) contactDesc.innerHTML = '人材ソリューション、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
+          if (contactTitle) contactTitle.textContent = '人材アウトソーシング・トータルソリューション お問い合わせ';
+          if (contactDesc) contactDesc.innerHTML = '人材アウトソーシング事業部、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
         } else if (type === 'liver') {
           subjectSelect.value = 'liver_audition';
           if (contactTitle) contactTitle.textContent = 'ライバーマネジメント お問い合わせ';
