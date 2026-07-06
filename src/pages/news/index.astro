@@ -1,5 +1,6 @@
 ---
 
+import { sanitize } from '../../utils/sanitize';
 import { formatPostDate, getFeaturedImage, getPosts, plainText } from '../../lib/wordpress';
 import '../../styles/tailwind.css';
 
@@ -65,7 +66,7 @@ const contactPageHref = basePath + 'contact/';
                   <div class="p-8">
                     <time class="text-xs font-bold tracking-[0.2em] text-gray-400" datetime={post.date}>{formatPostDate(post.date)}</time>
                     <h2 class="mt-4 text-2xl font-black italic text-gray-900 leading-tight">
-                      <a href={newsHref + post.slug + '/'} class="hover:text-triad-pink transition-colors" set:html={post.title.rendered} />
+                      <a href={newsHref + post.slug + '/'} class="hover:text-triad-pink transition-colors" set:html={sanitize(post.title.rendered)} />
                     </h2>
                     <p class="mt-5 text-gray-500 font-light leading-relaxed">
                       {plainText(post.excerpt.rendered)}

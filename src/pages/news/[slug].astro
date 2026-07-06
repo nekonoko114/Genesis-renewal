@@ -1,5 +1,6 @@
 ---
 
+import { sanitize } from '../../utils/sanitize';
 import { formatPostDate, getFeaturedImage, getPosts, plainText, type WordPressPost } from '../../lib/wordpress';
 import '../../styles/tailwind.css';
 
@@ -72,7 +73,7 @@ const contactPageHref = basePath + 'contact/';
 
         <header class="mb-12">
           <time class="text-xs font-bold tracking-[0.2em] text-gray-400" datetime={post.date}>{formatPostDate(post.date)}</time>
-          <h1 class="mt-5 text-4xl md:text-6xl font-black italic text-gray-900 leading-tight" set:html={post.title.rendered} />
+          <h1 class="mt-5 text-4xl md:text-6xl font-black italic text-gray-900 leading-tight" set:html={sanitize(post.title.rendered)} />
         </header>
 
         {image.src && (
@@ -81,7 +82,7 @@ const contactPageHref = basePath + 'contact/';
           </figure>
         )}
 
-        <div class="wp-content bg-white/80 backdrop-blur-xl border border-gray-100 rounded-[32px] p-8 md:p-12 text-gray-600 font-light leading-loose" set:html={post.content.rendered} />
+        <div class="wp-content bg-white/80 backdrop-blur-xl border border-gray-100 rounded-[32px] p-8 md:p-12 text-gray-600 font-light leading-loose" set:html={sanitize(post.content.rendered)} />
       </article>
     </main>
   </body>
