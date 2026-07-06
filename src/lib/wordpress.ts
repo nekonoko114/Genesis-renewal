@@ -44,8 +44,15 @@ function endpoint(path: string, params: Record<string, string | number> = {}) {
   return url;
 }
 
+const wpCache = new Map<string, any>();
+
 async function fetchWp<T>(path: string, params: Record<string, string | number> = {}): Promise<T | null> {
   if (!API_URL) return null;
+
+  const cacheKey = JSON.stringify({ path, params });
+  if (wpCache.has(cacheKey)) {
+    return wpCache.get(cacheKey) as T;
+  }
 
   try {
     const response = await fetch(endpoint(path, params));
@@ -53,7 +60,9 @@ async function fetchWp<T>(path: string, params: Record<string, string | number> 
       console.warn(`WordPress API request failed: ${response.status} ${response.statusText}`);
       return null;
     }
-    return await response.json() as T;
+    const data = await response.json() as T;
+    wpCache.set(cacheKey, data);
+    return data;
   } catch (error) {
     console.warn('WordPress API request failed:', error);
     return null;
