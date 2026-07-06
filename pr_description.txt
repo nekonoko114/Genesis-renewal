@@ -1,0 +1,11 @@
+💡 **What:**
+Throttled the synchronous scroll event listener on `index.astro` using `requestAnimationFrame` and a ticking flag, and marked the event listener as `{ passive: true }`.
+
+🎯 **Why:**
+Scroll events can fire rapidly (dozens of times per second). Previously, the code performed DOM queries and class manipulations synchronously on every scroll event. This forces the browser to run style recalculations and layout passes, potentially blocking the main thread and causing scroll jank. By delegating the DOM manipulation to `requestAnimationFrame`, the layout thrashing is reduced to at most once per animation frame (typically ~60fps). Adding `{ passive: true }` informs the browser that we won't call `preventDefault()`, enabling the compositor to scroll the page smoothly without waiting for JavaScript execution.
+
+📊 **Measured Improvement:**
+Since client-side scroll performance depends significantly on hardware, browser, and scroll velocity, automated programmatic benchmarking of this fix is not feasible in a standard CLI environment. However, the theoretical improvement is clear:
+- **Baseline:** `N` scroll events -> `N` synchronous DOM updates/style calculations.
+- **Improved:** `N` scroll events -> maximum `1` DOM update per animation frame (~16ms).
+- **Result:** Decreased main thread blocking time and smoother scrolling experience, particularly on low-end devices and during fast scrolls.
