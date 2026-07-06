@@ -107,7 +107,7 @@ import Footer from '../components/Footer.astro';
           <div class="absolute -top-24 -right-24 w-48 h-48 bg-triad-purple/10 rounded-full filter blur-3xl pointer-events-none"></div>
           <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-triad-cyan/10 rounded-full filter blur-3xl pointer-events-none"></div>
 
-          <form action="#" method="POST" class="space-y-10 relative z-10">
+          <form id="contact-form" action="javascript:void(0);" novalidate class="space-y-10 relative z-10">
             <!-- 題名 (Select) -->
             <div class="flex flex-col">
               <label for="subject" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">題名 <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
@@ -130,24 +130,28 @@ import Footer from '../components/Footer.astro';
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
               </div>
+              <p class="error-msg text-xs text-triad-red mt-2 hidden font-bold">※ 題名を選択してください</p>
             </div>
 
             <!-- 氏名 (Input) -->
             <div class="flex flex-col">
               <label for="name" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">氏名 <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
               <input id="name" name="name" type="text" required placeholder="おなまえ" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300" />
+              <p class="error-msg text-xs text-triad-red mt-2 hidden font-bold">※ 氏名を入力してください</p>
             </div>
 
             <!-- 電話番号 (Input) -->
             <div class="flex flex-col">
               <label for="tel" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">電話番号 <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
               <input id="tel" name="tel" type="tel" required placeholder="090-0000-0000" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300" />
+              <p class="error-msg text-xs text-triad-red mt-2 hidden font-bold">※ 電話番号を入力してください</p>
             </div>
 
             <!-- メールアドレス (Input) -->
             <div class="flex flex-col">
               <label for="email" class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-2">メールアドレス <span class="text-triad-red text-[10px] ml-1">※必須</span></label>
               <input id="email" name="email" type="email" required placeholder="example@example.com" class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium placeholder-gray-300" />
+              <p class="error-msg text-xs text-triad-red mt-2 hidden font-bold">※ 有効なメールアドレスを入力してください</p>
             </div>
 
             <!-- お問合せ内容 (Textarea) -->
@@ -163,9 +167,16 @@ import Footer from '../components/Footer.astro';
 
             <!-- Submit Button -->
             <div class="pt-4">
-              <button type="submit" class="w-full py-5 rounded-full bg-gray-900 text-white font-bold tracking-widest uppercase shadow-lg hover:bg-gray-800 transition-all hover:scale-[1.02] active:scale-95 duration-300 flex items-center justify-center gap-2">
+              <button type="submit" class="w-full py-5 rounded-full bg-gray-900 text-white font-bold tracking-widest uppercase shadow-lg hover:bg-gray-800 transition-all hover:scale-[1.02] active:scale-95 duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
                 送信する
               </button>
+              
+              <!-- フォームステータス（成功・エラーメッセージ） -->
+              <div id="form-status" class="hidden mt-8 p-6 rounded-2xl shadow-lg border text-center transition-all duration-500">
+                <div id="form-status-icon" class="mb-3 flex justify-center"></div>
+                <h3 id="form-status-title" class="text-lg font-bold mb-2"></h3>
+                <p id="form-status-message" class="text-sm font-medium"></p>
+              </div>
             </div>
 
           </form>
@@ -176,7 +187,7 @@ import Footer from '../components/Footer.astro';
     <Footer />
 
     <!-- Scripts -->
-    <script is:inline>
+    <script>
       // Smooth Parallax Effect
       const blobs = [
         { el: document.getElementById('blob-1'), speed: 0.12 },
@@ -187,7 +198,7 @@ import Footer from '../components/Footer.astro';
       let ticking = false;
 
       function updateParallax() {
-        const scrolled = window.pageYOffset;
+        const scrolled = window.scrollY;
 
         blobs.forEach(blob => {
           if (blob.el) {
@@ -207,23 +218,121 @@ import Footer from '../components/Footer.astro';
       updateParallax();
 
       // URL Parameter Check & Form Control
-      window.addEventListener('DOMContentLoaded', () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        const type = urlParams.get('type');
-        const subjectSelect = document.getElementById('subject');
-        const contactTitle = document.getElementById('contact-title');
-        const contactDesc = document.getElementById('contact-desc');
+      const urlParams = new URLSearchParams(window.location.search);
+      const type = urlParams.get('type');
+      const subjectSelect = document.getElementById('subject') as HTMLSelectElement;
+      const contactTitle = document.getElementById('contact-title');
+      const contactDesc = document.getElementById('contact-desc');
 
-        if (type === 'corporate') {
-          subjectSelect.value = 'corporate_service';
-          if (contactTitle) contactTitle.textContent = '人材アウトソーシング・トータルソリューション お問い合わせ';
-          if (contactDesc) contactDesc.innerHTML = '人材アウトソーシング事業部、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
-        } else if (type === 'liver') {
-          subjectSelect.value = 'liver_audition';
-          if (contactTitle) contactTitle.textContent = 'ライバーマネジメント お問い合わせ';
-          if (contactDesc) contactDesc.innerHTML = 'ライバーマネジメント事業（J.O.L）に関するお問い合わせ・所属応募窓口です。必要事項をご記入の上、送信してください。';
-        }
-      });
+      if (type === 'corporate' && subjectSelect) {
+        subjectSelect.value = 'corporate_service';
+        if (contactTitle) contactTitle.textContent = '人材アウトソーシング・トータルソリューション お問い合わせ';
+        if (contactDesc) contactDesc.innerHTML = '人材アウトソーシング事業部、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
+      } else if (type === 'liver' && subjectSelect) {
+        subjectSelect.value = 'liver_audition';
+        if (contactTitle) contactTitle.textContent = 'ライバーマネジメント お問い合わせ';
+        if (contactDesc) contactDesc.innerHTML = 'ライバーマネジメント事業（J.O.L）に関するお問い合わせ・所属応募窓口です。必要事項をご記入の上、送信してください。';
+      }
+
+      // Form Submission Logic
+      const contactForm = document.getElementById('contact-form') as HTMLFormElement;
+      const formStatus = document.getElementById('form-status');
+      const formStatusIcon = document.getElementById('form-status-icon');
+      const formStatusTitle = document.getElementById('form-status-title');
+      const formStatusMessage = document.getElementById('form-status-message');
+      
+      if (contactForm) {
+        const submitBtn = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+        const inputs = contactForm.querySelectorAll('input, select, textarea');
+
+        // リアルタイムバリデーション
+        inputs.forEach(input => {
+          input.addEventListener('input', () => {
+            const el = input as HTMLInputElement;
+            const errorMsg = el.parentElement?.querySelector('.error-msg');
+            if (errorMsg) {
+              if (el.validity.valid) {
+                errorMsg.classList.add('hidden');
+                el.classList.remove('border-triad-red');
+                el.classList.add('border-gray-200');
+              } else {
+                errorMsg.classList.remove('hidden');
+                el.classList.remove('border-gray-200');
+                el.classList.add('border-triad-red');
+              }
+            }
+          });
+        });
+        
+        contactForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          
+          // 送信時バリデーションチェック
+          let isValid = true;
+          inputs.forEach(input => {
+            const el = input as HTMLInputElement;
+            if (!el.validity.valid) {
+              isValid = false;
+              const errorMsg = el.parentElement?.querySelector('.error-msg');
+              if (errorMsg) errorMsg.classList.remove('hidden');
+              el.classList.remove('border-gray-200');
+              el.classList.add('border-triad-red');
+            }
+          });
+
+          if (!isValid) {
+            // 最初のエラー要素にスクロール
+            const firstError = contactForm.querySelector('.border-triad-red');
+            if (firstError) {
+              firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+            return;
+          }
+          
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> 送信中...';
+          }
+          if (formStatus) {
+            formStatus.classList.add('hidden');
+          }
+
+          const formData = new FormData(contactForm);
+
+          try {
+            const response = await fetch('/api/contact', {
+              method: 'POST',
+              body: formData,
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+              if (formStatus && formStatusIcon && formStatusTitle && formStatusMessage) {
+                formStatus.className = 'mt-8 p-6 rounded-2xl shadow-lg border text-center transition-all duration-500 bg-teal-50 border-teal-200 text-teal-900';
+                formStatusIcon.innerHTML = '<svg class="w-12 h-12 text-teal-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+                formStatusTitle.textContent = '送信完了';
+                formStatusMessage.textContent = 'お問い合わせを受け付けました。担当者からのご連絡をお待ちください。';
+              }
+              contactForm.reset();
+            } else {
+              throw new Error(result.error || '送信に失敗しました。');
+            }
+          } catch (error: any) {
+            if (formStatus && formStatusIcon && formStatusTitle && formStatusMessage) {
+              formStatus.className = 'mt-8 p-6 rounded-2xl shadow-lg border text-center transition-all duration-500 bg-red-50 border-red-200 text-red-900';
+              formStatusIcon.innerHTML = '<svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+              formStatusTitle.textContent = '送信エラー';
+              formStatusMessage.textContent = 'エラー: ' + error.message;
+            }
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.innerHTML = '送信する';
+            }
+          }
+        });
+      }
     </script>
   </body>
 </html>
