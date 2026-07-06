@@ -3,7 +3,8 @@ export default {
   content: [
     "./index.html",
     "./main.js",
-    "./**/*.html",
+    "./src/**/*.html",
+    "./public/**/*.html",
     "./assets/js/**/*.js",
     "./public/assets/js/**/*.js",
     "./src/**/*.{astro,html,js,ts}",
