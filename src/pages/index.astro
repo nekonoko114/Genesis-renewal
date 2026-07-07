@@ -12,6 +12,11 @@ const basePath = import.meta.env.BASE_URL;
 <!DOCTYPE html>
 <html lang="ja" class="scroll-smooth">
   <head>
+    <!-- Wistia Player Common and Video Scripts -->
+    <script src="https://fast.wistia.com/player.js" async></script>
+    <script src="https://fast.wistia.com/embed/038mz4dv5n.js" async type="module"></script>
+    <script src="https://fast.wistia.com/embed/0uofnbd1zu.js" async type="module"></script>
+
     <link rel="icon" type="image/png" href={`${basePath}favicon.png`} />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -525,10 +530,47 @@ const basePath = import.meta.env.BASE_URL;
       <!-- First View Movie Section -->
       <section id="movie-first-view" class="relative w-full min-h-screen flex items-end justify-center px-6 pb-8 md:pb-10 overflow-hidden bg-black">
         <div class="hero-video-wrap">
-          <video id="first-view-video" class="hero-video" autoplay muted loop playsinline preload="metadata" aria-label="Genesisのファーストビュー動画">
-            <source src={`${basePath}assets/video/GenesisFVVertical.mp4`} type="video/mp4" media="(max-width: 767px)">
-            <source src={`${basePath}assets/video/GenesisFV04.mp4`} type="video/mp4" media="(min-width: 768px)">
-          </video>
+          <!-- PC用 Wistia Player (768px以上で表示) -->
+          <div class="hidden md:block w-full h-full">
+            <wistia-player 
+              media-id="038mz4dv5n" 
+              aspect="1.7777777777777777" 
+              autoplay="true" 
+              muted="true" 
+              loop="true" 
+              controlsVisibleOnLoad="false" 
+              playbar="false" 
+              playButton="false" 
+              smallPlayButton="false" 
+              volumeControl="false" 
+              fullscreenButton="false" 
+              settingsControl="false"
+              videoFoam="true"
+              fit-strategy="cover"
+              style="width: 100%; height: 100%; display: block;">
+            </wistia-player>
+          </div>
+
+          <!-- スマホ用 Wistia Player (767px以下で表示) -->
+          <div class="block md:hidden w-full h-full">
+            <wistia-player 
+              media-id="0uofnbd1zu" 
+              aspect="0.5625" 
+              autoplay="true" 
+              muted="true" 
+              loop="true" 
+              controlsVisibleOnLoad="false" 
+              playbar="false" 
+              playButton="false" 
+              smallPlayButton="false" 
+              volumeControl="false" 
+              fullscreenButton="false" 
+              settingsControl="false"
+              videoFoam="true"
+              fit-strategy="cover"
+              style="width: 100%; height: 100%; display: block;">
+            </wistia-player>
+          </div>
           <!--  -->
         </div>
       </section>
@@ -594,17 +636,17 @@ const basePath = import.meta.env.BASE_URL;
       <!-- IMPACT Section -->
       <section class="px-6 lg:px-12 max-w-7xl mx-auto -mt-8 md:-mt-16 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div class="impact-card p-8">
+          <div class="impact-card p-8 xs:p4 lg:p-8">
             <span class="text-triad-red font-black tracking-[0.22em] text-[11px] uppercase block mb-8">01 / Origin</span>
             <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">現場から<br>事業をつくる</p>
             <p class="text-gray-500 text-sm leading-relaxed mt-6">通信・人材領域で培った実行力を、次の成長領域へ展開。</p>
           </div>
-          <div class="impact-card p-8">
+          <div class="impact-card p-8 xs:p4 lg:p-8">
             <span class="text-triad-purple font-black tracking-[0.22em] text-[11px] uppercase block mb-8">02 / Culture</span>
             <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">人の熱量を<br>ブランドにする</p>
             <p class="text-gray-500 text-sm leading-relaxed mt-6">ライバーと企業、個人の可能性を横断して価値に変える。</p>
           </div>
-          <div class="impact-card p-8">
+          <div class="impact-card p-8 xs:p4 lg:p-8">
             <span class="text-triad-cyan font-black tracking-[0.22em] text-[11px] uppercase block mb-8">03 / Scale</span>
             <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">軽やかに<br>領域を越える</p>
             <p class="text-gray-500 text-sm leading-relaxed mt-6">シンプルに動き、早く試し、関わる人の選択肢を増やす。</p>
@@ -613,7 +655,7 @@ const basePath = import.meta.env.BASE_URL;
       </section>
 
       <!-- ABOUT Section -->
-      <section id="about" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24 relative">
+      <section id="about" class="py-32 px-4 lg:px-12 max-w-7xl mx-auto scroll-mt-24 relative">
         <!-- Background Decorative SVGs -->
         <div class="absolute top-12 left-4 w-24 h-24 text-gray-200 pointer-events-none opacity-40 z-0 animate-float-gentle hidden md:block">
           <svg fill="currentColor" viewBox="0 0 100 100" class="w-full h-full">
@@ -630,7 +672,7 @@ const basePath = import.meta.env.BASE_URL;
           </svg>
         </div>
 
-        <div class="glass-card rounded-[40px] p-12 md:p-24 flex flex-col lg:flex-row gap-20 items-center relative z-10 overflow-hidden">
+        <div class="glass-card rounded-[40px] p-6 md:p-24 flex flex-col lg:flex-row gap-20 items-center relative z-10 overflow-hidden">
           <!-- Sparkles & Dots inside card -->
           <div class="absolute top-8 right-8 text-triad-pink/20 animate-spin-slow pointer-events-none">
             <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
@@ -670,26 +712,22 @@ const basePath = import.meta.env.BASE_URL;
       </section>
 
       <!-- CONCEPT VIDEO Section -->
-      <section id="concept-movie" class="py-16 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
-        <div class="glass-card rounded-[40px] p-8 md:p-16 elegant-shadow relative overflow-hidden">
-          <!-- Background accent blobs inside card -->
-          <div class="absolute -top-12 -right-12 w-48 h-48 bg-triad-purple rounded-full mix-blend-multiply opacity-10 filter blur-[40px]"></div>
-<div class="relative w-full aspect-video rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-black">
-            <iframe
-              src="https://www.youtube.com/embed/-awShrePdN4?autoplay=1&mute=1&controls=0&loop=1&playlist=-awShrePdN4&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3"
-              title="Genesis合同会社 コンセプトムービー"
-              class="absolute w-[112%] h-[112%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
-          </div>
+      <section id="concept-movie" class="py-16 max-w-7xl mx-auto scroll-mt-24 bg-white">
+        <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
+          <iframe
+            src="https://www.youtube.com/embed/-awShrePdN4?autoplay=1&mute=1&controls=0&loop=1&playlist=-awShrePdN4&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3"
+            title="Genesis合同会社 コンセプトムービー"
+            class="absolute w-[112%] h-[112%] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 border-0 pointer-events-none"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
 
-          <div class="text-center mt-10 relative z-10">
-            <a href="https://clients.itszai.jp/4d5463314e6a593d/job/6825?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnpXUdcolWHp0CrulinVRa5fHyQvJJg3tb2Sco7W95WKPLRSu9eXD6x-ccvoE_aem_J4xGf2_YeRkA6EMX-2OU5A&utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
-              採用情報を見る
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-            </a>
-          </div>
+        <div class="text-center mt-10 relative z-10">
+          <a href="https://clients.itszai.jp/4d5463314e6a593d/job/6825?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAZXh0bgNhZW0CMTEAc3J0YwZhcHBfaWQPOTM2NjE5NzQzMzkyNDU5AAGnpXUdcolWHp0CrulinVRa5fHyQvJJg3tb2Sco7W95WKPLRSu9eXD6x-ccvoE_aem_J4xGf2_YeRkA6EMX-2OU5A&utm_id=97760_v0_s00_e0_tv3" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
+            採用情報を見る
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </a>
         </div>
       </section>
 
