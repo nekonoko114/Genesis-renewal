@@ -832,6 +832,7 @@ const basePath = import.meta.env.BASE_URL;
       // Cinematic first-view header reveal on scroll (after 1000px)
       const header = document.getElementById('header');
       const headerRevealOffset = 1000;
+      let ticking = false;
 
       const updateHeaderState = () => {
         if (window.scrollY > headerRevealOffset) {
@@ -843,9 +844,17 @@ const basePath = import.meta.env.BASE_URL;
           header.classList.remove('border-gray-200', 'shadow-sm', 'bg-creamy-bg/95');
           header.classList.add('border-transparent', 'bg-creamy-bg/80');
         }
+        ticking = false;
       };
 
-      window.addEventListener('scroll', updateHeaderState);
+      const onScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateHeaderState);
+          ticking = true;
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
       updateHeaderState();
     </script></body>
 </html>
