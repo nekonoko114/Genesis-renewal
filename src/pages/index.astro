@@ -512,6 +512,30 @@ const basePath = import.meta.env.BASE_URL;
           inset: 8rem 0.75rem 4rem;
         }
       }
+
+      /* Wistia Player Responsive Display Override */
+      @media (max-width: 767px) {
+        .hidden-on-mobile,
+        .hidden-on-mobile wistia-player {
+          display: none !important;
+        }
+        wistia-player[media-id='038mz4dv5n'] {
+          display: none !important;
+        }
+      }
+      @media (min-width: 768px) {
+        .hidden-on-desktop,
+        .hidden-on-desktop wistia-player {
+          display: none !important;
+        }
+        wistia-player[media-id='0uofnbd1zu'] {
+          display: none !important;
+        }
+      }
+      html, body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
     </style>
   </head>
   <body data-header-mode="cinematic" class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
@@ -531,7 +555,7 @@ const basePath = import.meta.env.BASE_URL;
       <section id="movie-first-view" class="relative w-full min-h-screen flex items-end justify-center px-6 pb-8 md:pb-10 overflow-hidden bg-black">
         <div class="hero-video-wrap">
           <!-- PC用 Wistia Player (768px以上で表示) -->
-          <div class="hidden md:block w-full h-full">
+          <div class="hidden md:block w-full h-full hidden-on-mobile">
             <wistia-player 
               media-id="038mz4dv5n" 
               aspect="1.7777777777777777" 
@@ -552,7 +576,7 @@ const basePath = import.meta.env.BASE_URL;
           </div>
 
           <!-- スマホ用 Wistia Player (767px以下で表示) -->
-          <div class="block md:hidden w-full h-full">
+          <div class="block md:hidden w-full h-full hidden-on-desktop">
             <wistia-player 
               media-id="0uofnbd1zu" 
               aspect="0.5625" 
@@ -636,17 +660,17 @@ const basePath = import.meta.env.BASE_URL;
       <!-- IMPACT Section -->
       <section class="px-6 lg:px-12 max-w-7xl mx-auto -mt-8 md:-mt-16 relative z-10">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div class="impact-card p-8 xs:p4 lg:p-8">
+          <div class="impact-card p-8 xs:p-4 lg:p-8">
             <span class="text-triad-red font-black tracking-[0.22em] text-[11px] uppercase block mb-8">01 / Origin</span>
             <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">現場から<br>事業をつくる</p>
             <p class="text-gray-500 text-sm leading-relaxed mt-6">通信・人材領域で培った実行力を、次の成長領域へ展開。</p>
           </div>
-          <div class="impact-card p-8 xs:p4 lg:p-8">
+          <div class="impact-card p-8 xs:p-4 lg:p-8">
             <span class="text-triad-purple font-black tracking-[0.22em] text-[11px] uppercase block mb-8">02 / Culture</span>
             <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">人の熱量を<br>ブランドにする</p>
             <p class="text-gray-500 text-sm leading-relaxed mt-6">ライバーと企業、個人の可能性を横断して価値に変える。</p>
           </div>
-          <div class="impact-card p-8 xs:p4 lg:p-8">
+          <div class="impact-card p-8 xs:p-4 lg:p-8">
             <span class="text-triad-cyan font-black tracking-[0.22em] text-[11px] uppercase block mb-8">03 / Scale</span>
             <p class="text-3xl md:text-4xl font-black italic text-gray-900 leading-tight">軽やかに<br>領域を越える</p>
             <p class="text-gray-500 text-sm leading-relaxed mt-6">シンプルに動き、早く試し、関わる人の選択肢を増やす。</p>
@@ -712,7 +736,7 @@ const basePath = import.meta.env.BASE_URL;
       </section>
 
       <!-- CONCEPT VIDEO Section -->
-      <section id="concept-movie" class="py-16 max-w-7xl mx-auto scroll-mt-24 bg-white">
+      <section id="concept-movie" class="py-16 max-w-7xl mx-auto scroll-mt-24">
         <div class="relative w-full aspect-video rounded-xl overflow-hidden shadow-lg bg-black">
           <iframe
             src="https://www.youtube.com/embed/-awShrePdN4?autoplay=1&mute=1&controls=0&loop=1&playlist=-awShrePdN4&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3"
@@ -732,7 +756,7 @@ const basePath = import.meta.env.BASE_URL;
       </section>
 
       <!-- SERVICE Section -->
-      <section id="service" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24">
+      <section id="service" class="py-32 px-6 lg:px-12 max-w-7xl mx-auto scroll-mt-24 overflow-hidden">
         <div class="text-center mb-28">
           <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Our Specialties</span>
           <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 tracking-tight">Services<span class="text-triad-red">.</span></h2>
