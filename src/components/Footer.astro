@@ -1,3 +1,6 @@
+---
+const basePath = import.meta.env.BASE_URL;
+---
 <footer class="border-t border-gray-100 bg-white py-16 px-6 lg:px-12 relative overflow-hidden">
   <div class="max-w-7xl mx-auto">
     <!-- Top Section: Sitemap Grid -->
@@ -5,8 +8,8 @@
       
       <!-- Brand Column -->
       <div class="lg:col-span-2 flex flex-col gap-6">
-        <div class="text-gray-900 font-black text-3xl tracking-tight">
-          <a href="/" class="hover:opacity-85 transition-opacity">Genesis<span class="text-triad-red">.</span></a>
+         <div class="text-gray-900 font-black text-3xl tracking-tight">
+          <a href={basePath} class="hover:opacity-85 transition-opacity">Genesis<span class="text-triad-red">.</span></a>
         </div>
         <p class="text-xs text-gray-400 font-medium leading-relaxed max-w-sm">
           大阪を拠点に関西・東北・九州で、人材アウトソーシング、トータルソリューション、ライバーマネジメント等の幅広いサービスを展開。関わるすべての人々が人生を謳歌できるプラットフォームを創造します。
@@ -21,50 +24,50 @@
           </a>
         </div>
       </div>
-
+ 
       <!-- Company Column -->
       <div class="flex flex-col gap-4">
         <span class="text-xs font-bold text-gray-900 tracking-widest uppercase">Company</span>
         <ul class="flex flex-col gap-3 text-sm text-gray-500 font-medium">
           <li>
-            <a href="/outline/" class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}outline/`} class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-900 rounded-full transition-colors"></span>
               会社概要
             </a>
           </li>
           <li>
-            <a href="/outline/#mvv" class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}outline/#mvv`} class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-900 rounded-full transition-colors"></span>
               企業理念・MVV
             </a>
           </li>
           <li>
-            <a href="/#about" class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}#about`} class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-900 rounded-full transition-colors"></span>
               Genesisについて
             </a>
           </li>
           <li>
-            <a href="/#news" class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}#news`} class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-900 rounded-full transition-colors"></span>
               ニュース
             </a>
           </li>
         </ul>
       </div>
-
+ 
       <!-- Services Column -->
       <div class="flex flex-col gap-4">
         <span class="text-xs font-bold text-gray-900 tracking-widest uppercase">Services</span>
         <ul class="flex flex-col gap-3 text-sm text-gray-500 font-medium">
           <li>
-            <a href="/service/outsourcing/" class="hover:text-triad-red transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}service/outsourcing/`} class="hover:text-triad-red transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-triad-red rounded-full transition-colors"></span>
               人材アウトソーシング
             </a>
           </li>
           <li>
-            <a href="/service/corporate/" class="hover:text-triad-purple transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}service/corporate/`} class="hover:text-triad-purple transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-triad-purple rounded-full transition-colors"></span>
               トータルソリューション
             </a>
@@ -77,39 +80,39 @@
           </li>
         </ul>
       </div>
-
+ 
       <!-- Contact Column -->
       <div class="flex flex-col gap-4">
         <span class="text-xs font-bold text-gray-900 tracking-widest uppercase">Contact</span>
         <ul class="flex flex-col gap-3 text-sm text-gray-500 font-medium">
           <li>
-            <a href="/contact/?type=corporate" class="hover:text-triad-purple transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}contact/?type=corporate`} class="hover:text-triad-purple transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-triad-purple rounded-full transition-colors"></span>
               法人のお客様
             </a>
           </li>
           <li>
-            <a href="/contact/?type=liver" class="hover:text-triad-pink transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}contact/?type=liver`} class="hover:text-triad-pink transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-triad-pink rounded-full transition-colors"></span>
               ライバー・クリエイター応募
             </a>
           </li>
           <li>
-            <a href="/contact/" class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
+            <a href={`${basePath}contact/`} class="hover:text-gray-900 transition-colors flex items-center gap-2 group">
               <span class="w-1.5 h-1.5 bg-gray-300 group-hover:bg-gray-900 rounded-full transition-colors"></span>
               その他お問い合わせ
             </a>
           </li>
         </ul>
       </div>
-
+ 
     </div>
-
+ 
     <!-- Bottom Section -->
     <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-medium">
       <p>&copy; 2026 Genesis合同会社. All Rights Reserved.</p>
       <div class="flex gap-6">
-        <a href="/privacy/" class="hover:text-gray-900 transition-colors">プライバシーポリシー</a>
+        <a href={`${basePath}privacy/`} class="hover:text-gray-900 transition-colors">プライバシーポリシー</a>
       </div>
     </div>
   </div>

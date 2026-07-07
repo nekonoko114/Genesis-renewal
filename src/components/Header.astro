@@ -1,18 +1,21 @@
+---
+const basePath = import.meta.env.BASE_URL;
+---
 <header id="header" class="fixed top-0 left-0 w-full z-40 transition-all duration-500 py-6 bg-creamy-bg/80 backdrop-blur-xl border-b border-transparent">
   <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center">
     <div class="text-xl font-black tracking-tight text-gray-900">
-      <a href="/">Genesis<span class="text-triad-red">.</span></a>
+      <a href={basePath}>Genesis<span class="text-triad-red">.</span></a>
     </div>
     
     <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
-      <a href="/#about" class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
-      <a href="/#service" class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
-      <a href="/#news" class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
-      <a href="/#contact" class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
+      <a href={`${basePath}#about`} class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
+      <a href={`${basePath}#service`} class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
+      <a href={`${basePath}#news`} class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
+      <a href={`${basePath}#contact`} class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
     </nav>
     
     <!-- Desktop Contact Button -->
-    <a href="/contact/" class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
+    <a href={`${basePath}contact/`} class="hidden md:inline-flex items-center gap-2 text-xs font-bold uppercase bg-white px-5 py-2.5 rounded-full shadow-sm hover:shadow-md transition-all text-gray-700 hover:text-triad-purple border border-gray-100">
       Contact Us
     </a>
 
@@ -22,15 +25,15 @@
     </button>
   </div>
 </header>
-
+ 
 <!-- Mobile Nav Menu -->
 <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
     <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-    <a href="/#about" class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
-    <a href="/#service" class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
-    <a href="/#news" class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
-    <a href="/#contact" class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
-    <a href="/contact/" class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
+    <a href={`${basePath}#about`} class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
+    <a href={`${basePath}#service`} class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
+    <a href={`${basePath}#news`} class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
+    <a href={`${basePath}#contact`} class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
+    <a href={`${basePath}contact/`} class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
 </div>
 
 <script>

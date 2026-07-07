@@ -648,7 +648,7 @@ const basePath = import.meta.env.BASE_URL;
             <p class="text-gray-500 leading-relaxed text-lg mb-12 font-light">
               <span class="reveal-text">人材アウトソーシングからスタートし、社員の想いを大切にしながら、多岐にわたる事業を展開しています。</span>
             </p>
-            <a href="/outline/" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
+            <a href={`${basePath}outline/`} class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-gray-900 text-white px-8 py-4 rounded-full shadow-lg hover:bg-gray-800 transition-all hover:scale-105">
               会社概要・企業理念を見る
             </a>
           </div>
@@ -713,7 +713,7 @@ const basePath = import.meta.env.BASE_URL;
               <p class="text-gray-500 text-lg leading-relaxed font-light mb-10">
                 携帯電話販売やインターネット販売を中心に、通信業界に特化したアウトソーシングのエキスパートとして、クライアント企業との強固な関係を築いています。関西メインで多くのスタッフを抱える規模を誇ります。
               </p>
-              <a href="/service/outsourcing/" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-purple hover:border-triad-purple hover:text-white hover:scale-105 transition-all duration-300">
+              <a href={`${basePath}service/outsourcing/`} class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-purple hover:border-triad-purple hover:text-white hover:scale-105 transition-all duration-300">
                 詳しく見る →
               </a>
             </div>
@@ -737,7 +737,7 @@ const basePath = import.meta.env.BASE_URL;
                 法人のお客様向けに通信サービスの提案・営業を行う専門部隊。企業様のニーズに合ったソリューションを丁寧にご提案し、長期的なパートナーシップを構築します。
               </p>
               <div class="flex lg:justify-end">
-                <a href="/service/corporate/" class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-cyan hover:border-triad-cyan hover:text-gray-900 hover:scale-105 transition-all duration-300">
+                <a href={`${basePath}service/corporate/`} class="inline-flex items-center gap-2 text-xs font-bold uppercase bg-white border border-gray-100 px-4 py-2.5 md:px-6 md:py-3 rounded-full text-gray-800 shadow-sm hover:shadow-md hover:bg-triad-cyan hover:border-triad-cyan hover:text-gray-900 hover:scale-105 transition-all duration-300">
                   詳しく見る →
                 </a>
               </div>
@@ -810,10 +810,10 @@ const basePath = import.meta.env.BASE_URL;
             人材ソリューションからライバーマネジメントまで、あなたの挑戦を幅広くサポートします。ビジネスに関するご相談や所属に関するお問い合わせなど、まずはお気軽にご連絡ください。
           </p>
           <div class="flex flex-col sm:flex-row gap-6 justify-center relative z-10 w-full max-w-3xl">
-            <a href="/contact/?type=corporate" class="flex-1 inline-flex items-center justify-center bg-white text-gray-900 font-bold text-sm md:text-base px-8 py-5 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] text-center">
+            <a href={`${basePath}contact/?type=corporate`} class="flex-1 inline-flex items-center justify-center bg-white text-gray-900 font-bold text-sm md:text-base px-8 py-5 rounded-full hover:scale-105 transition-all duration-300 shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:shadow-[0_0_50px_rgba(255,255,255,0.3)] text-center">
               人材・トータルソリューションの<br>お問い合わせ
             </a>
-            <a href="/contact/?type=liver" class="flex-1 inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-bold text-sm md:text-base px-8 py-5 rounded-full hover:scale-105 hover:bg-white hover:text-gray-900 transition-all duration-300 text-center">
+            <a href={`${basePath}contact/?type=liver`} class="flex-1 inline-flex items-center justify-center bg-transparent border-2 border-white text-white font-bold text-sm md:text-base px-8 py-5 rounded-full hover:scale-105 hover:bg-white hover:text-gray-900 transition-all duration-300 text-center">
               ライバーマネジメントの<br>お問い合わせ
             </a>
           </div>
