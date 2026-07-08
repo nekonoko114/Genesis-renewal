@@ -15,7 +15,7 @@ export default {
         'triad-red': '#FF1414',
         'triad-pink': '#FF9494',
         'triad-lime': '#C9FF94',
-        'triad-cyan': '#94FFFF',
+        'triad-cyan': '#3b96e0ff',
         'triad-purple': '#C994FF',
         'creamy-bg': '#fcfcfc',
       },
