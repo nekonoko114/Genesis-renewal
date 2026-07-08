@@ -2,6 +2,7 @@
 import { defineConfig } from 'astro/config';
 import { cp } from 'node:fs/promises';
 import react from '@astrojs/react';
+import sitemap from '@astrojs/sitemap';
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
@@ -10,6 +11,7 @@ export default defineConfig({
   base: isGitHubPages ? '/Genesis-renewal/' : '/',
   integrations: [
     react(),
+    sitemap(),
     {
       name: 'copy-static-assets',
       hooks: {

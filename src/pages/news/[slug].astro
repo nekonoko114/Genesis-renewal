@@ -3,6 +3,7 @@
 import { sanitize } from '../../utils/sanitize';
 import { formatPostDate, getFeaturedImage, getPosts, plainText, type WordPressPost } from '../../lib/wordpress';
 import '../../styles/tailwind.css';
+import SEO from '../../components/SEO.astro';
 
 export async function getStaticPaths() {
   const posts = await getPosts({ perPage: 100 });
@@ -30,10 +31,12 @@ const contactPageHref = basePath + 'contact/';
 <html lang="ja" class="scroll-smooth">
   <head>
     <link rel="icon" type="image/png" href={`${basePath}favicon.png`} />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title} | Genesis合同会社</title>
-    <meta name="description" content={description}>
+    <SEO 
+      title={`${title} | Genesis合同会社`}
+      description={description}
+      type="article"
+      image={image.src || undefined}
+    />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>

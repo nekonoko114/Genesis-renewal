@@ -2,6 +2,7 @@
 import '../styles/tailwind.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
 
 const basePath = import.meta.env.BASE_URL;
 ---
@@ -10,10 +11,10 @@ const basePath = import.meta.env.BASE_URL;
 <html lang="ja" class="scroll-smooth">
   <head>
     <link rel="icon" type="image/png" href={`${basePath}favicon.png`} />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>会社概要・企業理念 | Genesis合同会社</title>
-    <meta name="description" content="Genesis合同会社の会社概要、企業理念、代表者メッセージ。私たちは「個のエンパワーメント」と「企業の変革」を繋ぐプラットフォームとして、新たな価値を創造し続けます。">
+    <SEO 
+      title="会社概要・企業理念 | Genesis合同会社"
+      description="Genesis合同会社の会社概要、企業理念、代表者メッセージ。私たちは「個のエンパワーメント」と「企業の変革」を繋ぐプラットフォームとして、新たな価値を創造し続けます。"
+    />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <style>
