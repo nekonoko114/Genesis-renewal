@@ -1,4 +1,4 @@
-export const getSubjectText = (val: string) => {
+export const getSubjectText = (val: string): string => {
   const map: Record<string, string> = {
     corporate_service: 'サービス導入・協業に関するご相談',
     corporate_recruit: '人材採用・パートナーシップのご相談',
@@ -10,7 +10,14 @@ export const getSubjectText = (val: string) => {
   return map[val] || val;
 };
 
-export const getContactTemplateHtml = (subject: string, data: { name: string, tel: string, email: string, message: string }) => {
+export interface ContactData {
+  name: string;
+  tel: string;
+  email: string;
+  message: string;
+}
+
+export const getContactTemplateHtml = (subject: string, data: ContactData): string => {
   // ライバー向けかどうかを判定
   const isLiver = subject.startsWith('liver_');
 

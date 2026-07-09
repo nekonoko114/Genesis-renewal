@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { getContactTemplateHtml, getSubjectText } from '../../emails/ContactTemplate';
+import { getContactTemplateHtml } from '../../emails/ContactTemplate';
 
 export const prerender = false;
 
@@ -13,10 +13,18 @@ export const POST: APIRoute = async ({ request }) => {
     const message = data.get('message')?.toString() || '';
 
     // バリデーション
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!subject || !name || !tel || !email) {
       return new Response(
         JSON.stringify({ error: '必須項目が入力されていません。' }),
-        { status: 400, headers: { 'Content-Type': 'application/json' } }
+        { status: 400, headers: { 'Content-Type': 'application/json', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block' } }
+      );
+    }
+
+    if (!emailRegex.test(email)) {
+      return new Response(
+        JSON.stringify({ error: '有効なメールアドレスを入力してください。' }),
+        { status: 400, headers: { 'Content-Type': 'application/json', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block' } }
       );
     }
 
@@ -56,12 +64,12 @@ export const POST: APIRoute = async ({ request }) => {
 
     return new Response(JSON.stringify({ success: true, data: resendData }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block' },
     });
-  } catch (error: any) {
-    return new Response(JSON.stringify({ error: error.message }), {
+  } catch (error: unknown) {
+    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error occurred' }), {
       status: 500,
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'X-XSS-Protection': '1; mode=block' },
     });
   }
 };
