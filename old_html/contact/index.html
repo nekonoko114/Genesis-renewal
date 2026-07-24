@@ -130,7 +130,7 @@
       <!-- Header Area -->
       <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 text-center">
         <span class="text-triad-pink font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Get in touch</span>
-        <h1 id="contact-title" class="text-4xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
+        <h1 id="contact-title" class="text-xl sm:text-3xl md:text-5xl font-black text-gray-900 tracking-tight leading-tight mb-6">
           お問い合わせ
         </h1>
         <p id="contact-desc" class="text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
@@ -329,7 +329,7 @@
           if (contactDesc) contactDesc.innerHTML = '人材アウトソーシング事業部、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
         } else if (type === 'liver') {
           subjectSelect.value = 'liver_audition';
-          if (contactTitle) contactTitle.textContent = 'ライバーマネジメント お問い合わせ';
+          if (contactTitle) contactTitle.innerHTML = 'ライバーマネジメント<br>お問い合わせ';
           if (contactDesc) contactDesc.innerHTML = 'ライバーマネジメント事業（J.O.L）に関するお問い合わせ・所属応募窓口です。必要事項をご記入の上、送信してください。';
         }
       });
