@@ -4,11 +4,14 @@ import { cp } from 'node:fs/promises';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
 export default defineConfig({
   site: 'https://nekonoko114.github.io',
   base: isGitHubPages ? '/Genesis-renewal/' : '/',
+
   integrations: [
     react(),
     sitemap(),
@@ -23,4 +26,6 @@ export default defineConfig({
       },
     },
   ],
+
+  adapter: cloudflare(),
 });
