@@ -74,20 +74,6 @@ if (!prefersReducedMotion) {
     );
   });
 
-  gsap.utils.toArray<HTMLElement>('.impact-card').forEach((card, index) => {
-    gsap.from(card, {
-      y: 90,
-      rotateX: 10,
-      autoAlpha: 0,
-      delay: index * 0.08,
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 86%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-  });
-
   gsap.utils.toArray<HTMLElement>('.service-item').forEach((item, index) => {
     const image = item.querySelector('.service-image-shell');
     const copy = item.querySelector('.w-full.lg\\:w-2\\/5');
