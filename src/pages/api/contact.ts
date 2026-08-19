@@ -2,6 +2,7 @@ import type { APIRoute } from 'astro';
 import { env } from "cloudflare:workers";
 import { render } from '@react-email/render';
 import { ContactNotificationEmail } from '../../emails/ContactNotificationEmail';
+import { AutoReplyEmail } from '../../emails/AutoReplyEmail';
 
 export const prerender = false;
 
@@ -52,11 +53,14 @@ export const POST: APIRoute = async ({ request, locals }) => {
       );
     }
 
-    // HTMLメールの生成 (React Emailを使用)
-    const html = await render(ContactNotificationEmail({ subject, data: { name, tel, email, message } }));
+    // 管理者向け通知メールの生成
+    const adminHtml = await render(ContactNotificationEmail({ subject, data: { name, tel, email, message } }));
 
-    // ResendのAPIを直接叩く
-    const res = await fetch('https://api.resend.com/emails', {
+    // お客様向け自動返信メールの生成
+    const autoReplyHtml = await render(AutoReplyEmail({ subject, data: { name, tel, email, message } }));
+
+    // ResendのAPIを叩いて管理者へ通知
+    const adminRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${apiKey}`,
@@ -66,18 +70,40 @@ export const POST: APIRoute = async ({ request, locals }) => {
         from: `Genesis お問い合わせ <${fromEmail}>`,
         to: [toEmail],
         subject: `Webサイトからのお問い合わせ: ${name} 様`,
-        html: html,
+        html: adminHtml,
         reply_to: email,
       }),
     });
 
-    const resendData = (await res.json()) as any;
+    const adminResendData = (await adminRes.json()) as any;
 
-    if (!res.ok) {
-      throw new Error(resendData?.message || 'メール送信に失敗しました');
+    if (!adminRes.ok) {
+      throw new Error(adminResendData?.message || '管理者へのメール送信に失敗しました');
     }
 
-    return new Response(JSON.stringify({ success: true, data: resendData }), {
+    // ResendのAPIを叩いてお客様へ自動返信
+    const autoReplyRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: `Genesis合同会社 <${fromEmail}>`, // 送信元を会社名に
+        to: [email], // お客様のメールアドレス
+        subject: `【Genesis】お問い合わせを受け付けました`,
+        html: autoReplyHtml,
+      }),
+    });
+
+    const autoReplyResendData = (await autoReplyRes.json()) as any;
+
+    if (!autoReplyRes.ok) {
+      console.error("Auto-reply failed:", autoReplyResendData);
+      // 自動返信が失敗しても、管理者には通知済みなのでエラーにはせずログのみ残す運用が一般的です。
+    }
+
+    return new Response(JSON.stringify({ success: true, data: adminResendData }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
