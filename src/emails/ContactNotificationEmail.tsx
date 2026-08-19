@@ -82,13 +82,21 @@ export const ContactNotificationEmail = ({ subject, data }: ContactEmailProps) =
     borderBottom: `4px solid ${theme.accentColor}`,
   };
 
+  const headerTitleContainerStyle = {
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    display: 'inline-block',
+    padding: '12px 24px',
+    borderRadius: '8px',
+    backdropFilter: 'blur(4px)', // Fallback for clients that support it
+  };
+
   const headerTitleStyle = {
-    color: isLiver ? '#1e293b' : '#ffffff',
+    color: '#ffffff', // Always white for contrast against dark overlay
     fontSize: '28px',
     fontWeight: 'bold',
     margin: '0',
-    letterSpacing: '2px',
-    textShadow: isLiver ? 'none' : '0 2px 4px rgba(0,0,0,0.3)',
+    letterSpacing: '3px',
+    textShadow: '0 2px 4px rgba(0,0,0,0.5)',
   };
 
   const contentSectionStyle = {
@@ -151,7 +159,9 @@ export const ContactNotificationEmail = ({ subject, data }: ContactEmailProps) =
         <Container style={containerStyle}>
           {/* Header Section with Image Background */}
           <Section style={headerSectionStyle}>
-            <Heading style={headerTitleStyle}>{theme.title} INQUIRY</Heading>
+            <div style={headerTitleContainerStyle}>
+              <Heading style={headerTitleStyle}>{theme.title} INQUIRY</Heading>
+            </div>
           </Section>
 
           {/* Content Section */}
