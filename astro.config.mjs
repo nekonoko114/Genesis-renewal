@@ -3,12 +3,14 @@ import { defineConfig } from 'astro/config';
 import { cp } from 'node:fs/promises';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
+import cloudflare from '@astrojs/cloudflare';
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
 export default defineConfig({
-  site: 'https://nekonoko114.github.io',
+  site: isGitHubPages ? 'https://nekonoko114.github.io' : 'https://genesis-llc.co.jp',
   base: isGitHubPages ? '/Genesis-renewal/' : '/',
+  adapter: isGitHubPages ? undefined : cloudflare(),
   integrations: [
     react(),
     sitemap(),
@@ -24,3 +26,4 @@ export default defineConfig({
     },
   ],
 });
+
