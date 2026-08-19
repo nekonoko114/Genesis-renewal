@@ -10,6 +10,9 @@ const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 export default defineConfig({
   site: isGitHubPages ? 'https://nekonoko114.github.io' : 'https://genesis-llc.co.jp',
   base: isGitHubPages ? '/Genesis-renewal/' : '/',
+  security: {
+    checkOrigin: false
+  },
   adapter: isGitHubPages ? undefined : cloudflare(),
   integrations: [
     react(),
