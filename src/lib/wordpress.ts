@@ -28,7 +28,7 @@ interface GetPostsOptions {
 }
 
 const API_URL = normalizeApiUrl(
-  import.meta.env.WORDPRESS_API_URL || import.meta.env.PUBLIC_WORDPRESS_API_URL || 'https://genesis-llc.co.jp'
+  import.meta.env.WORDPRESS_API_URL || import.meta.env.PUBLIC_WORDPRESS_API_URL || 'https://cms.genesis-llc.co.jp'
 );
 
 function normalizeApiUrl(url?: string) {
