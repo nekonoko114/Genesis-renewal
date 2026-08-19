@@ -63,14 +63,32 @@ async function fetchWp<T>(path: string, params: Record<string, string | number> 
     });
     if (!response.ok) {
       console.warn(`WordPress API request failed: ${response.status} ${response.statusText}`);
-      return null;
+      return [{
+        id: 9999,
+        slug: 'error-debug',
+        date: new Date().toISOString(),
+        modified: new Date().toISOString(),
+        link: '',
+        title: { rendered: `[DEBUG] HTTP Error: ${response.status} ${response.statusText}` },
+        excerpt: { rendered: `URL: ${endpoint(path, params).toString()}` },
+        content: { rendered: '' }
+      }] as unknown as T;
     }
     const data = await response.json() as T;
     wpCache.set(cacheKey, data);
     return data;
-  } catch (error) {
+  } catch (error: any) {
     console.warn('WordPress API request failed:', error);
-    return null;
+    return [{
+        id: 9998,
+        slug: 'error-catch',
+        date: new Date().toISOString(),
+        modified: new Date().toISOString(),
+        link: '',
+        title: { rendered: `[DEBUG] Catch Error: ${error.message}` },
+        excerpt: { rendered: `URL: ${endpoint(path, params).toString()}` },
+        content: { rendered: '' }
+    }] as unknown as T;
   }
 }
 
