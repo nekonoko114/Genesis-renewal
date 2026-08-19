@@ -376,7 +376,7 @@ const basePath = import.meta.env.BASE_URL;
               formStatus.className = 'mt-8 p-6 rounded-2xl shadow-lg border text-center transition-all duration-500 bg-red-50 border-red-200 text-red-900';
               formStatusIcon.innerHTML = '<svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
               formStatusTitle.textContent = '送信エラー';
-              formStatusMessage.textContent = 'エラー: ' + error.message;
+              formStatusMessage.innerHTML = '通信エラーが発生しました。<br>時間をおいて再度お試しいただくか、直接お電話にてお問い合わせください。';
             }
           } finally {
             if (submitBtn) {
