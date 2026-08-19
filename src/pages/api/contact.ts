@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { env } from "cloudflare:workers";
 
 export const prerender = false;
 
@@ -72,8 +73,8 @@ export const POST: APIRoute = async ({ request, locals }) => {
       );
     }
 
-    // 環境変数の取得（Cloudflare runtime env または import.meta.env / process.env）
-    const runtimeEnv = (locals as any)?.runtime?.env || {};
+    // 環境変数の取得（Cloudflare workers env または import.meta.env / process.env）
+    const runtimeEnv = (typeof env !== 'undefined' ? env : {}) as any;
     const fromEmail = runtimeEnv.FROM_EMAIL || import.meta.env.FROM_EMAIL || process.env.FROM_EMAIL || 'info@genesis-llc.co.jp';
     const toEmail = runtimeEnv.TO_EMAIL || import.meta.env.TO_EMAIL || process.env.TO_EMAIL || 'info@genesis-llc.co.jp';
     const apiKey = runtimeEnv.CONTACT_RESEND_API_KEY || import.meta.env.CONTACT_RESEND_API_KEY || process.env.CONTACT_RESEND_API_KEY;
