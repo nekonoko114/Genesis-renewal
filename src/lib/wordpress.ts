@@ -55,7 +55,12 @@ async function fetchWp<T>(path: string, params: Record<string, string | number> 
   }
 
   try {
-    const response = await fetch(endpoint(path, params));
+    const response = await fetch(endpoint(path, params), {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+        'Accept': 'application/json'
+      }
+    });
     if (!response.ok) {
       console.warn(`WordPress API request failed: ${response.status} ${response.statusText}`);
       return null;
