@@ -1,4 +1,52 @@
-import { getContactTemplateHtml } from '../../src/emails/ContactTemplate';
+export const getSubjectText = (val: string) => {
+  const map: Record<string, string> = {
+    corporate_service: 'サービス導入・協業に関するご相談',
+    corporate_recruit: '人材採用・パートナーシップのご相談',
+    corporate_other: 'その他（コーポレート関連）',
+    liver_audition: 'ライバー所属・オーディション応募',
+    liver_business: '企業案件・コラボレーションのご相談',
+    liver_other: 'その他（ライバーマネジメント関連）'
+  };
+  return map[val] || val;
+};
+
+export const getContactTemplateHtml = (subject: string, data: { name: string, tel: string, email: string, message: string }) => {
+  const isLiver = subject.startsWith('liver_');
+  const theme = {
+    primaryColor: isLiver ? '#fff97eff' : '#39385c',      
+    accentColor: isLiver ? '#a1ff59ff' : '#d0524f',       
+    bgColor: isLiver ? '#0f172a' : '#f3f4f6',           
+    cardBgColor: isLiver ? '#1e293b' : '#ffffff',
+    borderColor: isLiver ? '#334155' : '#e2e8f0',
+    textColor: isLiver ? '#f8fafc' : '#1e293b',
+    subTextColor: isLiver ? '#cbd5e1' : '#374151',
+    bgImageUrl: isLiver 
+      ? 'https://genesis-llc.co.jp/images/liver_bg_base.png' 
+      : 'https://genesis-llc.co.jp/images/corporate_bg_base.png',
+    title: isLiver ? 'LIVER MANAGEMENT' : 'CORPORATE',
+  };
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+</head>
+<body style="background-color: ${theme.bgColor}; padding: 40px; font-family: sans-serif;">
+  <div style="background-color: ${theme.cardBgColor}; max-width: 600px; margin: 0 auto; padding: 30px; border-radius: 8px;">
+    <h2 style="color: ${theme.primaryColor};">${theme.title} INQUIRY</h2>
+    <p style="color: ${theme.textColor};">新しいお問い合わせを受信しました。</p>
+    <hr style="border-color: ${theme.borderColor};">
+    <p style="color: ${theme.textColor};"><strong>お問い合わせ種別:</strong> ${getSubjectText(subject)}</p>
+    <p style="color: ${theme.textColor};"><strong>お名前:</strong> ${data.name} 様</p>
+    <p style="color: ${theme.textColor};"><strong>電話番号:</strong> ${data.tel}</p>
+    <p style="color: ${theme.textColor};"><strong>メールアドレス:</strong> ${data.email}</p>
+    <p style="color: ${theme.textColor};"><strong>内容:</strong><br>${data.message}</p>
+  </div>
+</body>
+</html>
+  `;
+};
 
 export interface Env {
   CONTACT_RESEND_API_KEY: string;
