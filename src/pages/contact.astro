@@ -91,7 +91,7 @@ const basePath = import.meta.env.BASE_URL;
           お問い合わせ
         </h1>
         <p id="contact-desc" class="text-sm md:text-lg text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
-          弊社ホームページをご覧いただき、誠にありがとうございます。人材アウトソーシング事業部、トータルソリューション（法人営業）、およびライバーマネジメント事業に関するお問い合わせやご相談を承っております。お気軽にご相談ください。
+          弊社ホームページをご覧いただき、誠にありがとうございます。人材アウトソーシング事業部、人材トータルソリューション事業部（法人営業）、およびライバーマネジメント事業に関するお問い合わせやご相談を承っております。お気軽にご相談ください。
         </p>
       </section>
 
@@ -118,7 +118,7 @@ const basePath = import.meta.env.BASE_URL;
               <div class="relative">
                 <select id="subject" name="subject" required class="w-full border-b-2 border-gray-200 focus:border-triad-purple outline-none transition-colors py-3 px-1 bg-transparent text-gray-800 font-medium appearance-none cursor-pointer">
                   <option value="" disabled selected>以下から選択してください</option>
-                  <optgroup label="人材・トータルソリューション事業部">
+                  <optgroup label="人材アウトソーシング・人材トータルソリューション事業部">
                     <option value="corporate_service">サービス導入・協業に関するご相談</option>
                     <option value="corporate_recruit">人材採用・パートナーシップのご相談</option>
                     <option value="corporate_other">その他（コーポレート関連）</option>
@@ -237,8 +237,8 @@ const basePath = import.meta.env.BASE_URL;
 
       if (type === 'corporate' && subjectSelect) {
         subjectSelect.value = 'corporate_service';
-        if (contactTitle) contactTitle.textContent = '人材アウトソーシング・トータルソリューション お問い合わせ';
-        if (contactDesc) contactDesc.innerHTML = '人材アウトソーシング事業部、およびトータルソリューション（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
+        if (contactTitle) contactTitle.textContent = '人材アウトソーシング・人材トータルソリューション お問い合わせ';
+        if (contactDesc) contactDesc.innerHTML = '人材アウトソーシング事業部、および人材トータルソリューション事業部（法人営業）に関するお問い合わせ窓口です。必要事項をご記入の上、送信してください。';
       } else if (type === 'liver' && subjectSelect) {
         subjectSelect.value = 'liver_audition';
         if (contactTitle) contactTitle.innerHTML = 'ライバーマネジメント<br>お問い合わせ';
