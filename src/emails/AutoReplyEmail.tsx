@@ -45,7 +45,7 @@ export const AutoReplyEmail = ({ subject, data }: AutoReplyEmailProps) => {
     borderColor: isLiver ? '#334155' : '#e5e7eb',
     textColor: isLiver ? '#f8fafc' : '#111827',
     subTextColor: isLiver ? '#94a3b8' : '#6b7280',
-    title: isLiver ? 'ライバー関連 お問い合わせ' : '法人向け お問い合わせ',
+    title: 'お問い合わせ',
     // Header Image URL
     bannerUrl: isLiver 
       ? 'https://genesis-llc.co.jp/images/liver_bg_base.png' 
