@@ -83,20 +83,29 @@ export const AutoReplyEmail = ({ subject, data }: AutoReplyEmailProps) => {
   };
 
   const headerTitleContainerStyle = {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 0, 0, 0.4)',
     display: 'inline-block',
-    padding: '12px 24px',
-    borderRadius: '8px',
-    backdropFilter: 'blur(4px)', // Fallback for clients that support it
+    padding: '20px 40px',
+    borderTop: `2px solid ${theme.accentColor}`,
+    borderBottom: `2px solid ${theme.accentColor}`,
+  };
+
+  const subtitleStyle = {
+    color: '#ffffff',
+    fontSize: '11px',
+    fontWeight: 'bold',
+    letterSpacing: '6px',
+    textTransform: 'uppercase' as const,
+    margin: '0 0 8px 0',
+    opacity: 0.9,
   };
 
   const headerTitleStyle = {
-    color: '#ffffff', // Always white for contrast against dark overlay
-    fontSize: '28px',
-    fontWeight: 'bold',
+    color: '#ffffff',
+    fontSize: '22px',
+    fontWeight: 'normal',
     margin: '0',
-    letterSpacing: '3px',
-    textShadow: '0 2px 4px rgba(0,0,0,0.5)',
+    letterSpacing: '4px',
   };
 
   const contentSectionStyle = {
@@ -160,6 +169,7 @@ export const AutoReplyEmail = ({ subject, data }: AutoReplyEmailProps) => {
           {/* Header Section with Image Background */}
           <Section style={headerSectionStyle}>
             <div style={headerTitleContainerStyle}>
+              <Text style={subtitleStyle}>Contact</Text>
               <Heading style={headerTitleStyle}>{theme.title}</Heading>
             </div>
           </Section>
