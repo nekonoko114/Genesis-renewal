@@ -5,6 +5,7 @@ import {
   getFeaturedImage,
   plainText,
   formatPostDate,
+  clearWpCache,
   type WordPressPost
 } from './wordpress';
 
@@ -37,6 +38,7 @@ describe('wordpress.ts', () => {
     let fetchMock: any;
 
     beforeEach(() => {
+      clearWpCache();
       fetchMock = vi.fn();
       vi.stubGlobal('fetch', fetchMock);
     });
@@ -60,7 +62,8 @@ describe('wordpress.ts', () => {
           expect.objectContaining({
             href: expect.stringContaining('page=1'),
             href: expect.stringContaining('per_page=6')
-          })
+          }),
+          expect.any(Object)
         );
       });
 
@@ -77,7 +80,8 @@ describe('wordpress.ts', () => {
           expect.objectContaining({
             href: expect.stringContaining('page=2'),
             href: expect.stringContaining('per_page=10')
-          })
+          }),
+          expect.any(Object)
         );
       });
 
@@ -116,7 +120,8 @@ describe('wordpress.ts', () => {
           expect.objectContaining({
             href: expect.stringContaining('slug=test-post'),
             href: expect.stringContaining('per_page=1')
-          })
+          }),
+          expect.any(Object)
         );
       });
 

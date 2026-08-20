@@ -44,6 +44,10 @@ function endpoint(path: string, params: Record<string, string | number> = {}) {
 
 const wpCache = new Map<string, any>();
 
+export function clearWpCache() {
+  wpCache.clear();
+}
+
 async function fetchWp<T>(path: string, params: Record<string, string | number> = {}): Promise<T | null> {
   if (!API_URL) return null;
 
@@ -61,32 +65,14 @@ async function fetchWp<T>(path: string, params: Record<string, string | number> 
     });
     if (!response.ok) {
       console.warn(`WordPress API request failed: ${response.status} ${response.statusText}`);
-      return [{
-        id: 9999,
-        slug: 'error-debug',
-        date: new Date().toISOString(),
-        modified: new Date().toISOString(),
-        link: '',
-        title: { rendered: `[DEBUG] HTTP Error: ${response.status} ${response.statusText}` },
-        excerpt: { rendered: `URL: ${endpoint(path, params).toString()}` },
-        content: { rendered: '' }
-      }] as unknown as T;
+      return null;
     }
     const data = await response.json() as T;
     wpCache.set(cacheKey, data);
     return data;
   } catch (error: any) {
     console.warn('WordPress API request failed:', error);
-    return [{
-        id: 9998,
-        slug: 'error-catch',
-        date: new Date().toISOString(),
-        modified: new Date().toISOString(),
-        link: '',
-        title: { rendered: `[DEBUG] Catch Error: ${error.message}` },
-        excerpt: { rendered: `URL: ${endpoint(path, params).toString()}` },
-        content: { rendered: '' }
-    }] as unknown as T;
+    return null;
   }
 }
 

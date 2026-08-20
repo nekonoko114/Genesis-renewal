@@ -1,0 +1,219 @@
+---
+import { render } from '@react-email/render';
+import { AutoReplyEmail } from '../emails/AutoReplyEmail';
+import { ContactNotificationEmail } from '../emails/ContactNotificationEmail';
+
+export const prerender = false;
+
+// 本番環境ではプレビュー画面を非公開（404）
+if (import.meta.env.PROD) {
+  return new Response(null, { status: 404, statusText: 'Not Found' });
+}
+
+const sampleData = {
+  name: '山田 太郎',
+  tel: '090-1234-5678',
+  email: 'yamada@example.com',
+  message: '現在、新規事業の立ち上げに伴い貴社のサービス導入を検討しております。\n具体的なプランや料金体系、導入までのスケジュールについて詳しく伺いたくご連絡いたしました。\nよろしくお願いいたします。',
+};
+
+// 4パターンのHTMLを生成
+const autoReplyCorporateHtml = await render(
+  AutoReplyEmail({
+    subject: 'corporate_service',
+    data: sampleData,
+  })
+);
+
+const autoReplyLiverHtml = await render(
+  AutoReplyEmail({
+    subject: 'liver_audition',
+    data: {
+      ...sampleData,
+      message: 'ライバーオーディションに応募したくご連絡いたしました。\n配信活動の経験や今後の活動サポートについてお伺いできれば幸いです。',
+    },
+  })
+);
+
+const adminCorporateHtml = await render(
+  ContactNotificationEmail({
+    subject: 'corporate_service',
+    data: sampleData,
+  })
+);
+
+const adminLiverHtml = await render(
+  ContactNotificationEmail({
+    subject: 'liver_audition',
+    data: {
+      ...sampleData,
+      message: 'ライバーオーディションに応募したくご連絡いたしました。\n配信活動の経験や今後の活動サポートについてお伺いできれば幸いです。',
+    },
+  })
+);
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>メールテンプレート ライブプレビュー | Genesis</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      .toolbar {
+        background-color: #1e293b;
+        border-bottom: 1px solid #334155;
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+      .logo-group {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo-tag {
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        background: linear-gradient(90deg, #d0524f, #8b5cf6, #06b6d4, #84cc16);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-transform: uppercase;
+      }
+      .title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #ffffff;
+      }
+      .tab-group {
+        display: flex;
+        background-color: #0f172a;
+        padding: 4px;
+        border-radius: 10px;
+        border: 1px solid #334155;
+        gap: 4px;
+      }
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+      .tab-btn:hover {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.05);
+      }
+      .tab-btn.active {
+        background-color: #3b82f6;
+        color: #ffffff;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+      }
+      .preview-container {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 24px;
+        overflow-y: auto;
+        background-color: #0b0f19;
+      }
+      .preview-frame-wrapper {
+        width: 100%;
+        max-width: 680px;
+        height: 100%;
+        background-color: #ffffff;
+        border-radius: 16px;
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        border: 1px solid #334155;
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="logo-group">
+        <span class="logo-tag">// GENESIS EMAIL SYSTEM</span>
+        <h1 class="title">メール ライブプレビュー</h1>
+      </div>
+      <div class="tab-group">
+        <button class="tab-btn active" onclick="switchTab('auto-corp', this)">
+          自動返信（法人）
+        </button>
+        <button class="tab-btn" onclick="switchTab('auto-liver', this)">
+          自動返信（ライバー）
+        </button>
+        <button class="tab-btn" onclick="switchTab('admin-corp', this)">
+          管理者通知（法人）
+        </button>
+        <button class="tab-btn" onclick="switchTab('admin-liver', this)">
+          管理者通知（ライバー）
+        </button>
+      </div>
+    </header>
+
+    <main class="preview-container">
+      <div class="preview-frame-wrapper">
+        <iframe id="preview-frame"></iframe>
+      </div>
+    </main>
+
+    <script define:vars={{ autoReplyCorporateHtml, autoReplyLiverHtml, adminCorporateHtml, adminLiverHtml }}>
+      const templates = {
+        'auto-corp': autoReplyCorporateHtml,
+        'auto-liver': autoReplyLiverHtml,
+        'admin-corp': adminCorporateHtml,
+        'admin-liver': adminLiverHtml,
+      };
+
+      const frame = document.getElementById('preview-frame');
+
+      function updatePreview(key) {
+        if (frame && frame.contentWindow) {
+          const doc = frame.contentWindow.document;
+          doc.open();
+          doc.write(templates[key]);
+          doc.close();
+        }
+      }
+
+      window.switchTab = function(key, btn) {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updatePreview(key);
+      };
+
+      // 初期表示
+      window.onload = function() {
+        updatePreview('auto-corp');
+      };
+    </script>
+  </body>
+</html>

@@ -11,9 +11,9 @@
 
 | 環境変数名 | 設定値 | 説明 |
 | :--- | :--- | :--- |
-| `CONTACT_RESEND_API_KEY` | `re_jkLkaG3K_FiPUaMbeQVveBFM6roMYNZQq` | ResendのAPIキー |
-| `FROM_EMAIL` | `murao@genesis-llc.co.jp` | 送信元メールアドレス（認証済みドメインのみ使用可） |
-| `TO_EMAIL` | `murao@genesis-llc.co.jp` | お問い合わせ通知を受け取る宛先メールアドレス |
+| `CONTACT_RESEND_API_KEY` | `re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx` | ResendのAPIキー（Resend管理画面で取得） |
+| `FROM_EMAIL` | `info@genesis-llc.co.jp` | 送信元メールアドレス（認証済みドメインのみ使用可） |
+| `TO_EMAIL` | `info@genesis-llc.co.jp` | お問い合わせ通知を受け取る宛先メールアドレス |
 
 > [!IMPORTANT]
 > 本番デプロイが完了した後は、上記環境変数が設定されることで自動的にお問い合わせメールが正常稼働します。
@@ -42,4 +42,6 @@ XSERVER側に登録したDNSレコードの一覧です。これは **`genesis-l
 
 ### メールテンプレートのデザインを変更したい場合
 メールの本文デザイン（HTML）を変更したい場合は、以下のファイルを編集してください。
-*   `src/emails/ContactTemplate.ts` （メール本文のテンプレートファイル）
+*   `src/emails/AutoReplyEmail.tsx` （お客様向け自動返信メール）
+*   `src/emails/ContactNotificationEmail.tsx` （管理者向け通知メール）
+*   `src/pages/email-preview.astro` （ローカルプレビュー確認画面）
