@@ -437,7 +437,7 @@ export const AutoReplyEmail = ({ subject, data }: AutoReplyEmailProps) => {
             <div style={noticeBoxStyle} className="email-notice-box">
               <Text style={noticeTextStyle} className="email-notice-text">
                 <strong>【ご案内】</strong><br />
-                通常1〜2営業日以内に担当スタッフよりご連絡いたします。<br />
+                通常3営業日以内に担当スタッフよりご連絡いたします。<br />
                 万が一返信がない場合は、大変お手数ですが再度お問い合わせいただくか、お電話にてご連絡いただけますと幸いです。
               </Text>
             </div>

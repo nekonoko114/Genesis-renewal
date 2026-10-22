@@ -1,0 +1,247 @@
+---
+import '../styles/tailwind.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SEO from '../components/SEO.astro';
+
+const basePath = import.meta.env.BASE_URL;
+---
+
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+  <head>
+    <link rel="icon" type="image/png" href={`${basePath}favicon.png`} />
+    <SEO 
+      title="プライバシーポリシー | Genesis合同会社"
+      description="Genesis合同会社のプライバシーポリシー（個人情報保護方針）についてのページです。個人情報の取り扱い、利用目的、管理について定めています。"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+      .text-gradient-c {
+        background: linear-gradient(to right, #FF9494, #C994FF, #94FFFF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .elegant-shadow {
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,0.05);
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: #fcfcfc; }
+      ::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 2px; }
+      ::-webkit-scrollbar-thumb:hover { background: #C994FF; }
+
+      /* Tech Grid Pattern */
+      .tech-grid {
+        background-image:
+          linear-gradient(to right, rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+
+      /* Floating Blob Animation */
+      @keyframes float-slow {
+        0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+        33% { transform: translate(50px, -80px) scale(1.15) rotate(120deg); }
+        66% { transform: translate(-30px, 30px) scale(0.85) rotate(240deg); }
+      }
+      @keyframes float-reverse {
+        0%, 100% { transform: translate(0, 0) scale(1.1) rotate(0deg); }
+        33% { transform: translate(-40px, 60px) scale(0.9) rotate(-120deg); }
+        66% { transform: translate(30px, -40px) scale(1.05) rotate(-240deg); }
+      }
+      .animate-float-1 {
+        animation: float-slow 35s infinite alternate ease-in-out;
+      }
+      .animate-float-2 {
+        animation: float-reverse 40s infinite alternate ease-in-out;
+      }
+
+      /* Glassmorphism Card */
+      .glass-card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        box-shadow: 0 30px 60px -15px rgba(0,0,0,0.03), inset 0 1px 0 rgba(255,255,255,0.6);
+      }
+
+      .parallax-bg {
+        will-change: transform;
+      }
+    </style>
+  </head>
+  <body class="bg-creamy-bg text-gray-800 font-outfit overflow-x-hidden selection:bg-triad-purple selection:text-white relative tech-grid">
+    <!-- Super subtle background accents & parallax blobs -->
+    <div class="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden">
+        <div id="blob-1" class="parallax-bg absolute -top-48 -left-48 w-[600px] h-[600px] bg-triad-cyan rounded-full mix-blend-multiply opacity-20 filter blur-[120px] animate-float-1"></div>
+        <div id="blob-2" class="parallax-bg absolute top-1/3 -right-48 w-[600px] h-[600px] bg-triad-purple rounded-full mix-blend-multiply opacity-15 filter blur-[120px] animate-float-2"></div>
+        <div id="blob-3" class="parallax-bg absolute -bottom-48 left-1/4 w-[700px] h-[700px] bg-triad-pink rounded-full mix-blend-multiply opacity-15 filter blur-[150px] animate-float-1"></div>
+    </div>
+
+    <Header />
+
+    <!-- MAIN CONTENT -->
+    <main class="pt-32">
+      <!-- Title Section -->
+      <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-10 md:py-16 text-center">
+        <span class="text-triad-purple font-bold tracking-[0.3em] text-xs uppercase mb-4 block">Privacy Policy</span>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-gray-900 tracking-tight leading-tight mb-6">
+          プライバシーポリシー
+        </h1>
+        <p class="text-sm md:text-base text-gray-500 font-light max-w-2xl mx-auto leading-relaxed">
+          Genesis合同会社（以下、「当社」といいます）は、お客様の個人情報の適切な取り扱いおよび保護を社会的責務と考え、以下の通りプライバシーポリシーを定め、これを遵守いたします。
+        </p>
+      </section>
+
+      <!-- Content Section -->
+      <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-12 pb-24 md:pb-32">
+        <div class="glass-card rounded-[24px] md:rounded-[40px] p-6 sm:p-10 md:p-16 space-y-12">
+          
+          <!-- Article 1 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第1条（個人情報の定義）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base">
+              本プライバシーポリシーにおいて、「個人情報」とは、個人情報保護法にいう「個人情報」を指すものとし、生存する個人に関する情報であって、当該情報に含まれる氏名、生年月日、住所、電話番号、連絡先その他の記述等により特定の個人を識別できる情報（他の情報と容易に照合することができ、それにより特定の個人を識別することができることとなるものを含む）をいいます。
+            </p>
+          </div>
+
+          <!-- Article 2 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第2条（個人情報の収集方法）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base">
+              当社は、お客様が利用登録、お問い合わせ、または各種サービスへのお申し込みをする際に、氏名、電話番号、メールアドレスなどの個人情報をお尋ねすることがあります。また、適法かつ公正な手段によって個人情報を取得します。
+            </p>
+          </div>
+
+          <!-- Article 3 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第3条（個人情報を収集・利用する目的）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base mb-4">
+              当社が個人情報を収集・利用する目的は、以下のとおりです。
+            </p>
+            <ul class="space-y-2.5 text-sm md:text-base text-gray-600 font-light list-disc list-inside">
+              <li>当社サービスの提供・運営のため</li>
+              <li>お客様からのお問い合わせに対する回答やご案内を送付するため（本人確認を行うことを含む）</li>
+              <li>人材アウトソーシング事業、人材トータルソリューション事業、およびライバーマネジメント事業における業務遂行および連絡のため</li>
+              <li>重要なお知らせやメンテナンス等の必要に応じたご連絡のため</li>
+              <li>上記の利用目的に付随する目的のため</li>
+            </ul>
+          </div>
+
+          <!-- Article 4 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第4条（利用目的の変更）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base">
+              当社は、利用目的が変更前と関連性を有すると合理的に認められる場合に限り、個人情報の利用目的を変更するものとします。利用目的の変更を行った場合には、変更後の目的について、当社所定の方法によりお客様に通知し、または本ウェブサイト上に公表します。
+            </p>
+          </div>
+
+          <!-- Article 5 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第5条（個人情報の第三者提供）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base mb-4">
+              当社は、次に掲げる場合を除いて、あらかじめお客様の同意を得ることなく、第三者に個人情報を提供することはありません。ただし、個人情報保護法その他の法令で認められる場合を除きます。
+            </p>
+            <ul class="space-y-2.5 text-sm md:text-base text-gray-600 font-light list-disc list-inside">
+              <li>人の生命、身体または財産の保護のために必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+              <li>公衆衛生の向上または児童の健全な育成の推進のために特に必要がある場合であって、本人の同意を得ることが困難であるとき</li>
+              <li>国の機関もしくは地方公共団体またはその委託を受けた者が法令の定める事務を遂行することに対して協力する必要がある場合であって、本人の同意を得ることにより当該事務の遂行に支障を及ぼすおそれがあるとき</li>
+            </ul>
+          </div>
+
+          <!-- Article 6 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第6条（個人情報の開示・訂正・利用停止）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base">
+              当社は、ご本人から個人情報の開示、訂正、追加、削除、利用停止を求められたときは、ご本人確認を行った上で、法令の定めに従い遅滞なく対応いたします。
+            </p>
+          </div>
+
+          <!-- Article 7 -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第7条（プライバシーポリシーの改定）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base">
+              本ポリシーの内容は、法令その他本ポリシーに別段の定めのある事項を除いて、ユーザーに通知することなく変更することができるものとします。変更後のプライバシーポリシーは、本ウェブサイトに掲載したときから効力を生じるものとします。
+            </p>
+          </div>
+
+          <!-- Article 8: Contact -->
+          <div>
+            <h2 class="text-lg md:text-xl font-black text-gray-900 mb-4 pb-2 border-b border-gray-100 flex items-center gap-3">
+              <span class="w-2 h-2 bg-triad-purple rotate-45 inline-block"></span>
+              第8条（お問い合わせ窓口）
+            </h2>
+            <p class="text-gray-600 font-light leading-relaxed text-sm md:text-base mb-6">
+              本ポリシーに関するお問い合わせは、下記の窓口までお願いいたします。
+            </p>
+            <div class="bg-gray-50/80 rounded-2xl p-6 border border-gray-100 text-sm md:text-base text-gray-700 space-y-2">
+              <p class="font-bold text-gray-900">Genesis合同会社</p>
+              <p>住所：〒550-0002 大阪府大阪市西区江戸堀1-19-10 三共肥後橋ビル2F</p>
+              <p>代表社員：片桐 慶之</p>
+              <p>電話番号：06-6147-3440</p>
+              <p>メール：<a href="mailto:info@genesis-llc.co.jp" class="text-triad-purple hover:underline font-medium">info@genesis-llc.co.jp</a></p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+
+    <!-- Scripts -->
+    <script is:inline>
+      // Smooth Parallax Effect
+      const blobs = [
+        { el: document.getElementById('blob-1'), speed: 0.12 },
+        { el: document.getElementById('blob-2'), speed: -0.08 },
+        { el: document.getElementById('blob-3'), speed: 0.05 }
+      ];
+
+      let ticking = false;
+
+      function updateParallax() {
+        const scrolled = window.pageYOffset;
+
+        blobs.forEach(blob => {
+          if (blob.el) {
+            blob.el.style.transform = `translate3d(0, ${scrolled * blob.speed}px, 0)`;
+          }
+        });
+
+        ticking = false;
+      }
+
+      window.addEventListener('scroll', () => {
+        if (!ticking) {
+          window.requestAnimationFrame(updateParallax);
+          ticking = true;
+        }
+      });
+      updateParallax();
+    </script>
+  </body>
+</html>
