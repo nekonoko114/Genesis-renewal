@@ -7,11 +7,27 @@ const basePath = import.meta.env.BASE_URL;
       <a href={basePath}>Genesis<span class="text-triad-red">.</span></a>
     </div>
     
-    <nav class="hidden md:flex gap-10 text-xs font-bold tracking-widest uppercase">
-      <a href={`${basePath}#about`} class="hover:text-triad-red transition-all hover:-translate-y-0.5 transform inline-block">About</a>
-      <a href={`${basePath}#service`} class="hover:text-triad-purple transition-all hover:-translate-y-0.5 transform inline-block">Service</a>
-      <a href={`${basePath}#news`} class="hover:text-triad-pink transition-all hover:-translate-y-0.5 transform inline-block">News</a>
-      <a href={`${basePath}#contact`} class="hover:text-triad-lime transition-all hover:-translate-y-0.5 transform inline-block">Contact</a>
+    <nav class="hidden md:flex gap-7 lg:gap-9 items-center">
+      <a href={`${basePath}#about`} class="group flex flex-col items-center hover:-translate-y-0.5 transition-transform">
+        <span class="text-xs font-bold tracking-widest uppercase group-hover:text-triad-red transition-colors">About</span>
+        <span class="text-[9px] text-gray-400 group-hover:text-triad-red/70 transition-colors tracking-wider font-normal mt-0.5">企業理念</span>
+      </a>
+      <a href={`${basePath}outline/`} class="group flex flex-col items-center hover:-translate-y-0.5 transition-transform">
+        <span class="text-xs font-bold tracking-widest uppercase group-hover:text-triad-cyan transition-colors">Company</span>
+        <span class="text-[9px] text-gray-400 group-hover:text-triad-cyan/70 transition-colors tracking-wider font-normal mt-0.5">会社概要</span>
+      </a>
+      <a href={`${basePath}#service`} class="group flex flex-col items-center hover:-translate-y-0.5 transition-transform">
+        <span class="text-xs font-bold tracking-widest uppercase group-hover:text-triad-purple transition-colors">Service</span>
+        <span class="text-[9px] text-gray-400 group-hover:text-triad-purple/70 transition-colors tracking-wider font-normal mt-0.5">事業案内</span>
+      </a>
+      <a href={`${basePath}#news`} class="group flex flex-col items-center hover:-translate-y-0.5 transition-transform">
+        <span class="text-xs font-bold tracking-widest uppercase group-hover:text-triad-pink transition-colors">News</span>
+        <span class="text-[9px] text-gray-400 group-hover:text-triad-pink/70 transition-colors tracking-wider font-normal mt-0.5">お知らせ</span>
+      </a>
+      <a href={`${basePath}#contact`} class="group flex flex-col items-center hover:-translate-y-0.5 transition-transform">
+        <span class="text-xs font-bold tracking-widest uppercase group-hover:text-triad-lime transition-colors">Contact</span>
+        <span class="text-[9px] text-gray-400 group-hover:text-gray-600 transition-colors tracking-wider font-normal mt-0.5">お問い合わせ</span>
+      </a>
     </nav>
     
     <!-- Desktop Contact Button -->
@@ -29,10 +45,26 @@ const basePath = import.meta.env.BASE_URL;
 <!-- Mobile Nav Menu -->
 <div id="mobile-menu" class="fixed inset-0 bg-creamy-bg/95 backdrop-blur-3xl z-50 hidden flex-col items-center justify-center gap-8 text-2xl font-black tracking-widest uppercase opacity-0 transition-opacity duration-300">
     <button id="close-btn" class="absolute top-8 right-8 text-gray-900 border border-gray-200 rounded-full p-2 hover:bg-white"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
-    <a href={`${basePath}#about`} class="hover:text-triad-red mobile-link transition-colors duration-300">About</a>
-    <a href={`${basePath}#service`} class="hover:text-triad-purple mobile-link transition-colors duration-300">Service</a>
-    <a href={`${basePath}#news`} class="hover:text-triad-pink mobile-link transition-colors duration-300">News</a>
-    <a href={`${basePath}#contact`} class="hover:text-triad-lime mobile-link transition-colors duration-300">Contact</a>
+    <a href={`${basePath}#about`} class="group flex flex-col items-center mobile-link transition-colors duration-300">
+      <span class="text-2xl font-black tracking-widest uppercase group-hover:text-triad-red transition-colors">About</span>
+      <span class="text-xs text-gray-400 tracking-wider font-normal mt-1">企業理念</span>
+    </a>
+    <a href={`${basePath}outline/`} class="group flex flex-col items-center mobile-link transition-colors duration-300">
+      <span class="text-2xl font-black tracking-widest uppercase group-hover:text-triad-cyan transition-colors">Company</span>
+      <span class="text-xs text-gray-400 tracking-wider font-normal mt-1">会社概要</span>
+    </a>
+    <a href={`${basePath}#service`} class="group flex flex-col items-center mobile-link transition-colors duration-300">
+      <span class="text-2xl font-black tracking-widest uppercase group-hover:text-triad-purple transition-colors">Service</span>
+      <span class="text-xs text-gray-400 tracking-wider font-normal mt-1">事業案内</span>
+    </a>
+    <a href={`${basePath}#news`} class="group flex flex-col items-center mobile-link transition-colors duration-300">
+      <span class="text-2xl font-black tracking-widest uppercase group-hover:text-triad-pink transition-colors">News</span>
+      <span class="text-xs text-gray-400 tracking-wider font-normal mt-1">お知らせ</span>
+    </a>
+    <a href={`${basePath}#contact`} class="group flex flex-col items-center mobile-link transition-colors duration-300">
+      <span class="text-2xl font-black tracking-widest uppercase group-hover:text-triad-lime transition-colors">Contact</span>
+      <span class="text-xs text-gray-400 tracking-wider font-normal mt-1">お問い合わせ</span>
+    </a>
     <a href={`${basePath}contact/`} class="text-xs text-gray-500 font-bold border border-gray-200 rounded-full px-6 py-3 mt-8 hover:bg-gray-100 mobile-link">Contact Us</a>
 </div>
 
